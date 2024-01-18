@@ -9,3 +9,4 @@ String slogan = 'assets/images/slogan.png';
 //Icons
 String notification = 'assets/icons/notification.svg';
 String home = 'assets/icons/home.svg';
+String location = 'assets/images/locationPNG.png';
