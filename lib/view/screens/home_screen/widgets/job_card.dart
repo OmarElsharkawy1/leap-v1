@@ -11,6 +11,7 @@ class JobCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: context.screenHeight * .2,
+      width: context.screenWidth,
       color: containerColor,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,

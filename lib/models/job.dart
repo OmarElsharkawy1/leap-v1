@@ -27,14 +27,14 @@ final List<Job> dummyJobs = [
     location: 'Cairo, Egypt',
   ),
   Job(
-    logo: nike,
+    logo: slogan,
     title: 'Senior SW Engineer',
     skill: 'Flutter Developer',
     salary: '12000 - 15000 EGP',
     location: 'Cairo, Egypt',
   ),
   Job(
-    logo: nike,
+    logo: illustration,
     title: 'Senior SW Engineer',
     skill: 'React Developer',
     salary: '12000 - 15000 EGP',

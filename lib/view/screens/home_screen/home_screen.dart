@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leap/view/constants/assets.dart';
 import 'package:leap/view/constants/colors.dart';
-import 'package:leap/view/constants/extensions.dart';
 import 'package:leap/view/screens/home_screen/widgets/bottom_navigation_bar.dart';
 import 'package:leap/view/screens/home_screen/widgets/homepage_buttons.dart';
 import 'package:leap/view/screens/home_screen/widgets/job_carousel.dart';

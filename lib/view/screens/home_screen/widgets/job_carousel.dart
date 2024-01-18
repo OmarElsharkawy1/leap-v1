@@ -90,18 +90,20 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
     return SizedBox(
       height: context.screenHeight * .3,
       child: Column(children: [
-        CarouselSlider(
-          items: jobSlider,
-          carouselController: _controller,
-          options: CarouselOptions(
-              autoPlay: false,
-              enlargeCenterPage: true,
-              aspectRatio: 2,
-              onPageChanged: (index, reason) {
-                setState(() {
-                  _current = index;
-                });
-              }),
+        Expanded(
+          child: CarouselSlider(
+            items: jobSlider,
+            carouselController: _controller,
+            options: CarouselOptions(
+                autoPlay: false,
+                enlargeCenterPage: true,
+                aspectRatio: 2,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    _current = index;
+                  });
+                }),
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
