@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:leap/view/screens/home_screen/home_screen.dart';
+import 'package:leap/view/screens/home_screen_web/home_screen_web.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -13,7 +14,7 @@ final GoRouter _router = GoRouter(
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return const HomeScreen();
+        return const HomeScreenWeb();
       },
       routes: const <RouteBase>[
         // GoRoute(
