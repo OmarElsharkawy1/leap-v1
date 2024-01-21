@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:leap/view/constants/colors.dart';
 
-class JobsPosted extends StatelessWidget {
-  const JobsPosted({Key? key}) : super(key: key);
+class SearchByTagsText extends StatelessWidget {
+  const SearchByTagsText({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,20 +10,21 @@ class JobsPosted extends StatelessWidget {
       padding: EdgeInsets.all(8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            '1500+',
+            'Search by tags:',
             style: TextStyle(
-              color: Colors.white,
+              color: backGroundColor,
               fontWeight: FontWeight.bold,
-              fontSize: 72,
+              fontSize: 24,
             ),
           ),
           Text(
-            ' Jobs posted week ago',
+            ' Developer, Engineer, Support, Senior, Junior',
             style: TextStyle(
-              color: Colors.white,
-              fontSize: 72,
+              color: backGroundColor,
+              fontSize: 24,
             ),
           ),
         ],

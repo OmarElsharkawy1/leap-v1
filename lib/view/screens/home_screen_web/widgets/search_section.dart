@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:leap/view/constants/assets.dart';
 import 'package:leap/view/constants/extensions.dart';
+import 'package:leap/view/screens/home_screen_web/widgets/job_search.dart';
 import 'package:leap/view/screens/home_screen_web/widgets/jobs_posted.dart';
+import 'package:leap/view/screens/home_screen_web/widgets/search_by_tags_text.dart';
 
 class SearchSection extends StatelessWidget {
   const SearchSection({Key? key}) : super(key: key);
@@ -29,6 +31,8 @@ class SearchSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               JobsPosted(),
+              JobSearch(),
+              SearchByTagsText(),
             ],
           )),
         ],
