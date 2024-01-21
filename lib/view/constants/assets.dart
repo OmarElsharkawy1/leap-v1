@@ -5,6 +5,7 @@ String illustration = 'assets/images/illustration.jpg';
 String illustrationLarge = 'assets/images/illustration@2x.jpg';
 String nike = 'assets/images/nike.png';
 String slogan = 'assets/images/slogan.jpg';
+String homeBackgroundLarge = 'assets/images/bg@2x.png';
 
 //Icons
 String notification = 'assets/icons/notification.svg';
