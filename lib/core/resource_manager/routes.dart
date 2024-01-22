@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:leap/features/auth/presentation/login_screen.dart';
 import 'package:leap/view/screens/home_screen/home_screen.dart';
 import 'package:leap/view/screens/home_screen_web/home_screen_web.dart';
 
@@ -21,7 +22,7 @@ class RouteGenerator {
           return MaterialPageRoute(builder: (_) => const HomeScreen());
         }
       case Routes.login:
-        // return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
 
     }
     return unDefinedRoute();

@@ -7,8 +7,8 @@ import 'package:leap/core/service/service_locator.dart';
 import 'package:leap/features/auth/presentation/controller/login_bloc/login_with_email_and_password_bloc.dart';
 import 'package:leap/view/screens/home_screen_web/home_screen_web.dart';
 
-void main() {
-
+void main() async{
+  await ServerLocator().init();
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -45,12 +45,10 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-      
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: Routes.home,
+        initialRoute: Routes.login,
         theme: ThemeData(
-          
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
