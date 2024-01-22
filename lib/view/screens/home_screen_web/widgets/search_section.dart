@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:leap/view/constants/assets.dart';
+import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/view/constants/extensions.dart';
+import 'package:leap/view/screens/home_screen_web/widgets/card_row.dart';
 import 'package:leap/view/screens/home_screen_web/widgets/job_search.dart';
 import 'package:leap/view/screens/home_screen_web/widgets/jobs_posted.dart';
 import 'package:leap/view/screens/home_screen_web/widgets/search_by_tags_text.dart';
@@ -15,15 +16,17 @@ class SearchSection extends StatelessWidget {
       height: context.screenHeight - 100,
       child: Stack(
         children: [
-          Positioned.fill(
+          Positioned(
+            width: context.screenWidth,
+            height: context.screenHeight - 200,
             child: Image.asset(
-              homeBackgroundLarge,
+              AssetPath.homeBackgroundLarge,
               fit: BoxFit.fill,
             ),
           ),
           Container(
             width: context.screenWidth,
-            height: context.screenHeight - 100,
+            height: context.screenHeight - 200,
             color: Colors.black.withOpacity(0.5),
           ),
           const Positioned.fill(
@@ -35,6 +38,7 @@ class SearchSection extends StatelessWidget {
               SearchByTagsText(),
             ],
           )),
+          const CardRow(),
         ],
       ),
     );

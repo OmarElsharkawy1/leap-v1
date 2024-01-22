@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:leap/view/constants/assets.dart';
+import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/view/constants/colors.dart';
 import 'package:leap/view/constants/extensions.dart';
 
@@ -28,7 +28,7 @@ class _WebAppbarState extends State<WebAppbar> {
           // Logo
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Image.asset(logo),
+            child: Image.asset(AssetPath.logo),
           ),
           // Internships
           Padding(
@@ -119,7 +119,7 @@ class _WebAppbarState extends State<WebAppbar> {
               ),
             ),
           ),
-          SizedBox(width: context.screenWidth * .35),
+          const Spacer(),
           // Sign Up
           Padding(
             padding: const EdgeInsets.all(4.0),
@@ -194,6 +194,9 @@ class _WebAppbarState extends State<WebAppbar> {
                 ),
               ),
             ),
+          ),
+          SizedBox(
+            width: context.screenWidth * .03,
           ),
         ],
       ),
