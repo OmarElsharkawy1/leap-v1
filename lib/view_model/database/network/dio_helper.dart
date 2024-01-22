@@ -3,7 +3,7 @@ import 'package:leap/view_model/database/local/cache_helper.dart';
 import 'package:leap/view_model/database/network/end_points.dart';
 
 //Dio Helper That's Connect and Talk to API.
-class DioHelper {
+class DioHelperOmar {
   static late Dio dio;
 
   //Here The Initialize of Dio and Start Connect to API Using baseUrl.
