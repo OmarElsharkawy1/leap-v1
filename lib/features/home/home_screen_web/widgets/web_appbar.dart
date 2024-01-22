@@ -28,7 +28,11 @@ class _WebAppbarState extends State<WebAppbar> {
           // Logo
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Image.asset(AssetPath.logo),
+            child: Image.asset(
+              AssetPath.logo,
+              width: 64,
+              height: 40,
+            ),
           ),
           // Internships
           Padding(
