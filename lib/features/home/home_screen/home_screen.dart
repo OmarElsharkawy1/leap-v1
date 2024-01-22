@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:leap/core/resource_manager/asset_path.dart';
+import 'package:leap/features/home/home_screen/widgets/bottom_navigation_bar.dart';
+import 'package:leap/features/home/home_screen/widgets/homepage_buttons.dart';
+import 'package:leap/features/home/home_screen/widgets/job_carousel.dart';
+import 'package:leap/features/home/home_screen/widgets/take_quiz_widget.dart';
 import 'package:leap/view/constants/colors.dart';
-import 'package:leap/view/screens/home_screen/widgets/bottom_navigation_bar.dart';
-import 'package:leap/view/screens/home_screen/widgets/homepage_buttons.dart';
-import 'package:leap/view/screens/home_screen/widgets/job_carousel.dart';
-import 'package:leap/view/screens/home_screen/widgets/take_quiz_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

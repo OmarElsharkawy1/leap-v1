@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:leap/core/resource_manager/asset_path.dart';
+import 'package:leap/features/home/home_screen_web/widgets/card_row.dart';
+import 'package:leap/features/home/home_screen_web/widgets/job_search.dart';
+import 'package:leap/features/home/home_screen_web/widgets/jobs_posted.dart';
+import 'package:leap/features/home/home_screen_web/widgets/search_by_tags_text.dart';
 import 'package:leap/view/constants/extensions.dart';
-import 'package:leap/view/screens/home_screen_web/widgets/card_row.dart';
-import 'package:leap/view/screens/home_screen_web/widgets/job_search.dart';
-import 'package:leap/view/screens/home_screen_web/widgets/jobs_posted.dart';
-import 'package:leap/view/screens/home_screen_web/widgets/search_by_tags_text.dart';
 
 class SearchSection extends StatelessWidget {
   const SearchSection({Key? key}) : super(key: key);

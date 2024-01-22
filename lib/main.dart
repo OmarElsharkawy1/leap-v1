@@ -6,32 +6,12 @@ import 'package:go_router/go_router.dart';
 import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/service/service_locator.dart';
 import 'package:leap/features/auth/presentation/controller/login_bloc/login_with_email_and_password_bloc.dart';
-import 'package:leap/view/screens/home_screen_web/home_screen_web.dart';
+import 'package:leap/features/home/home_screen_web/home_screen_web.dart';
 
 void main() async{
   await ServerLocator().init();
   runApp(const ProviderScope(child: MyApp()));
 }
-
-/// The route configuration.
-final GoRouter _router = GoRouter(
-  routes: <RouteBase>[
-    GoRoute(
-      path: '/',
-      builder: (BuildContext context, GoRouterState state) {
-        return const HomeScreenWeb();
-      },
-      routes: const <RouteBase>[
-        // GoRoute(
-        //   path: 'details',
-        //   builder: (BuildContext context, GoRouterState state) {
-        //     return const DetailsScreen();
-        //   },
-        // ),
-      ],
-    ),
-  ],
-);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

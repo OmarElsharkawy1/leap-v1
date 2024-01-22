@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:leap/features/auth/presentation/login_screen.dart';
-import 'package:leap/view/screens/home_screen/home_screen.dart';
-import 'package:leap/view/screens/home_screen_web/home_screen_web.dart';
+import 'package:leap/features/home/home_screen/home_screen.dart';
+import 'package:leap/features/home/home_screen_web/home_screen_web.dart';
 
 class Routes {
   static const String login = "/login";
