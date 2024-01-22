@@ -1,6 +1,4 @@
-import 'dart:ui';
-
-import 'package:leap/view/constants/assets.dart';
+import 'package:leap/core/resource_manager/asset_path.dart';
 
 class Job {
   Job({
@@ -20,21 +18,21 @@ class Job {
 
 final List<Job> dummyJobs = [
   Job(
-    logo: nike,
+    logo: AssetPath.nike,
     title: 'TeamLead Engineer',
     skill: '.Net Developer',
     salary: '12000 - 15000 EGP',
     location: 'Cairo, Egypt',
   ),
   Job(
-    logo: slogan,
+    logo: AssetPath.slogan,
     title: 'Senior SW Engineer',
     skill: 'Flutter Developer',
     salary: '12000 - 15000 EGP',
     location: 'Cairo, Egypt',
   ),
   Job(
-    logo: illustration,
+    logo: AssetPath.illustration,
     title: 'Senior SW Engineer',
     skill: 'React Developer',
     salary: '12000 - 15000 EGP',

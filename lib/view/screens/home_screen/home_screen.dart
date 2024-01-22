@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:leap/view/constants/assets.dart';
+import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/view/constants/colors.dart';
 import 'package:leap/view/screens/home_screen/widgets/bottom_navigation_bar.dart';
 import 'package:leap/view/screens/home_screen/widgets/homepage_buttons.dart';
@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
           ),
           onPressed: () {},
         ),
-        title: Image.asset(logo),
+        title: Image.asset(AssetPath.logo),
         centerTitle: true,
         actions: [
           IconButton(

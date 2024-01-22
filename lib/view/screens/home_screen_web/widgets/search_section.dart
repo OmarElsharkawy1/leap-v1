@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:leap/view/constants/assets.dart';
+import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/view/constants/extensions.dart';
 import 'package:leap/view/screens/home_screen_web/widgets/card_row.dart';
 import 'package:leap/view/screens/home_screen_web/widgets/job_search.dart';
@@ -20,7 +20,7 @@ class SearchSection extends StatelessWidget {
             width: context.screenWidth,
             height: context.screenHeight - 200,
             child: Image.asset(
-              homeBackgroundLarge,
+              AssetPath.homeBackgroundLarge,
               fit: BoxFit.fill,
             ),
           ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:leap/view/constants/assets.dart';
+import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/view/constants/colors.dart';
 
 class TakeQuiz extends StatelessWidget {
@@ -25,7 +25,7 @@ class TakeQuiz extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(illustration),
+              Image.asset(AssetPath.illustration),
               const Column(
                 children: [
                   Text(
