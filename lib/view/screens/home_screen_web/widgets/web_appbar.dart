@@ -119,7 +119,7 @@ class _WebAppbarState extends State<WebAppbar> {
               ),
             ),
           ),
-          SizedBox(width: context.screenWidth * .35),
+          const Spacer(),
           // Sign Up
           Padding(
             padding: const EdgeInsets.all(4.0),
@@ -194,6 +194,9 @@ class _WebAppbarState extends State<WebAppbar> {
                 ),
               ),
             ),
+          ),
+          SizedBox(
+            width: context.screenWidth * .03,
           ),
         ],
       ),

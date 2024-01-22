@@ -1,3 +1,6 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,29 +11,8 @@ import 'package:leap/features/auth/presentation/controller/login_bloc/login_with
 import 'package:leap/view/screens/home_screen_web/home_screen_web.dart';
 
 void main() {
-
   runApp(const ProviderScope(child: MyApp()));
 }
-
-/// The route configuration.
-final GoRouter _router = GoRouter(
-  routes: <RouteBase>[
-    GoRoute(
-      path: '/',
-      builder: (BuildContext context, GoRouterState state) {
-        return const HomeScreenWeb();
-      },
-      routes: const <RouteBase>[
-        // GoRoute(
-        //   path: 'details',
-        //   builder: (BuildContext context, GoRouterState state) {
-        //     return const DetailsScreen();
-        //   },
-        // ),
-      ],
-    ),
-  ],
-);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -45,12 +27,10 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-      
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteGenerator.getRoute,
         initialRoute: Routes.home,
         theme: ThemeData(
-          
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),

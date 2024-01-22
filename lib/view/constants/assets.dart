@@ -10,4 +10,8 @@ String homeBackgroundLarge = 'assets/images/bg@2x.png';
 //Icons
 String notification = 'assets/icons/notification.svg';
 String home = 'assets/icons/home.svg';
-String location = 'assets/images/locationPNG.png';
+String location = 'assets/icons/locationPNG.png';
+String skillIcon = 'assets/icons/skill_icon.png';
+String title = 'assets/icons/title.png';
+String location1 = 'assets/icons/location.png';
+String employer = 'assets/icons/employer.png';
