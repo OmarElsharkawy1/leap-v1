@@ -18,6 +18,9 @@ class AssetPath {
   static const String cplus = '$pathImage/cplus.png';
   static const String react = '$pathImage/react.png';
   static const String html5 = '$pathImage/html5.png';
+  static const String absolute = '$pathImage/absolute.png';
+  static const String ghtk = '$pathImage/ghtk.jpg';
+  static const String ung = '$pathImage/ung.jpg';
 
 //Icons
   static const String notification = '$pathIcon/notification.svg';
