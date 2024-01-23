@@ -3,16 +3,15 @@ import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/utils/app_size.dart';
 
 class CustomTextField extends StatefulWidget {
-  final String labelText;
+  final String? labelText;
   final TextEditingController controller;
   final TextInputType keyboardType;
   final bool obscureText;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
-
-  const CustomTextField({
+   const CustomTextField({
     Key? key,
-    required this.labelText,
+      this.labelText,
     required this.controller,
     this.keyboardType = TextInputType.text,
     this.obscureText = false,
@@ -30,6 +29,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       height: AppSize.defaultSize! * 6,
       width: AppSize.screenWidth! - (AppSize.defaultSize! * 4),
       child: TextFormField(
+
         decoration: InputDecoration(
             labelText: widget.labelText,
             suffixIcon: widget.suffixIcon,
