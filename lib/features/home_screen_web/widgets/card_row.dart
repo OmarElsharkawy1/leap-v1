@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leap/core/resource_manager/asset_path.dart';
-import 'package:leap/features/home/home_screen_web/widgets/home_card.dart';
+import 'package:leap/features/home_screen_web/widgets/home_card.dart';
 
 class CardRow extends StatelessWidget {
   const CardRow({Key? key}) : super(key: key);
