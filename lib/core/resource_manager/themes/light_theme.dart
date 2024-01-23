@@ -1,7 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:tik_chat_v2/core/resource_manger/color_manager.dart';
-
 
 
 
@@ -67,7 +65,7 @@ titleMedium: TextStyle(
   colorScheme:  const ColorScheme.light(
     background: Colors.white , 
     primary: Colors.black,
-    secondary: ColorManager.lightGray
+
 
   )
 );
