@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:leap/features/auth/presentation/login_screen.dart';
 import 'package:leap/features/auth/presentation/signup/sign_up.dart';
+import 'package:leap/features/auth_web/presentation/login_screen_web.dart';
+import 'package:leap/features/auth_web/presentation/signup_web/sign_up_web.dart';
 import 'package:leap/features/home_screen_web/home_screen_web.dart';
 
 class Routes {
@@ -21,9 +23,17 @@ class RouteGenerator {
           return MaterialPageRoute(builder: (_) => const HomeScreenWeb());
         }
       case Routes.login:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        if (Platform.isWindows) {
+          return MaterialPageRoute(builder: (_) => const LoginScreenWeb());
+        } else {
+          return MaterialPageRoute(builder: (_) => const LoginScreen());
+        }
       case Routes.signUp:
-        return MaterialPageRoute(builder: (_) => const SignUpScreen());
+        if (Platform.isWindows) {
+          return MaterialPageRoute(builder: (_) => const SignUpScreenWeb());
+        } else {
+          return MaterialPageRoute(builder: (_) => const SignUpScreen());
+        }
     }
     return unDefinedRoute();
   }
