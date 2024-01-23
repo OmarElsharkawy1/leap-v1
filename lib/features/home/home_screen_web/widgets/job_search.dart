@@ -152,12 +152,7 @@ class JobSearch extends StatelessWidget {
               backgroundColor: primaryColor,
               fixedSize: Size(
                   context.screenWidth * 0.1, context.screenHeight * height),
-              // foregroundColor: primaryColor,
-              // side: BorderSide(color: Colors.yellow, width: 5),
               shape: const RoundedRectangleBorder(
-                // side: BorderSide(
-                //   color: primaryColor,
-                // ),
                 borderRadius: BorderRadius.all(
                   Radius.circular(5),
                 ),
