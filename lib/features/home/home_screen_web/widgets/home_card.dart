@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/view/constants/colors.dart';
-import 'package:leap/view/constants/extensions.dart';
 
 class HomeCard extends StatelessWidget {
   const HomeCard({
@@ -18,8 +17,8 @@ class HomeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: AppSize.defaultSizeWeb! * 3.1,
-      height: AppSize.defaultSizeWeb! * 2.2,
+      width: WidgetRatio.widthRatio(226),
+      height: WidgetRatio.heightRatio(200),
       child: Card(
         elevation: 0,
         color: backGroundColor,
@@ -30,13 +29,13 @@ class HomeCard extends StatelessWidget {
             children: [
               Image.asset(
                 icon,
-                width: AppSize.defaultSizeWeb! / 2.4,
-                height: AppSize.defaultSizeWeb! / 2.2,
+                width: WidgetRatio.widthRatio(30),
+                height: WidgetRatio.heightRatio(32),
               ),
               Text(
                 boldText,
                 style: TextStyle(
-                  fontSize: AppSize.defaultSizeWeb! / 3,
+                  fontSize: WidgetRatio.widthRatio(20),
                   color: mainFontColor,
                   fontFamily: 'Poppins',
                 ),
@@ -45,7 +44,7 @@ class HomeCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: AppSize.defaultSizeWeb! * 2.7,
+                    width: WidgetRatio.widthRatio(200),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -54,7 +53,7 @@ class HomeCard extends StatelessWidget {
                           textAlign: TextAlign.center,
                           maxLines: 2,
                           style: TextStyle(
-                            fontSize: AppSize.defaultSizeWeb! / 5,
+                            fontSize: WidgetRatio.widthRatio(14),
                             overflow: TextOverflow.clip,
                             color: mainFontColor,
                             fontFamily: 'Poppins',

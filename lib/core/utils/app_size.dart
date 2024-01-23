@@ -25,7 +25,7 @@ class AppSize {
 class WidgetRatio {
   static double heightRatio(double designWidgetHeight) {
     final deviceWidgetHeight =
-        (designWidgetHeight * AppSize.screenHeight!) / 2892;
+        (designWidgetHeight * AppSize.screenHeight!) / 1017;
     return deviceWidgetHeight;
   }
 
