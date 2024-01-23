@@ -33,6 +33,7 @@ class AssetPath {
   static const String facebook = '$pathIcon/facebook.png';
 
   static const String skillIcon = 'assets/icons/skill_icon.png';
+  static const String skillIconBlack = 'assets/icons/skill_icon_black.png';
   static const String title = 'assets/icons/title.png';
   static const String location1 = 'assets/icons/location.png';
   static const String employer = 'assets/icons/employer.png';
