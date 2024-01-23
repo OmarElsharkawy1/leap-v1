@@ -9,41 +9,39 @@ class HomeBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
+    return BottomNavigationBar(
+      selectedIconTheme: const IconThemeData(color: primaryColor, size: 20),
+      selectedLabelStyle: const TextStyle(color: primaryColor),
+      backgroundColor: secondaryBackGroundColor,
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.home_outlined,
+          ),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.school_outlined,
+          ),
+          label: 'Internships',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.collections_bookmark_outlined,
+          ),
+          label: 'Resources',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.sticky_note_2_outlined,
+          ),
+          label: 'Blogs',
+        ),
+      ],
+    );
 
-        //   BottomNavigationBar(
-        //   selectedIconTheme: const IconThemeData(color: primaryColor, size: 20),
-        //   selectedLabelStyle: const TextStyle(color: primaryColor),
-        //   backgroundColor: secondaryBackGroundColor,
-        //   items: const <BottomNavigationBarItem>[
-        //     BottomNavigationBarItem(
-        //       icon: Icon(
-        //         Icons.home_outlined,
-        //       ),
-        //       label: 'Home',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(
-        //         Icons.school_outlined,
-        //       ),
-        //       label: 'Internships',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(
-        //         Icons.collections_bookmark_outlined,
-        //       ),
-        //       label: 'Resources',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(
-        //         Icons.sticky_note_2_outlined,
-        //       ),
-        //       label: 'Blogs',
-        //     ),
-        //   ],
-        // );
-
-        Container(
+    Container(
       width: context.screenWidth,
       height: context.screenHeight * .1,
       color: secondaryBackGroundColor,

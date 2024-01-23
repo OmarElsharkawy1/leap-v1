@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
           ),
           onPressed: () {},
         ),
-        title: Image.asset(AssetPath.logo),
+        title: Image.asset(AssetPath.logo,scale: 3,),
         centerTitle: true,
         actions: [
           IconButton(
@@ -32,10 +32,6 @@ class HomeScreen extends StatelessWidget {
             ),
             onPressed: () {},
           ),
-          // IconButton(
-          //   icon: ImageIcon(AssetImage(notification)),
-          //   onPressed: () {},
-          // ),
         ],
       ),
       body: const Column(

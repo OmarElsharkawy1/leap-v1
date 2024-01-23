@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:leap/core/resource_manager/colors.dart';
+import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/models/job.dart';
 import 'package:leap/view/constants/colors.dart';
 import 'package:leap/view/constants/extensions.dart';
@@ -16,12 +18,12 @@ class JobCard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(
-            job.logo,
-            width: 80,
-            height: 80,
-          ).padding(
-            const EdgeInsets.all(6),
+          Padding(
+            padding:   EdgeInsets.all(AppSize.defaultSize!*2),
+            child: Image.asset(
+              job.logo,
+             scale: 4,
+            ),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,8 +35,8 @@ class JobCard extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ).padding(
-                const EdgeInsets.symmetric(
-                  vertical: 8,
+                  EdgeInsets.symmetric(
+                  vertical: AppSize.defaultSize!,
                 ),
               ),
               Text(
@@ -55,24 +57,27 @@ class JobCard extends StatelessWidget {
                   color: mainFontColor,
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  shape: const RoundedRectangleBorder(
-                    side: BorderSide(
-                      color: primaryColor,
+              SizedBox(height: AppSize.defaultSize!*3.5,),
+              InkWell(
+                onTap: () {},
+
+
+                child:   Container(
+                    height: AppSize.defaultSize!*3.5,
+                    width: AppSize.screenWidth!*.4,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(AppSize.defaultSize!*.5),
+              border: Border.all(color: AppColors.primaryColor)
                     ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(5),
-                    ),
-                  ),
-                ),
-                child: const Text('View Job'),
-              ).padding(const EdgeInsets.all(6))
+
+                    child: Center(child: Text('View Job',style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: AppSize.defaultSize!*1.4,
+
+                    ),),)),
+              ).padding(  EdgeInsets.all(AppSize.defaultSize!*.6))
             ],
-          ).padding(
-            const EdgeInsets.all(14),
           ),
         ],
       ),

@@ -4,18 +4,22 @@ import 'package:leap/core/utils/app_size.dart';
 
 class CustomTextField extends StatefulWidget {
   final String? labelText;
+  final String? hintText;
   final TextEditingController controller;
   final TextInputType keyboardType;
   final bool obscureText;
+  final bool readOnly;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
+  final void Function()? onTap;
    const CustomTextField({
     Key? key,
       this.labelText,
     required this.controller,
     this.keyboardType = TextInputType.text,
     this.obscureText = false,
-    this.prefixIcon, this.suffixIcon,
+     this.readOnly=false,
+    this.prefixIcon, this.suffixIcon, this.onTap, this.hintText,
   }) : super(key: key);
 
   @override
@@ -29,9 +33,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
       height: AppSize.defaultSize! * 6,
       width: AppSize.screenWidth! - (AppSize.defaultSize! * 4),
       child: TextFormField(
+        onTap:widget. onTap,
+        readOnly:widget. readOnly,
 
         decoration: InputDecoration(
+
             labelText: widget.labelText,
+            hintText: widget.hintText,
             suffixIcon: widget.suffixIcon,
             labelStyle: const TextStyle(
                 color: AppColors.primaryColor,
@@ -43,9 +51,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
               ),
 
             ),
-          focusedBorder:  OutlineInputBorder(
+          focusedBorder:  const OutlineInputBorder(
               borderSide: BorderSide(
-                  color: AppColors.backGroundColor.withOpacity(.4)
+                  color: AppColors.borderColor
+              )
+          ),
+          disabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: AppColors.borderColor.withOpacity(.4)
               )
           ),
         ),
