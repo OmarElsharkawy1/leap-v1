@@ -22,6 +22,8 @@ class AssetPath {
   static const String ghtk = '$pathImage/ghtk.jpg';
   static const String ung = '$pathImage/ung.jpg';
   static const String human = '$pathImage/human.png';
+  static const String googlePlay = '$pathImage/google play.png';
+  static const String appStore = '$pathImage/app store.png';
 
 //Icons
   static const String notification = '$pathIcon/notification.svg';
