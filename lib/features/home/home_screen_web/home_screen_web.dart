@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/features/home/home_screen/widgets/bottom_navigation_bar.dart';
-import 'package:leap/features/home/home_screen/widgets/homepage_buttons.dart';
-import 'package:leap/features/home/home_screen/widgets/job_carousel.dart';
-import 'package:leap/features/home/home_screen/widgets/take_quiz_widget.dart';
+import 'package:leap/features/home/home_screen_web/widgets/featured_skill.dart';
+import 'package:leap/features/home/home_screen_web/widgets/job_carousel_web.dart';
 import 'package:leap/features/home/home_screen_web/widgets/search_section.dart';
+import 'package:leap/features/home/home_screen_web/widgets/top_employers.dart';
 import 'package:leap/features/home/home_screen_web/widgets/web_appbar.dart';
 import 'package:leap/view/constants/colors.dart';
 import 'package:leap/view/constants/extensions.dart';
@@ -14,8 +14,9 @@ class HomeScreenWeb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppSize().init(context);
+
     return Scaffold(
-      bottomNavigationBar: const HomeBottomNavigationBar(),
       backgroundColor: secondaryBackGroundColor,
       body: SingleChildScrollView(
         child: Column(
@@ -26,13 +27,15 @@ class HomeScreenWeb extends StatelessWidget {
             SizedBox(
               height: context.screenHeight * 0.14,
             ),
-            const CarouselWithIndicatorDemo(),
+            const CarouselWithIndicatorWeb(),
             SizedBox(
               height: context.screenHeight * 0.14,
             ),
-            const TakeQuiz(),
-            const HomePageButtons(text: 'Jobs'),
-            const HomePageButtons(text: 'Internships'),
+            const FeaturedSkill(),
+            SizedBox(
+              height: context.screenHeight * 0.14,
+            ),
+            const TopEmployers(),
           ],
         ),
       ),

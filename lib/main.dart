@@ -7,7 +7,7 @@ import 'package:leap/features/auth/presentation/controller/login_bloc/login_with
 
 void main() async {
   await ServerLocator().init();
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
