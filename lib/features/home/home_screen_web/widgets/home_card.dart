@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/view/constants/colors.dart';
 import 'package:leap/view/constants/extensions.dart';
 
@@ -8,19 +9,17 @@ class HomeCard extends StatelessWidget {
     required this.icon,
     required this.boldText,
     required this.line1Text,
-    required this.line2Text,
   }) : super(key: key);
 
   final String icon;
   final String boldText;
   final String line1Text;
-  final String line2Text;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: context.screenWidth * 0.15,
-      height: context.screenHeight * 0.18,
+      width: AppSize.defaultSizeWeb! * 3.1,
+      height: AppSize.defaultSizeWeb! * 2.2,
       child: Card(
         elevation: 0,
         color: backGroundColor,
@@ -31,13 +30,13 @@ class HomeCard extends StatelessWidget {
             children: [
               Image.asset(
                 icon,
-                width: 30,
-                height: 32,
+                width: AppSize.defaultSizeWeb! / 2.4,
+                height: AppSize.defaultSizeWeb! / 2.2,
               ),
               Text(
                 boldText,
-                style: const TextStyle(
-                  fontSize: 20,
+                style: TextStyle(
+                  fontSize: AppSize.defaultSizeWeb! / 3,
                   color: mainFontColor,
                   fontFamily: 'Poppins',
                 ),
@@ -45,25 +44,24 @@ class HomeCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Column(
-                    children: [
-                      Text(
-                        line1Text,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: mainFontColor,
-                          fontFamily: 'Poppins',
+                  SizedBox(
+                    width: AppSize.defaultSizeWeb! * 2.7,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          line1Text,
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                          style: TextStyle(
+                            fontSize: AppSize.defaultSizeWeb! / 5,
+                            overflow: TextOverflow.clip,
+                            color: mainFontColor,
+                            fontFamily: 'Poppins',
+                          ),
                         ),
-                      ),
-                      Text(
-                        line2Text,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: mainFontColor,
-                          fontFamily: 'Poppins',
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   )
                 ],
               ),
