@@ -5,7 +5,7 @@ import 'package:leap/features/auth/presentation/login_screen.dart';
 import 'package:leap/features/auth/presentation/signup/sign_up.dart';
 import 'package:leap/features/auth_web/presentation/login_screen_web.dart';
 import 'package:leap/features/auth_web/presentation/signup_web/sign_up_web.dart';
-import 'package:leap/features/home_screen_web/home_screen_web.dart';
+import 'package:leap/features/home_screen_web/presentation/home_screen_web.dart';
 
 class Routes {
   static const String login = "/login";

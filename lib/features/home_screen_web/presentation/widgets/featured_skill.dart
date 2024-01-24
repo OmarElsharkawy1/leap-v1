@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/core/resource_manager/colors.dart';
-import 'package:leap/features/home_screen_web/widgets/skill_logo.dart';
+import 'package:leap/features/home_screen_web/presentation/widgets/skill_logo.dart';
 
 class FeaturedSkill extends StatelessWidget {
   const FeaturedSkill({Key? key}) : super(key: key);
