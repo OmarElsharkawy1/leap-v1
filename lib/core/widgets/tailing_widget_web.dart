@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/utils/app_size.dart';
+import 'package:leap/core/widgets/custom_text_button.dart';
 
 class TailingWidget extends StatelessWidget {
   const TailingWidget({Key? key}) : super(key: key);
@@ -47,7 +48,7 @@ class TailingWidget extends StatelessWidget {
                 SizedBox(
                   height: WidgetRatio.heightRatio(140),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -59,38 +60,23 @@ class TailingWidget extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'About US',
-                          style: TextStyle(
-                            color: AppColors.primaryColor,
-                            fontFamily: 'Poppins',
-                            fontSize: WidgetRatio.widthRatio(16),
-                          ),
-                        ),
+                      CustomTextButton(
+                        text: 'About US',
+                        textColor: AppColors.primaryColor,
+                        textSize: WidgetRatio.widthRatio(16),
+                        textFamily: 'Poppins',
                       ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Contact US',
-                          style: TextStyle(
-                            color: AppColors.primaryColor,
-                            fontFamily: 'Poppins',
-                            fontSize: WidgetRatio.widthRatio(16),
-                          ),
-                        ),
+                      CustomTextButton(
+                        text: 'Contact US',
+                        textColor: AppColors.primaryColor,
+                        textSize: WidgetRatio.widthRatio(16),
+                        textFamily: 'Poppins',
                       ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Blog',
-                          style: TextStyle(
-                            color: AppColors.primaryColor,
-                            fontFamily: 'Poppins',
-                            fontSize: WidgetRatio.widthRatio(16),
-                          ),
-                        ),
+                      CustomTextButton(
+                        text: 'Blog',
+                        textColor: AppColors.primaryColor,
+                        textSize: WidgetRatio.widthRatio(16),
+                        textFamily: 'Poppins',
                       ),
                     ],
                   ),

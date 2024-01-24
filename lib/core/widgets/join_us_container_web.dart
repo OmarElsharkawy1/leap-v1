@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/core/resource_manager/colors.dart';
+import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/utils/app_size.dart';
 
 class JoinUsContainer extends StatelessWidget {
@@ -62,7 +63,8 @@ class JoinUsContainer extends StatelessWidget {
                           padding: EdgeInsets.symmetric(
                               vertical: WidgetRatio.heightRatio(20)),
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () =>
+                                Navigator.pushNamed(context, Routes.signUp),
                             style: OutlinedButton.styleFrom(
                               backgroundColor: AppColors.primaryColor,
                               fixedSize: Size(
