@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:leap/core/resource_manager/colors.dart';
-import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/custom_text_field_web.dart';
 
 class ColumnWithTextFieldWeb extends StatefulWidget {

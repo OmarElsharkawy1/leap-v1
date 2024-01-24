@@ -140,12 +140,18 @@ class _LoginScreenWebState extends State<LoginScreenWeb> {
                           ),
                           Align(
                             alignment: Alignment.centerRight,
-                            child: TextButton(
-                              onPressed: () {},
-                              child: const Text(
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, Routes.forgetPassword);
+                              },
+                              child: Text(
                                 'Forget Your Password ?',
                                 style: TextStyle(
-                                    color: AppColors.forgetPasswordColor),
+                                  color: AppColors.forgetPasswordColor,
+                                  fontSize: WidgetRatio.widthRatio(12),
+                                  fontFamily: 'Poppins',
+                                ),
                               ),
                             ),
                           ),
