@@ -3,6 +3,8 @@ import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/utils/app_size.dart';
 
 class CustomTextFieldWeb extends StatefulWidget {
+  final double? height;
+  final double? width;
   final String? labelText;
   final TextEditingController controller;
   final TextInputType keyboardType;
@@ -17,6 +19,8 @@ class CustomTextFieldWeb extends StatefulWidget {
     this.obscureText = false,
     this.prefixIcon,
     this.suffixIcon,
+    this.height,
+    this.width,
   }) : super(key: key);
 
   @override
@@ -27,8 +31,8 @@ class _CustomTextFieldWebState extends State<CustomTextFieldWeb> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: WidgetRatio.heightRatio(48),
-      width: AppSize.screenWidth! - (AppSize.defaultSize! * 4),
+      height: widget.height ?? WidgetRatio.heightRatio(48),
+      width: widget.width ?? AppSize.screenWidth! - (AppSize.defaultSize! * 4),
       child: TextFormField(
         decoration: InputDecoration(
           labelText: widget.labelText,
