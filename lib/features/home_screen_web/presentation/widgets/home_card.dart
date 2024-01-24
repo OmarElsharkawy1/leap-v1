@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/view/constants/colors.dart';
-import 'package:leap/view/constants/extensions.dart';
 
 class HomeCard extends StatelessWidget {
   const HomeCard({
@@ -8,19 +8,17 @@ class HomeCard extends StatelessWidget {
     required this.icon,
     required this.boldText,
     required this.line1Text,
-    required this.line2Text,
   }) : super(key: key);
 
   final String icon;
   final String boldText;
   final String line1Text;
-  final String line2Text;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: context.screenWidth * 0.15,
-      height: context.screenHeight * 0.18,
+      width: WidgetRatio.widthRatio(226),
+      height: WidgetRatio.heightRatio(200),
       child: Card(
         elevation: 0,
         color: backGroundColor,
@@ -31,13 +29,13 @@ class HomeCard extends StatelessWidget {
             children: [
               Image.asset(
                 icon,
-                width: 30,
-                height: 32,
+                width: WidgetRatio.widthRatio(30),
+                height: WidgetRatio.heightRatio(32),
               ),
               Text(
                 boldText,
-                style: const TextStyle(
-                  fontSize: 20,
+                style: TextStyle(
+                  fontSize: WidgetRatio.widthRatio(20),
                   color: mainFontColor,
                   fontFamily: 'Poppins',
                 ),
@@ -45,25 +43,24 @@ class HomeCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Column(
-                    children: [
-                      Text(
-                        line1Text,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: mainFontColor,
-                          fontFamily: 'Poppins',
+                  SizedBox(
+                    width: WidgetRatio.widthRatio(200),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          line1Text,
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                          style: TextStyle(
+                            fontSize: WidgetRatio.widthRatio(14),
+                            overflow: TextOverflow.clip,
+                            color: mainFontColor,
+                            fontFamily: 'Poppins',
+                          ),
                         ),
-                      ),
-                      Text(
-                        line2Text,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: mainFontColor,
-                          fontFamily: 'Poppins',
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   )
                 ],
               ),

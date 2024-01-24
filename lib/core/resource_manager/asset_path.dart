@@ -12,6 +12,7 @@ class AssetPath {
   static const String homeBackgroundLarge = '$pathImage/bg@2x.png';
   static const String location = '$pathImage/locationPNG.png';
   static const String illustrationLogin = '$pathImage/illustration_login.png';
+  static const String loginBackground = '$pathImage/background_login.png';
   static const String js = '$pathImage/JavaScript.png';
   static const String json = '$pathImage/json.png';
   static const String dart = '$pathImage/Dart.png';
@@ -21,6 +22,10 @@ class AssetPath {
   static const String absolute = '$pathImage/absolute.png';
   static const String ghtk = '$pathImage/ghtk.jpg';
   static const String ung = '$pathImage/ung.jpg';
+  static const String human = '$pathImage/human.png';
+  static const String googlePlay = '$pathImage/google play.png';
+  static const String appStore = '$pathImage/app store.png';
+  static const String circles = '$pathImage/circles.png';
 
 //Icons
   static const String notification = '$pathIcon/notification.png';
@@ -30,8 +35,9 @@ class AssetPath {
   static const String facebook = '$pathIcon/facebook.png';
   static const String menu = '$pathIcon/menu.png';
 
-  static const String skillIcon = '$pathIcon/skill_icon.png';
-  static const String title = '$pathIcon/title.png';
-  static const String location1 = '$pathIcon/location.png';
-  static const String employer = '$pathIcon/employer.png';
+  static const String skillIcon = 'assets/icons/skill_icon.png';
+  static const String skillIconBlack = 'assets/icons/skill_icon_black.png';
+  static const String title = 'assets/icons/title.png';
+  static const String location1 = 'assets/icons/location.png';
+  static const String employer = 'assets/icons/employer.png';
 }

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:leap/core/resource_manager/asset_path.dart';
+import 'package:leap/core/resource_manager/colors.dart';
+import 'package:leap/core/resource_manager/routes.dart';
+import 'package:leap/core/utils/app_size.dart';
+import 'package:leap/core/widgets/main_button_web.dart';
 import 'package:leap/view/constants/colors.dart';
 import 'package:leap/view/constants/extensions.dart';
 
@@ -128,7 +132,7 @@ class _WebAppbarState extends State<WebAppbar> {
           Padding(
             padding: const EdgeInsets.all(4.0),
             child: OutlinedButton(
-              onPressed: () {},
+              onPressed: () => Navigator.pushNamed(context, Routes.signUp),
               style: OutlinedButton.styleFrom(
                 // side: BorderSide(color: Colors.yellow, width: 5),
                 shape: const RoundedRectangleBorder(
@@ -153,9 +157,8 @@ class _WebAppbarState extends State<WebAppbar> {
           Padding(
             padding: const EdgeInsets.all(4.0),
             child: OutlinedButton(
-              onPressed: () {},
+              onPressed: () => Navigator.pushNamed(context, Routes.login),
               style: OutlinedButton.styleFrom(
-                // side: BorderSide(color: Colors.yellow, width: 5),
                 shape: const RoundedRectangleBorder(
                   side: BorderSide(
                     color: primaryColor,

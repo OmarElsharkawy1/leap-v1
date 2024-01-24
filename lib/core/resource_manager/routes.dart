@@ -6,8 +6,9 @@ import 'package:leap/features/auth/presentation/forget%20password/forget_passwor
 import 'package:leap/features/auth/presentation/forget%20password/send_otp_code.dart';
 import 'package:leap/features/auth/presentation/login_screen.dart';
 import 'package:leap/features/auth/presentation/signup/sign_up.dart';
-import 'package:leap/features/home/home_screen/main_screen.dart';
-import 'package:leap/features/home/home_screen_web/home_screen_web.dart';
+import 'package:leap/features/auth_web/presentation/login_screen_web.dart';
+import 'package:leap/features/auth_web/presentation/signup_web/sign_up_web.dart';
+import 'package:leap/features/home_screen_web/presentation/home_screen_web.dart';
 
 class Routes {
   static const String login = "/login";
@@ -28,10 +29,16 @@ class RouteGenerator {
           return MaterialPageRoute(builder: (_) => const MainScreen());
         }
       case Routes.login:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
-      case Routes.signUp:
+        if (Platform.isWindows) {
+          return MaterialPageRoute(builder: (_) => const LoginScreenWeb());
+        } else {
+          return MaterialPageRoute(builder: (_) => const LoginScreen());
+        }      case Routes.signUp:
+      if (Platform.isWindows) {
+        return MaterialPageRoute(builder: (_) => const SignUpScreenWeb());
+      } else {
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
-      case Routes.forgetPassword:
+      }      case Routes.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPassword());
       case Routes.sendOTPCode:
         return MaterialPageRoute(builder: (_) => const SendOTPCode());
