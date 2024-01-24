@@ -7,6 +7,7 @@ class MainButtonWeb extends StatelessWidget {
     this.onTap,
     this.color,
     this.textColor,
+    this.textSize,
     required this.text,
     this.height,
     this.width,
@@ -18,6 +19,7 @@ class MainButtonWeb extends StatelessWidget {
   final Color? color;
   final Color? textColor;
   final String text;
+  final double? textSize;
   final double? height;
   final double? width;
   final double? radius;
@@ -37,7 +39,8 @@ class MainButtonWeb extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: TextStyle(color: textColor ?? Colors.white),
+            style: TextStyle(
+                color: textColor ?? Colors.white, fontSize: textSize ?? 14),
           ),
         ),
       ),
