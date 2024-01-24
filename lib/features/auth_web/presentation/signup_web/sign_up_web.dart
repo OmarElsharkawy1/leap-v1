@@ -3,12 +3,8 @@ import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/utils/app_size.dart';
-import 'package:leap/core/widgets/app_bar.dart';
-import 'package:leap/core/widgets/main_button.dart';
 import 'package:leap/core/widgets/main_button_web.dart';
-import 'package:leap/features/auth/presentation/widgets/column-with_text_field.dart';
 import 'package:leap/features/auth_web/presentation/widgets/column_with_text_field_web.dart';
-import 'package:leap/features/auth_web/presentation/widgets/field_widget_login_web.dart';
 
 class SignUpScreenWeb extends StatefulWidget {
   const SignUpScreenWeb({super.key});
