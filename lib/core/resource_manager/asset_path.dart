@@ -11,7 +11,6 @@ class AssetPath {
   static const String slogan = '$pathImage/slogan.jpg';
   static const String homeBackgroundLarge = '$pathImage/bg@2x.png';
   static const String location = '$pathImage/locationPNG.png';
-  static const String illustrationLogin = '$pathImage/illustration_login.png';
   static const String loginBackground = '$pathImage/background_login.png';
   static const String js = '$pathImage/JavaScript.png';
   static const String json = '$pathImage/json.png';

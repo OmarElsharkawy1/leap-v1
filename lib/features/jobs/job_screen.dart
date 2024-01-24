@@ -35,26 +35,41 @@ class _JobsScreenState extends State<JobsScreen> {
       appBar: homeAppBar(context, text: 'Jobs'),
       body: Padding(
         padding: EdgeInsets.all(AppSize.defaultSize! * 2),
-        child: Column(
-          children: [
-            SizedBox(
-                height: AppSize.defaultSize! * 4,
-                child: CustomTextField(
-                  controller: searchController,
-                  hintText: 'What are you looking for ?',
-                  hintStyle: TextStyle(
-                    fontSize: AppSize.defaultSize!*1.3,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                  height: AppSize.defaultSize! * 4,
+                  child: CustomTextField(
+                    controller: searchController,
+                    hintText: 'What are you looking for ?',
+                    hintStyle: TextStyle(
+                      fontSize: AppSize.defaultSize! * 1.3,
 
-                  ),
-                )),
-            const CustomDropDown(text: '', hintText: 'Select Area',),
-            const CustomDropDown(text: '', hintText: 'Select Skill',),
-            SizedBox(height: AppSize.defaultSize!*2,),
-            MainButton(text: 'search',onTap: (){},),
-            SizedBox(height: AppSize.defaultSize!*4,),
-            const JobsAndInternCard()
+                    ),
+                  )),
+              const CustomDropDown(text: '', hintText: 'Select Area',),
+              const CustomDropDown(text: '', hintText: 'Select Skill',),
+              SizedBox(height: AppSize.defaultSize! * 2,),
+              MainButton(text: 'search', onTap: () {},),
+              SizedBox(height: AppSize.defaultSize! * 4,),
+              SizedBox(
+                // height: AppSize.screenHeight!,
+                child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    padding: EdgeInsets.zero,
+                    itemBuilder: (context, index) {
+                  return Padding(
+                    padding:   EdgeInsets.all(AppSize.defaultSize!*.5),
+                    child: const JobsAndInternCard(),
+                  );
+                }),
+              ),
 
-          ],
+
+            ],
+          ),
         ),
       ),
     );

@@ -3,7 +3,7 @@ import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/app_bar.dart';
 import 'package:leap/core/widgets/main_button.dart';
-import 'package:leap/features/auth/presentation/widgets/column-with_text_field.dart';
+import 'package:leap/features/auth/presentation/widgets/column_with_text_field.dart';
 
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({super.key});

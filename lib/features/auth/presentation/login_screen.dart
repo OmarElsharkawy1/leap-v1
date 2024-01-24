@@ -46,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Align(
                       alignment: Alignment.topRight,
-                      child: Image.asset(AssetPath.illustrationLogin)),
+                      child: Image.asset(AssetPath.loginBackground)),
                   Align(
                       alignment: Alignment.center,
                       child: Column(
