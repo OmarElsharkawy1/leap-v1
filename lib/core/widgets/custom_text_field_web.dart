@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/utils/app_size.dart';
 
-class CustomTextField extends StatefulWidget {
+class CustomTextFieldWeb extends StatefulWidget {
   final String? labelText;
   final TextEditingController controller;
   final TextInputType keyboardType;
   final bool obscureText;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
-  const CustomTextField({
+  final double? width;
+  final double? height;
+  const CustomTextFieldWeb({
     Key? key,
     this.labelText,
     required this.controller,
@@ -17,18 +19,20 @@ class CustomTextField extends StatefulWidget {
     this.obscureText = false,
     this.prefixIcon,
     this.suffixIcon,
+    this.width,
+    this.height,
   }) : super(key: key);
 
   @override
-  _CustomTextFieldState createState() => _CustomTextFieldState();
+  _CustomTextFieldWebState createState() => _CustomTextFieldWebState();
 }
 
-class _CustomTextFieldState extends State<CustomTextField> {
+class _CustomTextFieldWebState extends State<CustomTextFieldWeb> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppSize.defaultSize! * 6,
-      width: AppSize.screenWidth! - (AppSize.defaultSize! * 4),
+      height: widget.height ?? WidgetRatio.heightRatio(25),
+      width: widget.width ?? WidgetRatio.widthRatio(330),
       child: TextFormField(
         decoration: InputDecoration(
           labelText: widget.labelText,

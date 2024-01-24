@@ -137,7 +137,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               const MainButton(
                 text: 'Sign up',
-              ),   SizedBox(
+              ),
+              SizedBox(
                 height: AppSize.defaultSize! * 3,
               ),
             ],

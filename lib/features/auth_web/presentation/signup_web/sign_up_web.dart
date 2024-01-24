@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/app_bar.dart';
 import 'package:leap/core/widgets/main_button.dart';
+import 'package:leap/core/widgets/main_button_web.dart';
 import 'package:leap/features/auth/presentation/widgets/column-with_text_field.dart';
+import 'package:leap/features/auth_web/presentation/widgets/column_with_text_field_web.dart';
+import 'package:leap/features/auth_web/presentation/widgets/field_widget_login_web.dart';
 
 class SignUpScreenWeb extends StatefulWidget {
   const SignUpScreenWeb({super.key});
@@ -49,100 +53,186 @@ class _SignUpScreenWebState extends State<SignUpScreenWeb> {
     super.dispose();
   }
 
+  bool isVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(text: 'Sign up'),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: AppSize.defaultSize! * 2),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                height: AppSize.defaultSize! * 4.8,
-                decoration: const BoxDecoration(
-                  color: AppColors.containerColor,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'You Already have an account?   ',
-                      style: TextStyle(
-                          color: AppColors.greyColor,
-                          fontSize: AppSize.defaultSize! * 1.4,
-                          fontWeight: FontWeight.w700),
+      body: Container(
+        width: AppSize.screenWidth,
+        height: AppSize.screenHeight,
+        color: AppColors.loginBackGroundColor,
+        child: Stack(
+          children: [
+            Align(
+              alignment: Alignment.topRight,
+              child: Image.asset(
+                AssetPath.loginBackground,
+                width: WidgetRatio.widthRatio(604),
+                height: WidgetRatio.heightRatio(564),
+                alignment: Alignment.topRight,
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Image.asset(
+                AssetPath.circles,
+                width: WidgetRatio.widthRatio(667),
+                height: WidgetRatio.heightRatio(304),
+                alignment: Alignment.bottomLeft,
+              ),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(WidgetRatio.heightRatio(50)),
+                    child: Image.asset(AssetPath.logo, scale: 2),
+                  ),
+                  Container(
+                    width: WidgetRatio.widthRatio(310),
+                    height: WidgetRatio.heightRatio(510),
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                      border: Border.all(color: AppColors.logingBorderColor),
+                      color: AppColors.backGroundColor,
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, Routes.login);
-                      },
-                      child: Text(
-                        'Sign in',
-                        style: TextStyle(
-                            color: AppColors.primaryColor,
-                            fontSize: AppSize.defaultSize! * 1.5,
-                            fontWeight: FontWeight.w700),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: WidgetRatio.widthRatio(24)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Align(
+                            alignment: Alignment.center,
+                            child: Padding(
+                              padding:
+                                  EdgeInsets.all(WidgetRatio.heightRatio(12)),
+                              child: Text(
+                                'Sign Up',
+                                style: TextStyle(
+                                  color: AppColors.blackColor,
+                                  fontSize: WidgetRatio.widthRatio(24),
+                                  fontWeight: FontWeight.bold,
+                                  // fontWeight: FontWeight.w700,
+                                  fontFamily: 'Poppins',
+                                ),
+                              ),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              ColumnWithTextFieldWeb(
+                                text: 'First Name',
+                                controller: emailController,
+                                width: WidgetRatio.widthRatio(310) / 2 - 40,
+                              ),
+                              const Spacer(),
+                              ColumnWithTextFieldWeb(
+                                text: 'Last Name',
+                                controller: emailController,
+                                width: WidgetRatio.widthRatio(310) / 2 - 40,
+                              ),
+                            ],
+                          ),
+                          ColumnWithTextFieldWeb(
+                            text: 'Email',
+                            controller: emailController,
+                          ),
+                          ColumnWithTextFieldWeb(
+                            text: 'Password',
+                            controller: passwordConfirmController,
+                            suffixIcon: InkWell(
+                              onTap: () {
+                                setState(() {
+                                  isVisible = !isVisible;
+                                });
+                              },
+                              child: Icon(
+                                isVisible
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
+                          ColumnWithTextFieldWeb(
+                            text: 'Confirm Password',
+                            controller: passwordConfirmController,
+                            suffixIcon: InkWell(
+                              onTap: () {
+                                setState(() {
+                                  isVisible = !isVisible;
+                                });
+                              },
+                              child: Icon(
+                                isVisible
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
+                          ColumnWithTextFieldWeb(
+                            text: 'Age',
+                            controller: phoneController,
+                          ),
+                          ColumnWithTextFieldWeb(
+                            text: 'Phone',
+                            controller: phoneController,
+                          ),
+                          ColumnWithTextFieldWeb(
+                            text: 'Address',
+                            controller: phoneController,
+                          ),
+                          SizedBox(height: WidgetRatio.heightRatio(15)),
+                          MainButtonWeb(
+                            text: 'Sign Up',
+                            height: WidgetRatio.heightRatio(38),
+                            borderColor: AppColors.primaryColor,
+                            onTap: () =>
+                                Navigator.pushNamed(context, Routes.home),
+                          ),
+                          SizedBox(height: WidgetRatio.heightRatio(14)),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'You Already have an account?   ',
+                                style: TextStyle(
+                                  color: AppColors.greyColor,
+                                  fontSize: WidgetRatio.widthRatio(12),
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(context, Routes.login);
+                                },
+                                child: Text(
+                                  'Sign in',
+                                  style: TextStyle(
+                                    color: AppColors.primaryColor,
+                                    fontSize: WidgetRatio.widthRatio(12),
+                                    fontWeight: FontWeight.w700,
+                                    decoration: TextDecoration.underline,
+                                    decorationColor: AppColors.primaryColor,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
-              ),
-              Row(
-                children: [
-                  ColumnWithTextField(
-                    text: 'First Name',
-                    controller: emailController,
-                    width: AppSize.screenWidth! * .4,
-                  ),
-                  const Spacer(),
-                  ColumnWithTextField(
-                    text: 'First Name',
-                    controller: emailController,
-                    width: AppSize.screenWidth! * .4,
                   ),
                 ],
               ),
-              ColumnWithTextField(
-                text: 'Phone no',
-                controller: phoneController,
-              ),
-              ColumnWithTextField(
-                text: 'Email',
-                controller: emailController,
-              ),
-              ColumnWithTextField(
-                text: 'Date of birth',
-                controller: emailController,
-              ),
-              ColumnWithTextField(
-                text: 'University',
-                controller: universityController,
-              ),
-              ColumnWithTextField(
-                text: 'Major',
-                controller: majorController,
-              ),
-              ColumnWithTextField(
-                text: 'Password',
-                controller: passwordController,
-              ),
-              ColumnWithTextField(
-                text: 'Confirm Password',
-                controller: passwordConfirmController,
-              ),
-              SizedBox(
-                height: AppSize.defaultSize! * 3,
-              ),
-              const MainButton(
-                text: 'Sign up',
-              ),
-              SizedBox(
-                height: AppSize.defaultSize! * 3,
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

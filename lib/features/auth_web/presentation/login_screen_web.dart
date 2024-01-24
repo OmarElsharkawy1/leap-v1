@@ -153,7 +153,7 @@ class _LoginScreenWebState extends State<LoginScreenWeb> {
                             height: WidgetRatio.heightRatio(32),
                           ),
                           MainButtonWeb(
-                            text: 'login',
+                            text: 'Sign In',
                             height: WidgetRatio.heightRatio(38),
                             borderColor: AppColors.primaryColor,
                             onTap: () =>
