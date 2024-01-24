@@ -13,4 +13,5 @@ class AppColors {
   static const Color forgetPasswordColor = Color.fromRGBO(59, 35, 93, 1);
   static const Color blackColor = Color.fromRGBO(68, 68, 68, 1);
   static const Color greyColor = Color.fromRGBO(128, 129, 132, 1);
+
 }

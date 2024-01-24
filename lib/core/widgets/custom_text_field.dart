@@ -12,6 +12,7 @@ class CustomTextField extends StatefulWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final void Function()? onTap;
+  final TextStyle? hintStyle;
    const CustomTextField({
     Key? key,
       this.labelText,
@@ -19,7 +20,7 @@ class CustomTextField extends StatefulWidget {
     this.keyboardType = TextInputType.text,
     this.obscureText = false,
      this.readOnly=false,
-    this.prefixIcon, this.suffixIcon, this.onTap, this.hintText,
+    this.prefixIcon, this.suffixIcon, this.onTap, this.hintText, this.hintStyle,
   }) : super(key: key);
 
   @override
@@ -40,6 +41,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
             labelText: widget.labelText,
             hintText: widget.hintText,
+
+            hintStyle:widget.hintStyle ,
             suffixIcon: widget.suffixIcon,
             labelStyle: const TextStyle(
                 color: AppColors.primaryColor,
@@ -47,13 +50,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
             prefixIcon: widget.prefixIcon,
             border: OutlineInputBorder(
               borderSide: BorderSide(
-                  color: AppColors.primaryColor.withOpacity(.4)
+                  color: AppColors.borderColor.withOpacity(.4)
               ),
 
             ),
-          focusedBorder:  const OutlineInputBorder(
+          focusedBorder:    OutlineInputBorder(
               borderSide: BorderSide(
-                  color: AppColors.borderColor
+                  color: AppColors.borderColor.withOpacity(.4)
               )
           ),
           disabledBorder: OutlineInputBorder(

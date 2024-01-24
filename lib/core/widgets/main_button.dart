@@ -22,7 +22,8 @@ class MainButton extends StatelessWidget {
         width: width??AppSize.screenWidth!*.9,
         decoration: BoxDecoration(
           color: color ?? AppColors.primaryColor,
-          borderRadius: BorderRadius.circular(AppSize.defaultSize!)
+          borderRadius: BorderRadius.circular(AppSize.defaultSize!),
+
         ),
         child: Center(
           child: Text(

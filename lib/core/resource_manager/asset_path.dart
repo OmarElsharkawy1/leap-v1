@@ -23,14 +23,15 @@ class AssetPath {
   static const String ung = '$pathImage/ung.jpg';
 
 //Icons
-  static const String notification = '$pathIcon/notification.svg';
+  static const String notification = '$pathIcon/notification.png';
   static const String home = '$pathIcon/home.svg';
   static const String apple = '$pathIcon/apple.png';
   static const String google = '$pathIcon/google.png';
   static const String facebook = '$pathIcon/facebook.png';
+  static const String menu = '$pathIcon/menu.png';
 
-  static const String skillIcon = 'assets/icons/skill_icon.png';
-  static const String title = 'assets/icons/title.png';
-  static const String location1 = 'assets/icons/location.png';
-  static const String employer = 'assets/icons/employer.png';
+  static const String skillIcon = '$pathIcon/skill_icon.png';
+  static const String title = '$pathIcon/title.png';
+  static const String location1 = '$pathIcon/location.png';
+  static const String employer = '$pathIcon/employer.png';
 }

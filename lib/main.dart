@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/service/service_locator.dart';
 import 'package:leap/features/auth/presentation/controller/login_bloc/login_with_email_and_password_bloc.dart';
+import 'package:leap/features/home/home_screen/controller/cubit.dart';
 
 void main() async {
   await ServerLocator().init();
@@ -20,6 +21,8 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => getIt<LoginWithEmailAndPasswordBloc>(),
+        ),BlocProvider(
+          create: (context) => getIt<HomeScreenCubit>(),
         ),
       ],
       child: MaterialApp(

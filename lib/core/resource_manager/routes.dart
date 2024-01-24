@@ -6,7 +6,7 @@ import 'package:leap/features/auth/presentation/forget%20password/forget_passwor
 import 'package:leap/features/auth/presentation/forget%20password/send_otp_code.dart';
 import 'package:leap/features/auth/presentation/login_screen.dart';
 import 'package:leap/features/auth/presentation/signup/sign_up.dart';
-import 'package:leap/features/home/home_screen/home_screen.dart';
+import 'package:leap/features/home/home_screen/main_screen.dart';
 import 'package:leap/features/home/home_screen_web/home_screen_web.dart';
 
 class Routes {
@@ -25,7 +25,7 @@ class RouteGenerator {
         if (Platform.isWindows) {
           return MaterialPageRoute(builder: (_) => const HomeScreenWeb());
         } else {
-          return MaterialPageRoute(builder: (_) => const HomeScreen());
+          return MaterialPageRoute(builder: (_) => const MainScreen());
         }
       case Routes.login:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
