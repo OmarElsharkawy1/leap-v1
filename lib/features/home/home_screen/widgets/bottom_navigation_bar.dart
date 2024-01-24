@@ -6,7 +6,6 @@ import 'package:leap/features/home/home_screen/controller/states.dart';
 import 'package:leap/view/constants/colors.dart';
 import 'package:leap/view/constants/extensions.dart';
 
-import 'navigation_bar_icons.dart';
 
 class HomeBottomNavigationBar extends StatelessWidget {
   const HomeBottomNavigationBar({Key? key, required this.cubit}) : super(key: key);
@@ -56,40 +55,5 @@ final HomeScreenCubit cubit;
       ],
     );
 
-    Container(
-      width: context.screenWidth,
-      height: context.screenHeight * .1,
-      color: secondaryBackGroundColor,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          NavigationBarIcon(
-            name: 'Home',
-            icon: Icons.home_outlined,
-            onPressed: () {},
-          ),
-          NavigationBarIcon(
-            name: 'Internships',
-            icon: Icons.school_outlined,
-            onPressed: () {},
-          ),
-          NavigationBarIcon(
-            name: 'Jobs',
-            icon: Icons.cases_outlined,
-            onPressed: () {},
-          ),
-          NavigationBarIcon(
-            name: 'Resources',
-            icon: Icons.collections_bookmark_outlined,
-            onPressed: () {},
-          ),
-          NavigationBarIcon(
-            name: 'Blogs',
-            icon: Icons.sticky_note_2_outlined,
-            onPressed: () {},
-          ),
-        ],
-      ),
-    );
   }
 }
