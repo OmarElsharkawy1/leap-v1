@@ -6,6 +6,7 @@ import 'package:leap/features/auth/presentation/forget%20password/forget_passwor
 import 'package:leap/features/auth/presentation/forget%20password/send_otp_code.dart';
 import 'package:leap/features/auth/presentation/login_screen.dart';
 import 'package:leap/features/auth/presentation/signup/sign_up.dart';
+import 'package:leap/features/auth_web/presentation/forget_password_web/change_password_web.dart';
 import 'package:leap/features/auth_web/presentation/forget_password_web/forget_password_web.dart';
 import 'package:leap/features/auth_web/presentation/forget_password_web/send_otp_code_web.dart';
 import 'package:leap/features/auth_web/presentation/login_screen_web.dart';
@@ -59,7 +60,11 @@ class RouteGenerator {
         }
 
       case Routes.changePassword:
-        return MaterialPageRoute(builder: (_) => const ChangePassword());
+        if (Platform.isWindows) {
+          return MaterialPageRoute(builder: (_) => const ChangePasswordWeb());
+        } else {
+          return MaterialPageRoute(builder: (_) => const ChangePassword());
+        }
     }
     return unDefinedRoute();
   }

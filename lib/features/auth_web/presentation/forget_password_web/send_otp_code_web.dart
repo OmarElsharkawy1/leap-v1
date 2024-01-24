@@ -113,7 +113,7 @@ class _SendOTPCodeWebState extends State<SendOTPCodeWeb> {
                           borderColor: AppColors.primaryColor,
                           height: WidgetRatio.heightRatio(48),
                           onTap: () {
-                            Navigator.pushNamed(context, Routes.sendOTPCode);
+                            Navigator.pushNamed(context, Routes.changePassword);
                           },
                         )
                       ],
