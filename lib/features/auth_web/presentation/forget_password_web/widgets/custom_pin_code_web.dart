@@ -5,14 +5,15 @@ import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-class CustomPinCodeTextField extends StatefulWidget {
-  const CustomPinCodeTextField({super.key});
+class CustomPinCodeTextFieldWeb extends StatefulWidget {
+  const CustomPinCodeTextFieldWeb({super.key});
 
   @override
-  State<CustomPinCodeTextField> createState() => _CustomPinCodeTextFieldState();
+  State<CustomPinCodeTextFieldWeb> createState() =>
+      _CustomPinCodeTextFieldWebState();
 }
 
-class _CustomPinCodeTextFieldState extends State<CustomPinCodeTextField> {
+class _CustomPinCodeTextFieldWebState extends State<CustomPinCodeTextFieldWeb> {
   late TextEditingController controller;
   StreamController<ErrorAnimationType>? errorController;
 
@@ -46,8 +47,8 @@ class _CustomPinCodeTextFieldState extends State<CustomPinCodeTextField> {
       pinTheme: PinTheme(
         shape: PinCodeFieldShape.box,
         borderRadius: BorderRadius.circular(AppSize.defaultSize!),
-        fieldHeight: AppSize.defaultSize! * 4.5,
-        fieldWidth: AppSize.defaultSize! * 4.5,
+        fieldHeight: WidgetRatio.heightRatio(64),
+        fieldWidth: WidgetRatio.widthRatio(53),
         activeFillColor: Colors.white,
         disabledColor: Colors.white,
         selectedFillColor: Colors.white,

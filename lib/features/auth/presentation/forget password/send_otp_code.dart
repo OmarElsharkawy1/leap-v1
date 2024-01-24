@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/utils/app_size.dart';
@@ -17,7 +16,7 @@ class _SendOTPCodeState extends State<SendOTPCode> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context,text: 'ForgetPassword'),
+      appBar: appBar(context, text: 'ForgetPassword'),
       body: Padding(
         padding: EdgeInsets.all(AppSize.defaultSize! * 2),
         child: Column(
@@ -45,22 +44,24 @@ class _SendOTPCodeState extends State<SendOTPCode> {
             ),
             TextButton(
               onPressed: () {},
-
               child: Text(
                 'Resend the code',
                 maxLines: 4,
                 style: TextStyle(
                     fontSize: AppSize.defaultSize! * 1.7,
                     fontWeight: FontWeight.w700,
-                    decoration:TextDecoration.underline ,
+                    decoration: TextDecoration.underline,
                     decorationColor: Colors.grey,
                     decorationThickness: 2,
                     overflow: TextOverflow.ellipsis),
               ),
             ),
-              MainButton(text: 'verify',onTap: (){
-              Navigator.pushNamed(context, Routes.changePassword);
-            },)
+            MainButton(
+              text: 'verify',
+              onTap: () {
+                Navigator.pushNamed(context, Routes.changePassword);
+              },
+            )
           ],
         ),
       ),
