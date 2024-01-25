@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leap/view/constants/colors.dart';
 
 class SearchByTagsText extends StatelessWidget {
@@ -6,8 +7,8 @@ class SearchByTagsText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(8.0),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -17,14 +18,14 @@ class SearchByTagsText extends StatelessWidget {
             style: TextStyle(
               color: backGroundColor,
               fontWeight: FontWeight.bold,
-              fontSize: 24,
+              fontSize: 24.sp,
             ),
           ),
           Text(
             ' Developer, Engineer, Support, Senior, Junior',
             style: TextStyle(
               color: backGroundColor,
-              fontSize: 24,
+              fontSize: 24.sp,
             ),
           ),
         ],

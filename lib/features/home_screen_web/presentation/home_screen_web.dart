@@ -28,23 +28,23 @@ class HomeScreenWeb extends StatelessWidget {
             SizedBox(
               height: context.screenHeight * 0.14,
             ),
-            const CarouselWithIndicatorWeb(),
-            SizedBox(
-              height: context.screenHeight * 0.14,
-            ),
-            const FeaturedSkill(),
-            SizedBox(
-              height: WidgetRatio.heightRatio(120),
-            ),
-            const TopEmployers(),
-            SizedBox(
-              height: WidgetRatio.heightRatio(160),
-            ),
-            const JoinUsContainer(),
-            SizedBox(
-              height: WidgetRatio.heightRatio(120),
-            ),
-            const TailingWidget(),
+            // const CarouselWithIndicatorWeb(),
+            // SizedBox(
+            //   height: context.screenHeight * 0.14,
+            // ),
+            // const FeaturedSkill(),
+            // SizedBox(
+            //   height: WidgetRatio.heightRatio(120),
+            // ),
+            // const TopEmployers(),
+            // SizedBox(
+            //   height: WidgetRatio.heightRatio(160),
+            // ),
+            // const JoinUsContainer(),
+            // SizedBox(
+            //   height: WidgetRatio.heightRatio(120),
+            // ),
+            // const TailingWidget(),
           ],
         ),
       ),

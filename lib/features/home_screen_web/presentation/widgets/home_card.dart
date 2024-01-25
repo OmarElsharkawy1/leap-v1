@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/view/constants/colors.dart';
 
@@ -17,8 +18,8 @@ class HomeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: WidgetRatio.widthRatio(226),
-      height: WidgetRatio.heightRatio(200),
+      width: 226.w,
+      height: 156.h,
       child: Card(
         elevation: 0,
         color: backGroundColor,
@@ -29,40 +30,30 @@ class HomeCard extends StatelessWidget {
             children: [
               Image.asset(
                 icon,
-                width: WidgetRatio.widthRatio(30),
-                height: WidgetRatio.heightRatio(32),
+                width: 30.w,
+                height: 32.h,
               ),
               Text(
                 boldText,
                 style: TextStyle(
-                  fontSize: WidgetRatio.widthRatio(20),
+                  fontSize: 20.sp,
                   color: mainFontColor,
                   fontFamily: 'Poppins',
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: WidgetRatio.widthRatio(200),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          line1Text,
-                          textAlign: TextAlign.center,
-                          maxLines: 2,
-                          style: TextStyle(
-                            fontSize: WidgetRatio.widthRatio(14),
-                            overflow: TextOverflow.clip,
-                            color: mainFontColor,
-                            fontFamily: 'Poppins',
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  line1Text,
+                  textAlign: TextAlign.center,
+                  // maxLines: 3,
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    overflow: TextOverflow.clip,
+                    color: mainFontColor,
+                    fontFamily: 'Poppins',
+                  ),
+                ),
               ),
             ],
           ),
