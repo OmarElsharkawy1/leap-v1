@@ -190,7 +190,7 @@ class _SignUpScreenWebState extends State<SignUpScreenWeb> {
                             height: WidgetRatio.heightRatio(38),
                             borderColor: AppColors.primaryColor,
                             onTap: () =>
-                                Navigator.pushNamed(context, Routes.home),
+                                Navigator.pushNamed(context, Routes.login),
                           ),
                           SizedBox(height: WidgetRatio.heightRatio(14)),
                           Row(

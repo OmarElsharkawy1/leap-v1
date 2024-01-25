@@ -20,14 +20,15 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => getIt<LoginWithEmailAndPasswordBloc>(),
-        ),BlocProvider(
+        ),
+        BlocProvider(
           create: (context) => getIt<HomeScreenCubit>(),
         ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: Routes.login,
+        initialRoute: Routes.home,
         theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
