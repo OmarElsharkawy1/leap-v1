@@ -87,6 +87,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const HomeDrawer(),
+      drawerScrimColor:AppColors.greyColor,
       body:  PersistentTabView(
         context,
         controller: _controller,

@@ -19,11 +19,11 @@ class TakeQuiz extends StatelessWidget {
             color: borderColor,
             width: 0.5,
           ),
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(AppSize.defaultSize!),
         ),
         height:  AppSize.defaultSize!*12,
         child: Padding(
-          padding: const EdgeInsets.all(18.0),
+          padding:   EdgeInsets.all(AppSize.defaultSize!*2),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,

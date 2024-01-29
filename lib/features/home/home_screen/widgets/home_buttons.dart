@@ -16,12 +16,12 @@ final void Function()? onPressed;
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          shape: const RoundedRectangleBorder(
-            side: BorderSide(
+          shape:   RoundedRectangleBorder(
+            side: const BorderSide(
               color: borderColor,
             ),
             borderRadius: BorderRadius.all(
-              Radius.circular(5),
+              Radius.circular(AppSize.defaultSize!*.6),
             ),
           ),
         ),

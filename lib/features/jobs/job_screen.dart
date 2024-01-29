@@ -73,7 +73,7 @@ class _JobsScreenState extends State<JobsScreen> {
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     padding: EdgeInsets.zero,
-                    itemCount: 100,
+                    itemCount: 15,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: EdgeInsets.all(AppSize.defaultSize! * .5),

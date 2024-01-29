@@ -35,7 +35,7 @@ class _UploadCVState extends State<UploadCV> {
          ),
         child: Center(
           child: Text(
-            result!.files.isNotEmpty?  result!.files[0].name.toString()    :StringManager.tabToUploadCV.tr(),
+            result?.files[0].name!=null?  '${result?.files[0].name} '  :StringManager.tabToUploadCV.tr(),
             textAlign: TextAlign.center,
          style: TextStyle(
            fontSize: AppSize.defaultSize! * 1.5,
