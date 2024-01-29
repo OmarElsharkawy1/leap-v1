@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leap/core/resource_manager/colors.dart';
 
 class SkillLogo extends StatelessWidget {
@@ -10,20 +11,20 @@ class SkillLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Column(children: [
         Image.asset(
           pathText,
-          width: 129,
-          height: 129,
+          width: 129.w,
+          height: 129.h,
         ),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: 10.h,
         ),
         Text(
           logoName,
-          style: const TextStyle(
-            fontSize: 16,
+          style: TextStyle(
+            fontSize: 16.sp,
             color: AppColors.primaryColor,
             fontFamily: 'Poppins',
             fontWeight: FontWeight.bold,

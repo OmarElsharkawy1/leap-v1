@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/features/home_screen_web/presentation/widgets/top_employer_card.dart';
@@ -8,12 +9,12 @@ class TopEmployers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         Text(
           'Top Employers',
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 30.sp,
             color: AppColors.black,
             fontFamily: 'Poppins',
             // fontWeight: FontWeight.bold,
@@ -22,16 +23,16 @@ class TopEmployers extends StatelessWidget {
         Text(
           'Recommended top employers',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 16.sp,
             color: AppColors.mainFontColor,
             fontFamily: 'Poppins',
             // fontWeight: FontWeight.bold,
           ),
         ),
         SizedBox(
-          height: 24,
+          height: 24.h,
         ),
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TopEmployerCard(

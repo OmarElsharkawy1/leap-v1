@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/features/home_screen_web/presentation/widgets/skill_logo.dart';
@@ -8,12 +9,12 @@ class FeaturedSkill extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         Text(
           'Featured Skill Categories',
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 30.sp,
             color: Colors.black,
             fontWeight: FontWeight.bold,
           ),
@@ -21,14 +22,14 @@ class FeaturedSkill extends StatelessWidget {
         Text(
           'Who are in extremely with eco friendly system',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 16.sp,
             color: AppColors.mainFontColor,
             fontFamily: 'Poppins',
           ),
         ),
         Padding(
-          padding: EdgeInsets.all(14.0),
-          child: Row(
+          padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.h),
+          child: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SkillLogo(pathText: AssetPath.js, logoName: 'JavaScript'),

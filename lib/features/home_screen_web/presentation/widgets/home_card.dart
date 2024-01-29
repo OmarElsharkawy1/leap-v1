@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/view/constants/colors.dart';
 
 class HomeCard extends StatelessWidget {
@@ -19,12 +18,12 @@ class HomeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 226.w,
-      height: 156.h,
+      // height: 156.h,
       child: Card(
         elevation: 0,
         color: backGroundColor,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -45,11 +44,12 @@ class HomeCard extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Text(
                   line1Text,
+                  maxLines: 4,
                   textAlign: TextAlign.center,
                   // maxLines: 3,
                   style: TextStyle(
                     fontSize: 14.sp,
-                    overflow: TextOverflow.clip,
+                    overflow: TextOverflow.ellipsis,
                     color: mainFontColor,
                     fontFamily: 'Poppins',
                   ),

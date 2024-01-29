@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leap/core/resource_manager/colors.dart';
+import 'package:leap/core/widgets/main_button_web.dart';
 import 'package:leap/view/constants/colors.dart';
-import 'package:leap/view/constants/extensions.dart';
 
 class JobSearch extends StatelessWidget {
   const JobSearch({Key? key}) : super(key: key);
@@ -79,6 +79,9 @@ class JobSearch extends StatelessWidget {
             ),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
+                isExpanded: true,
+                icon: const Icon(Icons.keyboard_arrow_down_sharp),
+                iconSize: 12.w,
                 padding: EdgeInsets.all(8.w),
                 hint: Text(
                   'Select City',
@@ -114,6 +117,9 @@ class JobSearch extends StatelessWidget {
             ),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
+                isExpanded: true,
+                icon: const Icon(Icons.keyboard_arrow_down_sharp),
+                iconSize: 12.w,
                 padding: EdgeInsets.all(8.w),
                 hint: Text(
                   'Select Major',
@@ -139,26 +145,19 @@ class JobSearch extends StatelessWidget {
               ),
             ),
           ),
-          ElevatedButton(
-            onPressed: () {},
-            style: OutlinedButton.styleFrom(
-              backgroundColor: primaryColor,
-              fixedSize: Size(160.w, 56.h),
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(10),
-                ),
-              ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 4.w),
+            child: MainButtonWeb(
+              text: 'Search',
+              textSize: 14.sp,
+              textColor: AppColors.backGroundColor,
+              width: 160.w,
+              height: 56.h,
+              radius: 10,
+              color: AppColors.primaryColor,
+              borderColor: AppColors.primaryColor,
             ),
-            child: Text(
-              'Search',
-              style: TextStyle(
-                overflow: TextOverflow.ellipsis,
-                color: backGroundColor,
-                fontSize: 14.sp,
-              ),
-            ),
-          ).padding(const EdgeInsets.all(4)),
+          ),
         ],
       ),
     );
