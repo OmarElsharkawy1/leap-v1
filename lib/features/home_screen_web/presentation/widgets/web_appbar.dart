@@ -69,27 +69,33 @@ class _WebAppbarState extends State<WebAppbar> {
           // Recourses
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4.0),
-            child: SimpleDropdown(
-              list: recoursesList,
+            child: SizedBox(
+              width: 120.w,
               height: 35.h,
-              width: 100.w,
+              child: SimpleDropdown(
+                hintText: 'Resources',
+                list: recoursesList,
+                fontSize: 14.sp,
+                fontColor: AppColors.mainFontColor,
+                backgroundColor: AppColors.backGroundColor,
+                fontWeight: FontWeight.w500,
+                containerPadding: EdgeInsets.symmetric(horizontal: 4.w),
+              ),
+            ),
+          ),
+          //Options
+          SizedBox(
+            width: 120.w,
+            height: 35.h,
+            child: SimpleDropdown(
+              hintText: 'Options',
+              list: optionsList,
               fontSize: 14.sp,
               fontColor: AppColors.mainFontColor,
               backgroundColor: AppColors.backGroundColor,
               fontWeight: FontWeight.w500,
               containerPadding: EdgeInsets.symmetric(horizontal: 4.w),
             ),
-          ),
-          //Options
-          SimpleDropdown(
-            list: optionsList,
-            height: 35.h,
-            width: 100.w,
-            fontSize: 14.sp,
-            fontColor: AppColors.mainFontColor,
-            backgroundColor: AppColors.backGroundColor,
-            fontWeight: FontWeight.w500,
-            containerPadding: EdgeInsets.symmetric(horizontal: 4.w),
           ),
           const Spacer(),
           // Sign Up
