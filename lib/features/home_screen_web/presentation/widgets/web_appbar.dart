@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leap/core/resource_manager/asset_path.dart';
-import 'package:leap/core/resource_manager/routes.dart';
+import 'package:leap/core/resource_manager/colors.dart';
+import 'package:leap/core/widgets/custom_text_button.dart';
+import 'package:leap/core/widgets/main_button_web.dart';
 import 'package:leap/view/constants/colors.dart';
-import 'package:leap/view/constants/extensions.dart';
 
 class WebAppbar extends StatefulWidget {
   const WebAppbar({Key? key}) : super(key: key);
@@ -25,57 +26,58 @@ class _WebAppbarState extends State<WebAppbar> {
       child: Row(
         children: [
           SizedBox(
-            width: context.screenWidth * .03,
+            width: 80.w,
           ),
           // Logo
           Padding(
-            padding: EdgeInsets.all(8.0.w),
+            padding: EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 4.h),
             child: Image.asset(
               AssetPath.logo,
               width: 64.w,
               height: 40.h,
             ),
           ),
-          // Internships
           Padding(
-            padding: EdgeInsets.all(8.0.w),
-            child: TextButton(
-              onPressed: () => Navigator.pushNamed(context, Routes.internships),
-              child: Text(
-                'Internships',
-                style: TextStyle(color: mainFontColor, fontSize: 14.sp),
-              ),
+            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+            child: CustomTextButton(
+              text: 'Internships',
+              textWeight: FontWeight.w500,
+              textSize: 14.sp,
+              textColor: AppColors.mainFontColor,
+              textFamily: 'Poppins',
             ),
           ),
-          // Jobs
           Padding(
-            padding: EdgeInsets.all(8.0.w),
-            child: TextButton(
-              onPressed: () {},
-              child: Text(
-                'Jobs',
-                style: TextStyle(color: mainFontColor, fontSize: 14.sp),
-              ),
+            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+            child: CustomTextButton(
+              text: 'Jobs',
+              textWeight: FontWeight.w500,
+              textSize: 14.sp,
+              textColor: AppColors.mainFontColor,
+              textFamily: 'Poppins',
             ),
           ),
           // Companies
           Padding(
-            padding: EdgeInsets.all(8.0.w),
-            child: TextButton(
-              onPressed: () {},
-              child: Text(
-                'Companies',
-                style: TextStyle(color: mainFontColor, fontSize: 14.sp),
-              ),
+            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+            child: CustomTextButton(
+              text: 'Internships',
+              textWeight: FontWeight.w500,
+              textSize: 14.sp,
+              textColor: AppColors.mainFontColor,
+              textFamily: 'Poppins',
             ),
           ),
           // Recourses
           Padding(
-            padding: EdgeInsets.all(8.0.w),
+            padding: EdgeInsets.all(4.0.w),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
                 value: recoursesListValue,
-                icon: const Icon(Icons.keyboard_arrow_down_sharp),
+                icon: Icon(
+                  Icons.keyboard_arrow_down_sharp,
+                  size: 12.w,
+                ),
                 // elevation: 16,
                 style: TextStyle(
                     color: mainFontColor,
@@ -99,11 +101,14 @@ class _WebAppbarState extends State<WebAppbar> {
           ),
           //Options
           Padding(
-            padding: EdgeInsets.all(8.0.w),
+            padding: EdgeInsets.all(4.0.w),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
                 value: optionsListValue,
-                icon: const Icon(Icons.keyboard_arrow_down_sharp),
+                icon: Icon(
+                  Icons.keyboard_arrow_down_sharp,
+                  size: 12.w,
+                ),
                 // elevation: 16,
                 style: TextStyle(
                     color: mainFontColor,
@@ -128,86 +133,48 @@ class _WebAppbarState extends State<WebAppbar> {
           const Spacer(),
           // Sign Up
           Padding(
-            padding: EdgeInsets.all(4.0.w),
-            child: OutlinedButton(
-              onPressed: () => Navigator.pushNamed(context, Routes.signUp),
-              style: OutlinedButton.styleFrom(
-                fixedSize: Size(120.w, 32.h),
-                padding: EdgeInsets.all(5),
-                // side: BorderSide(color: Colors.yellow, width: 5),
-                shape: const RoundedRectangleBorder(
-                  side: BorderSide(
-                    color: primaryColor,
-                  ),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(5),
-                  ),
-                ),
-              ),
-              child: Text(
-                'Sign Up',
-                style: TextStyle(
-                  color: primaryColor,
-                  fontSize: 12.sp,
-                ),
-              ),
+            padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 4.w),
+            child: MainButtonWeb(
+              text: 'Sign Up',
+              textColor: AppColors.primaryColor,
+              textSize: 13.sp,
+              color: AppColors.backGroundColor,
+              height: 32.h,
+              width: 120.w,
+              borderColor: AppColors.primaryColor,
+              radius: 5,
             ),
           ),
           // Sign In
           Padding(
-            padding: EdgeInsets.all(4.0.w),
-            child: OutlinedButton(
-              onPressed: () => Navigator.pushNamed(context, Routes.signUp),
-              style: OutlinedButton.styleFrom(
-                fixedSize: Size(120.w, 32.h),
-                padding: EdgeInsets.all(5),
-                // side: BorderSide(color: Colors.yellow, width: 5),
-                shape: const RoundedRectangleBorder(
-                  side: BorderSide(
-                    color: primaryColor,
-                  ),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(5),
-                  ),
-                ),
-              ),
-              child: Text(
-                'Sign In',
-                style: TextStyle(
-                  color: primaryColor,
-                  fontSize: 12.sp,
-                ),
-              ),
+            padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 4.w),
+            child: MainButtonWeb(
+              text: 'Sign In',
+              textColor: AppColors.primaryColor,
+              textSize: 13.sp,
+              color: AppColors.backGroundColor,
+              height: 32.h,
+              width: 120.w,
+              borderColor: AppColors.primaryColor,
+              radius: 5,
             ),
           ),
-          // For Employers
+
           Padding(
-            padding: EdgeInsets.all(4.0.w),
-            child: OutlinedButton(
-              onPressed: () {},
-              style: OutlinedButton.styleFrom(
-                fixedSize: Size(120.w, 32.h),
-                padding: EdgeInsets.all(5),
-                shape: const RoundedRectangleBorder(
-                  side: BorderSide(
-                    color: primaryColor,
-                  ),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(5),
-                  ),
-                ),
-              ),
-              child: Text(
-                'For Employers',
-                style: TextStyle(
-                  color: primaryColor,
-                  fontSize: 12.sp,
-                ),
-              ),
+            padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 4.w),
+            child: MainButtonWeb(
+              text: 'For Employers',
+              textColor: AppColors.primaryColor,
+              textSize: 13.sp,
+              color: AppColors.backGroundColor,
+              height: 32.h,
+              width: 120.w,
+              borderColor: AppColors.primaryColor,
+              radius: 5,
             ),
           ),
           SizedBox(
-            width: context.screenWidth * .03,
+            width: 80.w,
           ),
         ],
       ),

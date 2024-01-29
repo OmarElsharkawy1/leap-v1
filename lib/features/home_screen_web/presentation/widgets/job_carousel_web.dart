@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:leap/core/utils/app_size.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leap/models/job.dart';
 
 import 'job_card_web.dart';
@@ -15,7 +15,7 @@ class CarouselWithIndicatorWeb extends StatefulWidget {
 }
 
 class _CarouselWithIndicatorState extends State<CarouselWithIndicatorWeb> {
-  int _current = 0;
+  final int _current = 0;
   final List<Widget> jobSlider = [
     JobCard(job: dummyJobs[0]),
     JobCard(job: dummyJobs[1]),
@@ -26,7 +26,7 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorWeb> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: WidgetRatio.heightRatio(285),
+      height: 238.h,
       // width: WidgetRatio.widthRatio(952),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,11 +39,11 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorWeb> {
                   autoPlay: false,
                   enlargeCenterPage: false,
                   viewportFraction: 1,
-                  aspectRatio: 5,
+                  aspectRatio: 5.w,
                   onPageChanged: (index, reason) {
-                    setState(() {
-                      _current = index;
-                    });
+                    // setState(() {
+                    //   _current = index;
+                    // });
                   }),
             ),
           ),
@@ -53,10 +53,9 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorWeb> {
               return GestureDetector(
                 onTap: () => _controller.animateToPage(entry.key),
                 child: Container(
-                  width: 8,
-                  height: 8,
-                  margin: const EdgeInsets.symmetric(
-                      vertical: 6.0, horizontal: 4.0),
+                  width: 8.w,
+                  height: 8.h,
+                  margin: EdgeInsets.symmetric(vertical: 6.h, horizontal: 4.w),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: (Theme.of(context).brightness == Brightness.dark

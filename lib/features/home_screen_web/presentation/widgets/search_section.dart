@@ -32,7 +32,7 @@ class SearchSection extends StatelessWidget {
           ),
           const Positioned.fill(
               child: Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Spacer(),

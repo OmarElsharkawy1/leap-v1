@@ -9,8 +9,6 @@ class JobSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double width = 0.15;
-    const double height = 0.05;
     final List<String> currencies = [
       "Food",
       "Transport",

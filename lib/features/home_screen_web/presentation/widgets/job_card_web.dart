@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/core/resource_manager/colors.dart';
-import 'package:leap/core/utils/app_size.dart';
+import 'package:leap/core/widgets/main_button_web.dart';
 import 'package:leap/models/job.dart';
 import 'package:leap/view/constants/colors.dart';
 import 'package:leap/view/constants/extensions.dart';
@@ -18,18 +19,19 @@ class JobCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            height: WidgetRatio.heightRatio(265),
-            width: WidgetRatio.widthRatio(468),
+            height: 238.h,
+            width: 468.w,
             color: AppColors.containerColor,
             child: Row(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.only(top: 16.h, left: 16.w, right: 24.w),
                   child: Image.asset(
                     job.logo,
-                    width: WidgetRatio.widthRatio(96),
-                    height: WidgetRatio.heightRatio(80),
+                    width: 96.w,
+                    height: 80.h,
                   ),
                 ),
                 Column(
@@ -38,24 +40,24 @@ class JobCard extends StatelessWidget {
                   children: [
                     Text(
                       job.title,
-                      style: const TextStyle(
-                        color: primaryColor,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: TextStyle(
+                          color: primaryColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.sp),
                     ).padding(
-                      const EdgeInsets.symmetric(
-                        vertical: 8,
+                      EdgeInsets.symmetric(
+                        vertical: 8.h,
                       ),
                     ),
-                    const Row(
+                    Row(
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(right: 4.0),
+                          padding: EdgeInsets.only(right: 4.0.w),
                           child: Text(
                             'Posted 2 days ago ',
                             style: TextStyle(
                               color: mainFontColor,
-                              fontSize: 14,
+                              fontSize: 14.sp,
                               fontFamily: 'Poppins',
                             ),
                           ),
@@ -64,7 +66,7 @@ class JobCard extends StatelessWidget {
                           '. Full Time',
                           style: TextStyle(
                             color: mainFontColor,
-                            fontSize: 14,
+                            fontSize: 14.sp,
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.bold,
                           ),
@@ -74,29 +76,37 @@ class JobCard extends StatelessWidget {
                     Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 4.0),
-                          child: Image.asset(AssetPath.location),
+                          padding: EdgeInsets.only(right: 4.0.w),
+                          child: Image.asset(
+                            AssetPath.location,
+                            width: 13.w,
+                            height: 16.h,
+                          ),
                         ),
                         Text(
                           job.location,
-                          style: const TextStyle(
-                            color: mainFontColor,
-                            fontFamily: 'Poppins',
-                          ),
+                          style: TextStyle(
+                              color: mainFontColor,
+                              fontFamily: 'Poppins',
+                              fontSize: 14.sp),
                         ),
                       ],
                     ),
                     Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 4.0),
-                          child: Image.asset(AssetPath.skillIconBlack),
+                          padding: EdgeInsets.only(right: 4.0.w),
+                          child: Image.asset(
+                            AssetPath.skillIconBlack,
+                            width: 13.w,
+                            height: 16.h,
+                          ),
                         ),
                         Text(
                           job.skill,
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: mainFontColor,
-                            fontSize: 14,
+                            fontSize: 14.sp,
                             fontFamily: 'Poppins',
                           ),
                         ),
@@ -104,52 +114,69 @@ class JobCard extends StatelessWidget {
                     ),
                     Text(
                       job.salary,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: mainFontColor,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(
-                      width: WidgetRatio.widthRatio(250),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          elevation: 0,
-                          shape: const RoundedRectangleBorder(
-                            side: BorderSide(
-                              color: primaryColor,
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(5),
-                            ),
-                          ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 16.h, right: 16.w),
+                      child: SizedBox(
+                        width: 316.w,
+                        height: 32.h,
+                        child: MainButtonWeb(
+                          text: 'View Job',
+                          textSize: 16.sp,
+                          borderColor: AppColors.primaryColor,
+                          height: 32.h,
+                          width: 316.w,
+                          color: AppColors.backGroundColor,
+                          textColor: AppColors.primaryColor,
+                          radius: 10,
                         ),
-                        child: const Text('View Job'),
-                      ).padding(const EdgeInsets.all(6)),
+                        // ElevatedButton(
+                        //   onPressed: () {},
+                        //   style: ElevatedButton.styleFrom(
+                        //     padding: EdgeInsets.all(0),
+                        //     elevation: 0,
+                        //     shape: const RoundedRectangleBorder(
+                        //       side: BorderSide(
+                        //         color: primaryColor,
+                        //       ),
+                        //       borderRadius: BorderRadius.all(
+                        //         Radius.circular(5),
+                        //       ),
+                        //     ),
+                        //   ),
+                        //   child: Text(
+                        //     'View Job',
+                        //     style: TextStyle(fontSize: 14.sp),
+                        //   ),
+                        // ),
+                      ),
                     )
                   ],
-                ).padding(
-                  const EdgeInsets.all(14),
                 ),
               ],
             ),
           ),
-          const SizedBox(width: 16),
+          SizedBox(width: 16.w),
           Container(
-            height: WidgetRatio.heightRatio(265),
-            width: WidgetRatio.widthRatio(468),
+            height: 238.h,
+            width: 468.w,
             color: AppColors.containerColor,
             child: Row(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.only(top: 16.h, left: 16.w, right: 24.w),
                   child: Image.asset(
                     job.logo,
-                    width: WidgetRatio.widthRatio(96),
-                    height: WidgetRatio.heightRatio(80),
+                    width: 96.w,
+                    height: 80.h,
                   ),
                 ),
                 Column(
@@ -158,24 +185,24 @@ class JobCard extends StatelessWidget {
                   children: [
                     Text(
                       job.title,
-                      style: const TextStyle(
-                        color: primaryColor,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: TextStyle(
+                          color: primaryColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.sp),
                     ).padding(
-                      const EdgeInsets.symmetric(
-                        vertical: 8,
+                      EdgeInsets.symmetric(
+                        vertical: 8.h,
                       ),
                     ),
-                    const Row(
+                    Row(
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(right: 4.0),
+                          padding: EdgeInsets.only(right: 4.0.w),
                           child: Text(
                             'Posted 2 days ago ',
                             style: TextStyle(
                               color: mainFontColor,
-                              fontSize: 14,
+                              fontSize: 14.sp,
                               fontFamily: 'Poppins',
                             ),
                           ),
@@ -184,7 +211,7 @@ class JobCard extends StatelessWidget {
                           '. Full Time',
                           style: TextStyle(
                             color: mainFontColor,
-                            fontSize: 14,
+                            fontSize: 14.sp,
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.bold,
                           ),
@@ -194,29 +221,37 @@ class JobCard extends StatelessWidget {
                     Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 4.0),
-                          child: Image.asset(AssetPath.location),
+                          padding: EdgeInsets.only(right: 4.0.w),
+                          child: Image.asset(
+                            AssetPath.location,
+                            width: 13.w,
+                            height: 16.h,
+                          ),
                         ),
                         Text(
                           job.location,
-                          style: const TextStyle(
-                            color: mainFontColor,
-                            fontFamily: 'Poppins',
-                          ),
+                          style: TextStyle(
+                              color: mainFontColor,
+                              fontFamily: 'Poppins',
+                              fontSize: 14.sp),
                         ),
                       ],
                     ),
                     Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 4.0),
-                          child: Image.asset(AssetPath.skillIconBlack),
+                          padding: EdgeInsets.only(right: 4.0.w),
+                          child: Image.asset(
+                            AssetPath.skillIconBlack,
+                            width: 13.w,
+                            height: 16.h,
+                          ),
                         ),
                         Text(
                           job.skill,
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: mainFontColor,
-                            fontSize: 14,
+                            fontSize: 14.sp,
                             fontFamily: 'Poppins',
                           ),
                         ),
@@ -224,34 +259,50 @@ class JobCard extends StatelessWidget {
                     ),
                     Text(
                       job.salary,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: mainFontColor,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(
-                      width: WidgetRatio.widthRatio(250),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          elevation: 0,
-                          shape: const RoundedRectangleBorder(
-                            side: BorderSide(
-                              color: primaryColor,
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(5),
-                            ),
-                          ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 16.h, right: 16.w),
+                      child: SizedBox(
+                        width: 316.w,
+                        height: 32.h,
+                        child: MainButtonWeb(
+                          text: 'View Job',
+                          textSize: 16.sp,
+                          borderColor: AppColors.primaryColor,
+                          height: 32.h,
+                          width: 316.w,
+                          color: AppColors.backGroundColor,
+                          textColor: AppColors.primaryColor,
+                          radius: 10,
                         ),
-                        child: const Text('View Job'),
-                      ).padding(const EdgeInsets.all(6)),
+                        // ElevatedButton(
+                        //   onPressed: () {},
+                        //   style: ElevatedButton.styleFrom(
+                        //     padding: EdgeInsets.all(0),
+                        //     elevation: 0,
+                        //     shape: const RoundedRectangleBorder(
+                        //       side: BorderSide(
+                        //         color: primaryColor,
+                        //       ),
+                        //       borderRadius: BorderRadius.all(
+                        //         Radius.circular(5),
+                        //       ),
+                        //     ),
+                        //   ),
+                        //   child: Text(
+                        //     'View Job',
+                        //     style: TextStyle(fontSize: 14.sp),
+                        //   ),
+                        // ),
+                      ),
                     )
                   ],
-                ).padding(
-                  const EdgeInsets.all(14),
                 ),
               ],
             ),

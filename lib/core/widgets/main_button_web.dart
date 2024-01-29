@@ -13,6 +13,7 @@ class MainButtonWeb extends StatelessWidget {
     this.width,
     this.radius,
     this.borderColor,
+    this.fontWeight,
   });
 
   final void Function()? onTap;
@@ -24,6 +25,7 @@ class MainButtonWeb extends StatelessWidget {
   final double? width;
   final double? radius;
   final Color? borderColor;
+  final FontWeight? fontWeight;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,11 @@ class MainButtonWeb extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-                color: textColor ?? Colors.white, fontSize: textSize ?? 14),
+              color: textColor ?? Colors.white,
+              fontSize: textSize ?? 14,
+              fontFamily: 'Poppins',
+              fontWeight: fontWeight,
+            ),
           ),
         ),
       ),

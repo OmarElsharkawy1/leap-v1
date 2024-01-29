@@ -64,10 +64,10 @@ class _CustomPinCodeTextFieldState extends State<CustomPinCodeTextField> {
         print("Completed");
       },
       onChanged: (value) {
-        print(value);
-        setState(() {
-          currentText = value;
-        });
+        // print(value);
+        // setState(() {
+        //   currentText = value;
+        // });
       },
       beforeTextPaste: (text) {
         print("Allowing to paste $text");

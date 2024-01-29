@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:leap/core/resource_manager/routes.dart';
 
 class CustomTextButton extends StatelessWidget {
   const CustomTextButton({
@@ -22,7 +21,7 @@ class CustomTextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, Routes.signUp);
+        onTap;
       },
       child: Text(
         text,
