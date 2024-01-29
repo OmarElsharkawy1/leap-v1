@@ -6,7 +6,7 @@ class ColumnWithTextField extends StatefulWidget {
   const ColumnWithTextField({
     super.key,
     required this.text,
-    required this.controller,
+      this.controller,
     this.width,
     this.height,
     this.readOnly = false,
@@ -27,7 +27,7 @@ class ColumnWithTextField extends StatefulWidget {
   final void Function()? onTap;
   final TextInputType keyboardType;
 
-  final TextEditingController controller;
+  final TextEditingController? controller;
 
   @override
   State<ColumnWithTextField> createState() => _ColumnWithTextFieldState();

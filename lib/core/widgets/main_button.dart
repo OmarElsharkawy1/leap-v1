@@ -4,7 +4,13 @@ import 'package:leap/core/utils/app_size.dart';
 
 class MainButton extends StatelessWidget {
   const MainButton(
-      {super.key, this.onTap, this.color, this.textColor, required this.text, this.height, this.width});
+      {super.key,
+      this.onTap,
+      this.color,
+      this.textColor,
+      required this.text,
+      this.height,
+      this.width});
 
   final void Function()? onTap;
   final Color? color;
@@ -18,17 +24,19 @@ class MainButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        height: height??AppSize.defaultSize!*4,
-        width: width??AppSize.screenWidth!*.9,
+        height: height ?? AppSize.defaultSize! * 4,
+        width: width ?? AppSize.screenWidth! * .9,
         decoration: BoxDecoration(
           color: color ?? AppColors.primaryColor,
           borderRadius: BorderRadius.circular(AppSize.defaultSize!),
-
         ),
         child: Center(
           child: Text(
             text,
-            style: TextStyle(color: textColor ?? Colors.white),
+            style: TextStyle(
+              color: textColor ?? Colors.white,
+              fontSize: AppSize.defaultSize! * 1.5,
+            ),
           ),
         ),
       ),

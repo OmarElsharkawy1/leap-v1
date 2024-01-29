@@ -8,14 +8,14 @@ import 'package:leap/core/widgets/custom_text_field.dart';
 import 'package:leap/core/widgets/jobs_and_intern_card.dart';
 import 'package:leap/core/widgets/main_button.dart';
 
-class JobsScreen extends StatefulWidget {
-  const JobsScreen({super.key});
+class InternshipScreen extends StatefulWidget {
+  const InternshipScreen({super.key});
 
   @override
-  State<JobsScreen> createState() => _JobsScreenState();
+  State<InternshipScreen> createState() => _InternshipScreenState();
 }
 
-class _JobsScreenState extends State<JobsScreen> {
+class _InternshipScreenState extends State<InternshipScreen> {
   late TextEditingController searchController;
 
   @override
@@ -34,7 +34,7 @@ class _JobsScreenState extends State<JobsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: homeAppBar(context, text: StringManager.jobs.tr()),
+      appBar: homeAppBar(context, text: StringManager.internships.tr()),
       body: SizedBox(
         height: AppSize.screenHeight,
         child: SingleChildScrollView(

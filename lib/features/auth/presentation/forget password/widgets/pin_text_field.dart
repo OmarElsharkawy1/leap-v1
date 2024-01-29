@@ -43,6 +43,7 @@ class _CustomPinCodeTextFieldState extends State<CustomPinCodeTextField> {
       length: 6,
       obscureText: false,
       animationType: AnimationType.fade,
+      textStyle:     TextStyle(fontSize: AppSize.defaultSize! * 1.8),
       pinTheme: PinTheme(
         shape: PinCodeFieldShape.box,
         borderRadius: BorderRadius.circular(AppSize.defaultSize!),

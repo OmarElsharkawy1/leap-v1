@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/app_bar.dart';
 import 'package:leap/core/widgets/main_button.dart';
-import 'package:leap/features/auth/presentation/widgets/column_with_text_field.dart';
+import 'package:leap/core/widgets/column_with_text_field.dart';
 class ChangePassword extends StatefulWidget {
   const ChangePassword({super.key});
 
@@ -33,23 +35,23 @@ class _ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context,text: 'Forget Password'),
+      appBar: appBar(context,text: StringManager.forgetPassword.tr()),
       body: Padding(
         padding: EdgeInsets.all(AppSize.defaultSize! * 2),
         child: Column(
           children: [
             ColumnWithTextField(
-              text: 'Password',
+              text: StringManager.password.tr(),
               controller: passwordController,
             ),
             ColumnWithTextField(
-              text: 'Confirm Password',
+              text: StringManager.confirmPassword.tr(),
               controller: passwordConfirmController,
             ),
             SizedBox(
               height: AppSize.defaultSize!*4,
             ),
-            const MainButton(text: 'Confirm')
+              MainButton(text: StringManager.confirm.tr())
           ],
         ),
       ),

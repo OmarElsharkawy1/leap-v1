@@ -1,11 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:leap/core/models/my_data_model.dart';
 import 'package:leap/core/utils/api_helper.dart';
 import 'package:leap/core/utils/constant_api.dart';
 import 'package:leap/core/utils/methods.dart';
 import 'package:leap/features/auth/domain/use_case/login_with_email_and_password_use_case.dart';
+import 'package:leap/features/auth/domain/use_case/sign_up_use_case.dart';
 
 abstract class BaseRemotelyDataSource {
   Future<Map<String, dynamic>> loginWithEmailAndPassword(AuthModel authModel);
+  Future<MyDataModel> signUpWithEmailAndPassword(SignUpModel signUpModel);
 
 
 }
@@ -30,6 +33,33 @@ class AuthRemotelyDateSource extends BaseRemotelyDataSource{
     } on DioException catch (e) {
       throw DioHelper.handleDioError(
           dioError: e, endpointName: "loginWithEmailAndPassword");
+    }
+  }
+
+  @override
+  Future<MyDataModel> signUpWithEmailAndPassword(SignUpModel signUpModel)async {
+    final body = {
+      ConstantApi.email: signUpModel.email,
+      ConstantApi.password: signUpModel.password,
+      'major':signUpModel.major,
+      'university':signUpModel.university,
+      'eduLevel':signUpModel.eduLevel,
+      'gradLevel':signUpModel.gradLevel,
+      'dateOfBirth':signUpModel.dateOfBirth,
+      'name':signUpModel.name,
+      'phone':signUpModel.phone,
+    };
+
+    try {
+      final response = await Dio().post(
+        ConstantApi.signUp,
+        data: body,
+      );
+      MyDataModel jsonData = response.data;
+      return jsonData;
+    } on DioException catch (e) {
+      throw DioHelper.handleDioError(
+          dioError: e, endpointName: "signUpWithEmailAndPassword");
     }
   }
 }

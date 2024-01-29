@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/models/job.dart';
 import 'package:leap/view/constants/extensions.dart';
 
@@ -18,7 +19,7 @@ class VerticalSliderDemo extends StatelessWidget {
       width: context.screenWidth,
       child: CarouselSlider(
         options: CarouselOptions(
-          height: 400,
+          height: AppSize.screenHeight!*.3,
           aspectRatio: 16 / 9,
           viewportFraction: 0.8,
           initialPage: 0,
@@ -46,11 +47,11 @@ class VerticalSliderDemo1 extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: context.screenWidth,
       height: context.screenHeight * .25,
       child: CarouselSlider(
-        options: CarouselOptions(height: 400, enlargeCenterPage: true),
+        options: CarouselOptions(height: AppSize.screenHeight!*.3, enlargeCenterPage: true),
         items: jobSlider.map((job) {
           return Builder(
             builder: (BuildContext context) {

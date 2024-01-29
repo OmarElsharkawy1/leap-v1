@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:leap/core/resource_manager/colors.dart';
+import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/models/job.dart';
 import 'package:leap/view/constants/colors.dart';
@@ -19,10 +21,13 @@ class JobCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding:   EdgeInsets.all(AppSize.defaultSize!*2),
-            child: Image.asset(
-              job.logo,
-             scale: 4,
+            padding: EdgeInsets.all(AppSize.defaultSize! * 2),
+            child: SizedBox(
+              height: AppSize.defaultSize! * 6,
+              width: AppSize.defaultSize! * 6,
+              child: Image.asset(
+                job.logo,
+              ),
             ),
           ),
           Column(
@@ -30,53 +35,53 @@ class JobCard extends StatelessWidget {
             children: [
               Text(
                 job.title,
-                style: const TextStyle(
-                  color: primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(
+                    color: primaryColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: AppSize.defaultSize! * 1.5),
               ).padding(
-                  EdgeInsets.symmetric(
+                EdgeInsets.symmetric(
                   vertical: AppSize.defaultSize!,
                 ),
               ),
               Text(
                 job.location,
-                style: const TextStyle(
-                  color: mainFontColor,
-                ),
+                style: TextStyle(
+                    color: mainFontColor, fontSize: AppSize.defaultSize! * 1.4),
               ),
               Text(
                 job.skill,
-                style: const TextStyle(
-                  color: mainFontColor,
-                ),
+                style: TextStyle(
+                    color: mainFontColor, fontSize: AppSize.defaultSize! * 1.4),
               ),
               Text(
                 job.salary,
-                style: const TextStyle(
-                  color: mainFontColor,
-                ),
+                style: TextStyle(
+                    color: mainFontColor, fontSize: AppSize.defaultSize! * 1.4),
               ),
-              SizedBox(height: AppSize.defaultSize!*3.5,),
+              SizedBox(
+                height: AppSize.screenHeight! * .02,
+              ),
               InkWell(
                 onTap: () {},
-
-
-                child:   Container(
-                    height: AppSize.defaultSize!*3.5,
-                    width: AppSize.screenWidth!*.4,
+                child: Container(
+                    height: AppSize.screenHeight! * .05,
+                    width: AppSize.screenWidth! * .4,
                     decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(AppSize.defaultSize!*.5),
-              border: Border.all(color: AppColors.primaryColor)
-                    ),
-
-                    child: Center(child: Text('View Job',style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: AppSize.defaultSize!*1.4,
-
-                    ),),)),
-              ).padding(  EdgeInsets.all(AppSize.defaultSize!*.6))
+                        color: Colors.white,
+                        borderRadius:
+                            BorderRadius.circular(AppSize.defaultSize! * .5),
+                        border: Border.all(color: AppColors.primaryColor)),
+                    child: Center(
+                      child: Text(
+                        StringManager.viewJob.tr(),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: AppSize.defaultSize! * 1.4,
+                        ),
+                      ),
+                    )),
+              ).padding(EdgeInsets.all(AppSize.defaultSize! * .6))
             ],
           ),
         ],

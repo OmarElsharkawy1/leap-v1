@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/resource_manager/routes.dart';
+import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/main_button.dart';
 import 'package:leap/core/widgets/custom_text_field.dart';
@@ -57,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             scale: 2,
                           ),
                           Text(
-                            'Welcome back !',
+                            StringManager.welcomeBack.tr(),
                             style: TextStyle(
                               color: AppColors.blackColor,
                               fontSize: AppSize.defaultSize! * 1.8,
@@ -65,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           Text(
-                            'You Have Been Missed For Long Time',
+                            StringManager.youHaveBeenMissed.tr(),
                             style: TextStyle(
                               color: AppColors.blackColor,
                               fontSize: AppSize.defaultSize! * 1.2,
@@ -74,18 +76,37 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ],
                       )),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: TextButton(
+                          onPressed: () {
+                            if (context.locale == const Locale('en')) {
+                              context.setLocale(const Locale('ar'));
+                            } else {
+                              context.setLocale(const Locale('en'));
+                            }
+                            setState(() {});
+                          },
+                          child: Text(
+                            context.locale == const Locale('en')
+                                ? 'عربي'
+                                : 'English',
+                            style: TextStyle(
+                                fontSize: AppSize.defaultSize! * 1.2,
+                                fontWeight: FontWeight.w600),
+                          )))
                 ],
               ),
             ),
             CustomTextField(
-              labelText: 'email',
+              labelText: StringManager.email.tr(),
               controller: emailController,
             ),
             SizedBox(
               height: AppSize.defaultSize! * 2,
             ),
             CustomTextField(
-              labelText: 'password',
+              labelText: StringManager.password.tr(),
               obscureText: isVisible,
               controller: passwordController,
               suffixIcon: InkWell(
@@ -106,24 +127,26 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () {
                   Navigator.pushNamed(context, Routes.forgetPassword);
                 },
-                child: const Text(
-                  'Forget Your Password ?',
-                  style: TextStyle(color: AppColors.forgetPasswordColor),
+                child: Text(
+                  StringManager.forgetYourPassword.tr(),
+                  style: TextStyle(
+                    color: AppColors.forgetPasswordColor,
+                    fontSize: AppSize.defaultSize! * 1,
+                  ),
                 ),
               ),
             ),
-
-              MainButton(
-              text: 'login',
-                onTap: (){
+            MainButton(
+              text: StringManager.login.tr(),
+              onTap: () {
                 Navigator.pushNamed(context, Routes.home);
-                },
+              },
             ),
             SizedBox(
               height: AppSize.defaultSize! * 4,
             ),
             Text(
-              'Or sign in with',
+              StringManager.or.tr(),
               style: TextStyle(
                   color: AppColors.blackColor,
                   fontSize: AppSize.defaultSize! * 1.2,
@@ -151,7 +174,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
             SizedBox(
-              height: AppSize.screenHeight! * .17,
+              height: AppSize.screenHeight! * .1,
             ),
             Container(
               color: AppColors.containerColor,
@@ -160,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Don\'t have an account?   ',
+                    StringManager.doNotHaveAccount.tr(),
                     style: TextStyle(
                         color: AppColors.greyColor,
                         fontSize: AppSize.defaultSize! * 1.4,
@@ -168,10 +191,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.pushNamed(context, Routes.signUp);
+                      Navigator.pushNamed(
+                        context,
+                        Routes.signUp,
+                      );
                     },
                     child: Text(
-                      'Sign Up',
+                      StringManager.signUp.tr(),
                       style: TextStyle(
                           color: AppColors.primaryColor,
                           fontSize: AppSize.defaultSize! * 1.5,

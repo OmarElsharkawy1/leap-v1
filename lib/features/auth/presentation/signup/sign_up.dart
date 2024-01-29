@@ -1,10 +1,16 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/resource_manager/routes.dart';
+import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/app_bar.dart';
 import 'package:leap/core/widgets/main_button.dart';
-import 'package:leap/features/auth/presentation/widgets/column_with_text_field.dart';
+import 'package:leap/core/widgets/column_with_text_field.dart';
+import 'package:leap/core/widgets/snack_bar.dart';
+import 'package:leap/features/auth/presentation/controller/sign_up_bloc/sign_up_with_email_and_password_bloc.dart';
+import 'package:leap/features/auth/presentation/controller/sign_up_bloc/sign_up_with_email_and_password_events.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -54,7 +60,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context, text: 'Sign up'),
+      appBar: appBar(context, text: StringManager.signUp.tr()),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: AppSize.defaultSize! * 2),
         child: SingleChildScrollView(
@@ -70,7 +76,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'You Already have an account?   ',
+                      StringManager.youAlready.tr(),
                       style: TextStyle(
                           color: AppColors.greyColor,
                           fontSize: AppSize.defaultSize! * 1.4,
@@ -81,7 +87,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         Navigator.pushNamed(context, Routes.login);
                       },
                       child: Text(
-                        'Sign in',
+                        StringManager.signIn.tr(),
                         style: TextStyle(
                             color: AppColors.primaryColor,
                             fontSize: AppSize.defaultSize! * 1.5,
@@ -94,29 +100,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Row(
                 children: [
                   ColumnWithTextField(
-                    text: 'First Name',
-                    controller: emailController,
+                    text: StringManager.firstName.tr(),
+                    controller: firstNameController,
                     width: AppSize.screenWidth! * .4,
                   ),
                   const Spacer(),
                   ColumnWithTextField(
-                    text: 'First Name',
-                    controller: emailController,
+                    text: StringManager.secondName.tr(),
+                    controller: lastNameController,
                     width: AppSize.screenWidth! * .4,
                   ),
                 ],
               ),
               ColumnWithTextField(
-                text: 'Phone no',
+                text: StringManager.phoneNum.tr(),
                 controller: phoneController,
               ),
               ColumnWithTextField(
-                text: 'Email',
+                text: StringManager.email.tr(),
                 controller: emailController,
               ),
               ColumnWithTextField(
-                text: 'Date of birth',
-                controller: emailController,
+                text: StringManager.dateOfBirth.tr(),
                 readOnly: true,
                 hintText: selectedDate.toString().substring(0, 10),
                 suffixIcon: const Icon(Icons.calendar_month_outlined),
@@ -131,32 +136,50 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   dropDownSignUp(
-                      text: 'Education Level', hintText: 'Select Edu. Level'),
+                      text: StringManager.educationLevel.tr(),
+                      hintText: StringManager.selectEdu.tr()),
                   dropDownSignUp(
-                      text: 'Graduation Year', hintText: 'Select Grad. Year'),
+                      text: StringManager.graduationYear.tr(),
+                      hintText: StringManager.selectGrad.tr()),
                 ],
               ),
               ColumnWithTextField(
-                text: 'University',
+                text: StringManager.university.tr(),
                 controller: universityController,
               ),
               ColumnWithTextField(
-                text: 'Major',
+                text: StringManager.major.tr(),
                 controller: majorController,
               ),
               ColumnWithTextField(
-                text: 'Password',
+                text: StringManager.password.tr(),
                 controller: passwordController,
               ),
               ColumnWithTextField(
-                text: 'Confirm Password',
+                text: StringManager.confirmPassword.tr(),
                 controller: passwordConfirmController,
               ),
               SizedBox(
                 height: AppSize.defaultSize! * 3,
               ),
-              const MainButton(
-                text: 'Sign up',
+              MainButton(
+                text: StringManager.signUp.tr(),
+                onTap: () {
+                  if (validation()) {
+                    BlocProvider.of<SignUpWithEmailAndPasswordBloc>(context)
+                        .add(SignUpWithEmailAndPasswordEvent(
+                      phone: phoneController.text,
+                      password: passwordController.text,
+                      major: majorController.text,
+                      university: universityController.text,
+                      name:
+                          '${firstNameController.text} ${lastNameController.text}',
+                      email: emailController.text,
+                    ));
+                  } else {
+                    errorSnackBar(context, StringManager.pleaseCompleteYourData.tr());
+                  }
+                },
               ),
               SizedBox(
                 height: AppSize.defaultSize! * 3,
@@ -240,4 +263,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ],
     );
   }
+
+  bool validation() {
+    if (emailController.text == '') {
+      return false;
+    } else if (firstNameController.text == '') {
+      return false;
+    } else if (lastNameController.text == '') {
+      return false;
+    } else if (phoneController.text == '') {
+      return false;
+    } else if (universityController.text == '') {
+      return false;
+    } else if (majorController.text == '') {
+      return false;
+    } else if (passwordController.text == '') {
+      return false;
+    } else if (passwordConfirmController.text == '') {
+      return false;
+    }  else if (selectedValue == '') {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+
 }

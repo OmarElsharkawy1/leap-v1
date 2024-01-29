@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:leap/features/home/home_screen/controller/states.dart';
 import 'package:leap/features/home/home_screen/home_screen.dart';
+import 'package:leap/features/internships/internship_screen.dart';
 import 'package:leap/features/jobs/job_screen.dart';
 
 
@@ -13,11 +14,10 @@ class HomeScreenCubit extends Cubit<HomeStates> {
   int currentIndex = 0;
   List<Widget> screens = const [
     HomeScreen(),
-    HomeScreen(),
+    InternshipScreen(),
     JobsScreen(),
     HomeScreen(),
     HomeScreen(),
-
 
   ];
 

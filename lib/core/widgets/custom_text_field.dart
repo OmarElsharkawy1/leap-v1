@@ -5,7 +5,7 @@ import 'package:leap/core/utils/app_size.dart';
 class CustomTextField extends StatefulWidget {
   final String? labelText;
   final String? hintText;
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final TextInputType keyboardType;
   final bool obscureText;
   final bool readOnly;
@@ -16,7 +16,7 @@ class CustomTextField extends StatefulWidget {
    const CustomTextField({
     Key? key,
       this.labelText,
-    required this.controller,
+      this.controller,
     this.keyboardType = TextInputType.text,
     this.obscureText = false,
      this.readOnly=false,
@@ -44,8 +44,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
             hintStyle:widget.hintStyle ,
             suffixIcon: widget.suffixIcon,
-            labelStyle: const TextStyle(
+            labelStyle:   TextStyle(
                 color: AppColors.primaryColor,
+              fontSize: AppSize.screenHeight! * .02,
             ),
             prefixIcon: widget.prefixIcon,
             border: OutlineInputBorder(

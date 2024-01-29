@@ -1,59 +1,66 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/features/home/home_screen/controller/cubit.dart';
-import 'package:leap/features/home/home_screen/controller/states.dart';
 import 'package:leap/view/constants/colors.dart';
-import 'package:leap/view/constants/extensions.dart';
-
 
 class HomeBottomNavigationBar extends StatelessWidget {
-  const HomeBottomNavigationBar({Key? key, required this.cubit}) : super(key: key);
-final HomeScreenCubit cubit;
+  const HomeBottomNavigationBar({Key? key, required this.cubit})
+      : super(key: key);
+  final HomeScreenCubit cubit;
+
   @override
   Widget build(BuildContext context) {
-    return  BottomNavigationBar(
+    return BottomNavigationBar(
       currentIndex: cubit.currentIndex,
       onTap: (i) {
-        cubit.changeIndex(i);        // setState(() {});
+        cubit.changeIndex(i); // setState(() {});
       },
       type: BottomNavigationBarType.fixed,
-      selectedIconTheme:   IconThemeData(color: primaryColor, size: AppSize.defaultSize!*2),
-      selectedLabelStyle: const TextStyle(color: primaryColor),
+      selectedIconTheme:
+          IconThemeData(color: primaryColor, size: AppSize.defaultSize! * 2),
+      selectedLabelStyle: TextStyle(
+        color: primaryColor,
+        fontSize: AppSize.defaultSize!,
+      ),
+      unselectedLabelStyle: TextStyle(
+        fontSize: AppSize.defaultSize! * .8,
+      ),
       backgroundColor: secondaryBackGroundColor,
-      items: const <BottomNavigationBarItem>[
+      items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(
             Icons.home_outlined,
+            size: AppSize.screenHeight! * .02,
           ),
-          label: 'Home',
+          label: StringManager.home.tr(),
         ),
         BottomNavigationBarItem(
-          icon: Icon(
+          icon: const Icon(
             Icons.school_outlined,
           ),
-          label: 'Internships',
+          label: StringManager.internships.tr(),
         ),
         BottomNavigationBarItem(
-          icon: Icon(
+          icon: const Icon(
             Icons.shopping_bag,
           ),
-          label: 'Jobs',
+          label: StringManager.jobs.tr(),
         ),
         BottomNavigationBarItem(
-          icon: Icon(
+          icon: const Icon(
             Icons.collections_bookmark_outlined,
           ),
-          label: 'Resources',
+          label: StringManager.resources.tr(),
         ),
         BottomNavigationBarItem(
-          icon: Icon(
+          icon: const Icon(
             Icons.sticky_note_2_outlined,
           ),
-          label: 'Blogs',
+          label: StringManager.blog.tr(),
         ),
       ],
     );
-
   }
 }

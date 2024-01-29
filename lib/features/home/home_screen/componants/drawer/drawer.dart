@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:leap/core/resource_manager/colors.dart';
+import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/main_button.dart';
 import 'package:leap/features/home/home_screen/componants/drawer/widgets/drawer-buttons.dart';
@@ -34,26 +36,26 @@ class _HomeDrawerState extends State<HomeDrawer> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomDrawerButton(
-                  text: 'Home',
+                  text: StringManager.home.tr(),
                   onPressed: () {},
                 ),
                 CustomDrawerButton(
-                  text: 'Jobs',
+                  text: StringManager.jobs.tr(),
                   onPressed: () {},
                 ),
                 CustomDrawerButton(
-                  text: 'Companies',
+                  text: StringManager.companies.tr(),
                   onPressed: () {},
                 ),
                 CustomDrawerButton(
-                  text: 'Blog',
+                  text: StringManager.blog.tr(),
                   onPressed: () {},
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomDrawerButton(
-                      text: 'Options',
+                      text: StringManager.options.tr(),
                       onPressed: () {},
                     ),
                     Padding(
@@ -65,33 +67,44 @@ class _HomeDrawerState extends State<HomeDrawer> {
                     ),
                   ],
                 ),
-                SizedBox(height: AppSize.screenHeight!*.45,),
-              InkWell(
-                onTap: (){},
-                child: Center(
-                  child: Container(
-                    height:  AppSize.defaultSize!*4,
-                    width:  AppSize.screenWidth!*.6,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(AppSize.defaultSize!*.5),
-                  border: Border.all(color: AppColors.primaryColor)
-                    ),child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.logout,color: AppColors.primaryColor,),
-                      SizedBox(width:  AppSize.defaultSize!,),
-                      const Text('LogOut',style: TextStyle(
-                        color: AppColors.primaryColor,
-                        fontWeight: FontWeight.w600
-                        
-                      ),),
-                      
-                    ],
-                  ),
-                  ),
+                SizedBox(
+                  height: AppSize.screenHeight! * .45,
                 ),
-              )
+                InkWell(
+                  onTap: () {},
+                  child: Center(
+                    child: Container(
+                      height: AppSize.defaultSize! * 4,
+                      width: AppSize.screenWidth! * .6,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                              BorderRadius.circular(AppSize.defaultSize! * .5),
+                          border: Border.all(color: AppColors.primaryColor)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.logout,
+                            color: AppColors.primaryColor,
+                            size: AppSize.defaultSize! * 1.5,
+                          ),
+                          SizedBox(
+                            width: AppSize.defaultSize!,
+                          ),
+                          Text(
+                            StringManager.logOut.tr(),
+                            style: TextStyle(
+                              color: AppColors.primaryColor,
+                              fontWeight: FontWeight.w600,
+                              fontSize: AppSize.defaultSize! * 1.2,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           ),

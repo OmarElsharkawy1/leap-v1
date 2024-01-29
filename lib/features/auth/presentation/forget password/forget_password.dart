@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:leap/core/resource_manager/routes.dart';
+import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/app_bar.dart';
 import 'package:leap/core/widgets/main_button.dart';
-import 'package:leap/features/auth/presentation/widgets/column_with_text_field.dart';
+import 'package:leap/core/widgets/column_with_text_field.dart';
 
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({super.key});
@@ -30,13 +32,13 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context,text: 'forget password'),
+      appBar: appBar(context,text: StringManager.forgetPassword.tr()),
       body: Padding(
         padding: EdgeInsets.all(AppSize.defaultSize! * 2),
         child: Column(
           children: [
             Text(
-              'We will send a code to your Mobile No. to verify your Mobile No. to set the new password',
+              StringManager.weWillSend.tr(),
               maxLines: 4,
               style: TextStyle(
                   fontSize: AppSize.defaultSize! * 1.6,
@@ -44,13 +46,13 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   overflow: TextOverflow.ellipsis),
             ),
             ColumnWithTextField(
-              text: 'Enter Your Mobile No.',
+              text:  StringManager.enterYourMobile.tr(),
               controller: phoneController,
             ),
             SizedBox(
               height: AppSize.defaultSize!*4,
             ),
-            MainButton(text: 'Send Code',onTap: (){
+            MainButton(text:  StringManager.sendCode.tr(),onTap: (){
               Navigator.pushNamed(context, Routes.sendOTPCode);
             },)
           ],
