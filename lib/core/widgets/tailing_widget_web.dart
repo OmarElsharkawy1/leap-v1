@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/custom_text_button.dart';
+import 'package:leap/view/constants/extensions.dart';
 
 class TailingWidget extends StatelessWidget {
   const TailingWidget({Key? key}) : super(key: key);
@@ -10,15 +12,15 @@ class TailingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppSize.screenWidth,
-      height: WidgetRatio.heightRatio(279),
+      width: context.screenWidth,
+      height: 279.h,
       color: AppColors.tailingWidgetColor,
       child: Padding(
         padding: EdgeInsets.only(
-          right: WidgetRatio.widthRatio(100),
-          left: WidgetRatio.widthRatio(100),
-          top: WidgetRatio.heightRatio(29),
-          bottom: WidgetRatio.heightRatio(16),
+          right: 244.w,
+          left: 244.w,
+          top: 29.h,
+          bottom: 16.h,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -26,27 +28,26 @@ class TailingWidget extends StatelessWidget {
           children: [
             Image.asset(
               AssetPath.logo,
-              height: WidgetRatio.heightRatio(40),
-              width: WidgetRatio.widthRatio(64),
+              height: 40.h,
+              width: 64.w,
             ),
             Row(
-              // mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SizedBox(
-                  width: WidgetRatio.widthRatio(270),
+                  width: 270.w,
                   child: Text(
                     '''Explore a world of possibilities with our internships, jobs website. Connect with dynamic opportunities, gain hands-on-experience, and propel your career forward.''',
                     overflow: TextOverflow.clip,
                     style: TextStyle(
                       color: AppColors.primaryColor,
                       fontFamily: 'Poppins',
-                      fontSize: WidgetRatio.widthRatio(14),
+                      fontSize: 14.sp,
                     ),
                   ),
                 ),
-                SizedBox(width: WidgetRatio.widthRatio(136)),
+                SizedBox(width: 136.w),
                 SizedBox(
-                  height: WidgetRatio.heightRatio(140),
+                  height: 140.h,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,34 +57,35 @@ class TailingWidget extends StatelessWidget {
                         style: TextStyle(
                           color: AppColors.mainFontColor,
                           fontFamily: 'Poppins',
-                          fontSize: WidgetRatio.widthRatio(16),
+                          fontSize: 16.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       CustomTextButton(
                         text: 'About US',
                         textColor: AppColors.primaryColor,
-                        textSize: WidgetRatio.widthRatio(16),
+                        textSize: 16.sp,
                         textFamily: 'Poppins',
                       ),
                       CustomTextButton(
                         text: 'Contact US',
                         textColor: AppColors.primaryColor,
-                        textSize: WidgetRatio.widthRatio(16),
+                        textSize: 16.sp,
                         textFamily: 'Poppins',
                       ),
                       CustomTextButton(
                         text: 'Blog',
                         textColor: AppColors.primaryColor,
-                        textSize: WidgetRatio.widthRatio(16),
+                        textSize: 16.sp,
                         textFamily: 'Poppins',
                       ),
                     ],
                   ),
                 ),
-                SizedBox(width: WidgetRatio.widthRatio(136)),
+                SizedBox(width: 136.w),
                 SizedBox(
-                  height: WidgetRatio.heightRatio(140),
+                  height: 140.h,
+                  width: (130 + 130 + 8).sp,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,25 +95,27 @@ class TailingWidget extends StatelessWidget {
                         style: TextStyle(
                           color: AppColors.primaryColor,
                           fontFamily: 'Poppins',
-                          fontSize: WidgetRatio.widthRatio(16),
+                          fontSize: 16.sp,
                         ),
                       ),
                       SizedBox(
-                        height: WidgetRatio.heightRatio(8),
+                        height: 8.h,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Image.asset(
                             AssetPath.googlePlay,
-                            // width: WidgetRatio.widthRatio(144),
-                            height: WidgetRatio.heightRatio(40),
+                            fit: BoxFit.fill,
+                            width: 130.w,
+                            height: 40.h,
                           ),
-                          const SizedBox(width: 8),
+                          SizedBox(width: 8.w),
                           Image.asset(
                             AssetPath.appStore,
-                            // width: WidgetRatio.widthRatio(144),
-                            height: WidgetRatio.heightRatio(40),
+                            fit: BoxFit.fill,
+                            width: 130.w,
+                            height: 40.h,
                           ),
                         ],
                       ),
@@ -129,7 +133,7 @@ class TailingWidget extends StatelessWidget {
                 style: TextStyle(
                   color: AppColors.tailingFontColor,
                   fontFamily: 'Poppins',
-                  fontSize: WidgetRatio.widthRatio(14),
+                  fontSize: 14.sp,
                 ),
               ),
             ),

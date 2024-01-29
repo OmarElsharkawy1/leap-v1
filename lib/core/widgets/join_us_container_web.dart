@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/utils/app_size.dart';
+import 'package:leap/core/widgets/main_button_web.dart';
 
 class JoinUsContainer extends StatelessWidget {
   const JoinUsContainer({Key? key}) : super(key: key);
@@ -11,8 +13,8 @@ class JoinUsContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: AppColors.secondaryBackGroundColor,
-      width: WidgetRatio.widthRatio(952),
-      height: WidgetRatio.heightRatio(287),
+      width: 952.w,
+      height: 287.h,
       child: Stack(
         children: [
           Positioned(
@@ -22,12 +24,12 @@ class JoinUsContainer extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 color: AppColors.containerColor,
               ),
-              width: WidgetRatio.widthRatio(952),
-              height: WidgetRatio.heightRatio(267),
+              width: 952.w,
+              height: 247.h,
               child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: WidgetRatio.widthRatio(40),
-                  vertical: WidgetRatio.heightRatio(32),
+                padding: EdgeInsets.only(
+                  left: 40.w,
+                  top: 32.h,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,7 +40,7 @@ class JoinUsContainer extends StatelessWidget {
                         color: AppColors.primaryColor,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.bold,
-                        fontSize: WidgetRatio.widthRatio(30),
+                        fontSize: 30.sp,
                       ),
                     ),
                     Text(
@@ -46,7 +48,7 @@ class JoinUsContainer extends StatelessWidget {
                       style: TextStyle(
                         color: AppColors.mainFontColor,
                         fontFamily: 'Poppins',
-                        fontSize: WidgetRatio.widthRatio(14),
+                        fontSize: 14.sp,
                       ),
                     ),
                     Text(
@@ -54,65 +56,38 @@ class JoinUsContainer extends StatelessWidget {
                       style: TextStyle(
                         color: AppColors.mainFontColor,
                         fontFamily: 'Poppins',
-                        fontSize: WidgetRatio.widthRatio(14),
+                        fontSize: 14.sp,
                       ),
                     ),
                     Row(
                       children: [
                         Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: WidgetRatio.heightRatio(20)),
-                          child: ElevatedButton(
-                            onPressed: () =>
-                                Navigator.pushNamed(context, Routes.signUp),
-                            style: OutlinedButton.styleFrom(
-                              backgroundColor: AppColors.primaryColor,
-                              fixedSize: Size(
-                                WidgetRatio.widthRatio(232),
-                                WidgetRatio.heightRatio(48),
-                              ),
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(5),
-                                ),
-                              ),
-                            ),
-                            child: Text(
-                              'Create Account',
-                              style: TextStyle(
-                                color: AppColors.backGroundColor,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.bold,
-                                fontSize: WidgetRatio.widthRatio(14),
-                              ),
-                            ),
+                          padding: EdgeInsets.symmetric(vertical: 20.h),
+                          child: MainButtonWeb(
+                            text: 'Create Account',
+                            width: 232.w,
+                            height: 48.h,
+                            textSize: 14.sp,
+                            fontWeight: FontWeight.bold,
+                            textColor: AppColors.backGroundColor,
+                            color: AppColors.primaryColor,
+                            borderColor: AppColors.primaryColor,
+                            radius: 5,
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: OutlinedButton.styleFrom(
-                              backgroundColor: AppColors.primaryColor,
-                              fixedSize: Size(
-                                WidgetRatio.widthRatio(232),
-                                WidgetRatio.heightRatio(48),
-                              ),
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(5),
-                                ),
-                              ),
-                            ),
-                            child: Text(
-                              'For Employers',
-                              style: TextStyle(
-                                color: AppColors.backGroundColor,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.bold,
-                                fontSize: WidgetRatio.widthRatio(14),
-                              ),
-                            ),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 20.h, horizontal: 8.w),
+                          child: MainButtonWeb(
+                            text: 'For Employers',
+                            width: 232.w,
+                            height: 48.h,
+                            textSize: 14.sp,
+                            fontWeight: FontWeight.bold,
+                            textColor: AppColors.backGroundColor,
+                            color: AppColors.primaryColor,
+                            borderColor: AppColors.primaryColor,
+                            radius: 5,
                           ),
                         ),
                       ],
@@ -123,12 +98,13 @@ class JoinUsContainer extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: 60,
+            right: 60.w,
             bottom: 0,
             child: Image.asset(
+              fit: BoxFit.fill,
               AssetPath.human,
-              width: WidgetRatio.widthRatio(173),
-              height: WidgetRatio.heightRatio(287),
+              width: 173.w,
+              height: 287.h,
             ),
           ),
         ],

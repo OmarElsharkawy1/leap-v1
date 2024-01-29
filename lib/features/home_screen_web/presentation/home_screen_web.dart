@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leap/core/utils/app_size.dart';
+import 'package:leap/core/widgets/join_us_container_web.dart';
+import 'package:leap/core/widgets/tailing_widget_web.dart';
 import 'package:leap/features/home_screen_web/presentation/widgets//job_carousel_web.dart';
 import 'package:leap/features/home_screen_web/presentation/widgets//search_section.dart';
 import 'package:leap/features/home_screen_web/presentation/widgets/featured_skill.dart';
@@ -34,14 +36,10 @@ class HomeScreenWeb extends StatelessWidget {
               height: 120.h,
             ),
             const TopEmployers(),
-            // SizedBox(
-            //   height: WidgetRatio.heightRatio(160),
-            // ),
-            // const JoinUsContainer(),
-            // SizedBox(
-            //   height: WidgetRatio.heightRatio(120),
-            // ),
-            // const TailingWidget(),
+            SizedBox(height: 160.h),
+            const JoinUsContainer(),
+            SizedBox(height: 120.h),
+            const TailingWidget(),
           ],
         ),
       ),

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/core/resource_manager/colors.dart';
+import 'package:leap/core/widgets/custom_dropdown.dart';
 import 'package:leap/core/widgets/custom_text_button.dart';
 import 'package:leap/core/widgets/main_button_web.dart';
-import 'package:leap/view/constants/colors.dart';
 
 class WebAppbar extends StatefulWidget {
   const WebAppbar({Key? key}) : super(key: key);
@@ -19,8 +19,6 @@ class _WebAppbarState extends State<WebAppbar> {
 
   @override
   Widget build(BuildContext context) {
-    String recoursesListValue = recoursesList.first;
-    String optionsListValue = optionsList.first;
     return Container(
       color: Colors.white,
       child: Row(
@@ -70,65 +68,28 @@ class _WebAppbarState extends State<WebAppbar> {
           ),
           // Recourses
           Padding(
-            padding: EdgeInsets.all(4.0.w),
-            child: DropdownButtonHideUnderline(
-              child: DropdownButton<String>(
-                value: recoursesListValue,
-                icon: Icon(
-                  Icons.keyboard_arrow_down_sharp,
-                  size: 12.w,
-                ),
-                // elevation: 16,
-                style: TextStyle(
-                    color: mainFontColor,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w500),
-                onChanged: (String? value) {
-                  // This is called when the user selects an item.
-                  // setState(() {
-                  //   recoursesListValue = value!;
-                  // });
-                },
-                items:
-                    recoursesList.map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-              ),
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+            child: SimpleDropdown(
+              list: recoursesList,
+              height: 35.h,
+              width: 100.w,
+              fontSize: 14.sp,
+              fontColor: AppColors.mainFontColor,
+              backgroundColor: AppColors.backGroundColor,
+              fontWeight: FontWeight.w500,
+              containerPadding: EdgeInsets.symmetric(horizontal: 4.w),
             ),
           ),
           //Options
-          Padding(
-            padding: EdgeInsets.all(4.0.w),
-            child: DropdownButtonHideUnderline(
-              child: DropdownButton<String>(
-                value: optionsListValue,
-                icon: Icon(
-                  Icons.keyboard_arrow_down_sharp,
-                  size: 12.w,
-                ),
-                // elevation: 16,
-                style: TextStyle(
-                    color: mainFontColor,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w500),
-                onChanged: (String? value) {
-                  // This is called when the user selects an item.
-                  // setState(() {
-                  //   optionsListValue = value!;
-                  // });
-                },
-                items:
-                    optionsList.map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-              ),
-            ),
+          SimpleDropdown(
+            list: optionsList,
+            height: 35.h,
+            width: 100.w,
+            fontSize: 14.sp,
+            fontColor: AppColors.mainFontColor,
+            backgroundColor: AppColors.backGroundColor,
+            fontWeight: FontWeight.w500,
+            containerPadding: EdgeInsets.symmetric(horizontal: 4.w),
           ),
           const Spacer(),
           // Sign Up
