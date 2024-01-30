@@ -28,9 +28,7 @@ class HomeScreenWeb extends StatelessWidget {
           children: [
             const WebAppbar(),
             const SearchSection(),
-            SizedBox(
-              height: 120.h,
-            ),
+            SizedBox(height: 120.h),
             const CarouselWithIndicatorWeb(),
             SizedBox(height: context.screenHeight * 0.14.h),
             const FeaturedSkill(),

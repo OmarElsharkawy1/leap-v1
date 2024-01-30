@@ -304,13 +304,13 @@ class JobSearch extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.all(4.0),
+                padding: const EdgeInsets.all(12.0),
                 child: SizedBox(
                   width: 150.w,
                   height: 20.h,
                   child: TextField(
                     textAlign: TextAlign.center,
-                    expands: true,
+                    // expands: true,
                     maxLines: null,
                     decoration: InputDecoration(
                       border: const OutlineInputBorder(
@@ -329,7 +329,7 @@ class JobSearch extends StatelessWidget {
                         ),
                       ),
                       filled: true,
-                      contentPadding: EdgeInsets.all(8.w),
+                      contentPadding: EdgeInsets.only(bottom: 3),
                       fillColor: backGroundColor,
                       hintText: 'What Are You Searching For?',
                       hintStyle: TextStyle(

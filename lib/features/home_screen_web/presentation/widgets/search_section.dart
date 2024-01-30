@@ -6,46 +6,125 @@ import 'package:leap/features/home_screen_web/presentation/widgets/job_search.da
 import 'package:leap/features/home_screen_web/presentation/widgets/jobs_posted.dart';
 import 'package:leap/features/home_screen_web/presentation/widgets/search_by_tags_text.dart';
 import 'package:leap/view/constants/extensions.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class SearchSection extends StatelessWidget {
   const SearchSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: context.screenWidth,
-      height: context.screenHeight + 20.h,
-      child: Stack(
-        children: [
-          Positioned(
-            width: context.screenWidth,
-            height: context.screenHeight - 60.h,
-            child: Image.asset(
-              AssetPath.homeBackgroundLarge,
-              fit: BoxFit.cover,
-            ),
+    return ScreenTypeLayout.builder(
+      desktop: (context) {
+        return SizedBox(
+          width: context.screenWidth,
+          height: context.screenHeight + 20.h,
+          child: Stack(
+            children: [
+              Positioned(
+                width: context.screenWidth,
+                height: context.screenHeight - 60.h,
+                child: Image.asset(
+                  AssetPath.homeBackgroundLarge,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Container(
+                width: context.screenWidth,
+                height: context.screenHeight - 60.h,
+                color: Colors.black.withOpacity(0.5),
+              ),
+              const Positioned.fill(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Spacer(),
+                    JobsPosted(),
+                    JobSearch(),
+                    SearchByTagsText(),
+                    Spacer(),
+                    CardRow(),
+                  ],
+                ),
+              ),
+            ],
           ),
-          Container(
-            width: context.screenWidth,
-            height: context.screenHeight - 60.h,
-            color: Colors.black.withOpacity(0.5),
+        );
+      },
+      tablet: (context) {
+        return SizedBox(
+          width: context.screenWidth,
+          height: context.screenHeight - 300.h,
+          child: Stack(
+            children: [
+              Positioned(
+                width: context.screenWidth,
+                height: context.screenHeight - 350.h,
+                child: Image.asset(
+                  AssetPath.homeBackgroundLarge,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Container(
+                width: context.screenWidth,
+                height: context.screenHeight - 350.h,
+                color: Colors.black.withOpacity(0.5),
+              ),
+              const Positioned.fill(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Spacer(),
+                    JobsPosted(),
+                    JobSearch(),
+                    SearchByTagsText(),
+                    Spacer(),
+                    CardRow(),
+                  ],
+                ),
+              ),
+            ],
           ),
-          const Positioned.fill(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Spacer(),
-                JobsPosted(),
-                JobSearch(),
-                SearchByTagsText(),
-                Spacer(),
-                CardRow(),
-              ],
-            ),
+        );
+      },
+      mobile: (context) {
+        return SizedBox(
+          width: context.screenWidth,
+          height: context.screenHeight + 400.h,
+          child: Stack(
+            children: [
+              Positioned(
+                width: context.screenWidth,
+                height: context.screenHeight - 200.h,
+                child: Image.asset(
+                  AssetPath.homeBackgroundLarge,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Container(
+                width: context.screenWidth,
+                height: context.screenHeight - 200.h,
+                color: Colors.black.withOpacity(0.5),
+              ),
+              const Positioned.fill(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Spacer(),
+                    JobsPosted(),
+                    JobSearch(),
+                    SearchByTagsText(),
+                    Spacer(),
+                    CardRow(),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
