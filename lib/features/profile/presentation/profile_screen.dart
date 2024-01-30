@@ -6,7 +6,7 @@ import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/app_bar.dart';
 import 'package:leap/core/widgets/column_with_text_field.dart';
 import 'package:leap/core/widgets/main_button.dart';
-import 'package:leap/features/profile/upload_cv.dart';
+import 'package:leap/features/profile/presentation/widgets/upload_cv.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

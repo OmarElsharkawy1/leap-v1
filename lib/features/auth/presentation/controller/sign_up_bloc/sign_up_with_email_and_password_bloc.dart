@@ -15,7 +15,7 @@ class SignUpWithEmailAndPasswordBloc extends Bloc<
     on<SignUpWithEmailAndPasswordEvent>((event, emit) async {
       emit(const SignUpWithEmailAndPasswordLoadingState());
       final result = await loginWithEmailAndPasswordUseCase
-          .call(SignUpModel(email: event.phone, password: event.password));
+          .call(SignUpModel(email: event.phone, password: event.password,eduLevel: event.eduLevel));
       result.fold(
           (l) => emit(const SignUpWithEmailAndPasswordSuccessMessageState(
               successMessage: StringManager.loginSuccessfully)),
