@@ -15,7 +15,7 @@ class CarouselWithIndicatorWeb extends StatefulWidget {
 }
 
 class _CarouselWithIndicatorState extends State<CarouselWithIndicatorWeb> {
-  final int _current = 0;
+  int current = 0;
   final List<Widget> jobSlider = [
     JobCard(job: dummyJobs[0]),
     JobCard(job: dummyJobs[1]),
@@ -25,8 +25,9 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorWeb> {
 
   @override
   Widget build(BuildContext context) {
+    // int current = 0;
     return SizedBox(
-      height: 238.h,
+      height: 250.h,
       // width: WidgetRatio.widthRatio(952),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,11 +40,11 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorWeb> {
                   autoPlay: false,
                   enlargeCenterPage: false,
                   viewportFraction: 1,
-                  aspectRatio: 5.w,
+                  aspectRatio: 1.5.w,
                   onPageChanged: (index, reason) {
-                    // setState(() {
-                    //   _current = index;
-                    // });
+                    setState(() {
+                      current = index;
+                    });
                   }),
             ),
           ),
@@ -61,7 +62,7 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorWeb> {
                     color: (Theme.of(context).brightness == Brightness.dark
                             ? Colors.white
                             : Colors.black)
-                        .withOpacity(_current == entry.key ? 0.9 : 0.4),
+                        .withOpacity(current == entry.key ? 0.9 : 0.4),
                   ),
                 ),
               );

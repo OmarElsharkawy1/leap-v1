@@ -91,12 +91,12 @@ class SearchSection extends StatelessWidget {
       mobile: (context) {
         return SizedBox(
           width: context.screenWidth,
-          height: context.screenHeight + 400.h,
+          height: context.screenHeight + 570.h,
           child: Stack(
             children: [
               Positioned(
                 width: context.screenWidth,
-                height: context.screenHeight - 200.h,
+                height: context.screenHeight - 50.h,
                 child: Image.asset(
                   AssetPath.homeBackgroundLarge,
                   fit: BoxFit.cover,
@@ -104,7 +104,7 @@ class SearchSection extends StatelessWidget {
               ),
               Container(
                 width: context.screenWidth,
-                height: context.screenHeight - 200.h,
+                height: context.screenHeight - 50.h,
                 color: Colors.black.withOpacity(0.5),
               ),
               const Positioned.fill(
@@ -112,7 +112,6 @@ class SearchSection extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Spacer(),
                     JobsPosted(),
                     JobSearch(),
                     SearchByTagsText(),
