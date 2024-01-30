@@ -11,7 +11,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 void main() async {
   await ServerLocator().init();
   ResponsiveSizingConfig.instance.setCustomBreakpoints(
-    const ScreenBreakpoints(desktop: 800, tablet: 550, watch: 200),
+    const ScreenBreakpoints(desktop: 800, tablet: 700, watch: 200),
   );
   runApp(const MyApp());
 }
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: ScreenUtilInit(
-        designSize: context.screenWidth >= 690
+        designSize: context.screenWidth >= 700
             ? const Size(1440, 768)
             : const Size(360, 690),
         minTextAdapt: true,

@@ -15,6 +15,7 @@ class SimpleDropdown extends StatelessWidget {
     this.fontSize,
     this.fontColor,
     this.fontWeight,
+    this.closedHeaderPadding,
   }) : super(key: key);
 
   final List<String> list;
@@ -27,6 +28,7 @@ class SimpleDropdown extends StatelessWidget {
   final FontWeight? fontWeight;
   final Color? fontColor;
   final EdgeInsets containerPadding;
+  final EdgeInsets? closedHeaderPadding;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -35,8 +37,9 @@ class SimpleDropdown extends StatelessWidget {
         hintText: hintText,
         // listItemPadding: EdgeInsets.symmetric(horizontal: 1),
         itemsListPadding: itemListPadding,
-        closedHeaderPadding: containerPadding,
+        closedHeaderPadding: closedHeaderPadding,
         decoration: CustomDropdownDecoration(
+          closedBorderRadius: const BorderRadius.all(Radius.circular(10)),
           hintStyle: TextStyle(
             fontSize: fontSize,
             color: fontColor,

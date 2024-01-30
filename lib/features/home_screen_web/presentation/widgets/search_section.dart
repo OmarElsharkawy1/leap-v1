@@ -22,7 +22,7 @@ class SearchSection extends StatelessWidget {
             height: context.screenHeight - 60.h,
             child: Image.asset(
               AssetPath.homeBackgroundLarge,
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             ),
           ),
           Container(
@@ -35,13 +35,10 @@ class SearchSection extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // SizedBox(height: size.height * .25),
                 Spacer(),
                 JobsPosted(),
                 JobSearch(),
                 SearchByTagsText(),
-                // Spacer(),
-                // SizedBox(height: size.height * .25),
                 Spacer(),
                 CardRow(),
               ],
