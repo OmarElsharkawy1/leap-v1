@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leap/core/utils/app_size.dart';
+import 'package:leap/core/widgets/drawer_web/drawer_web.dart';
 import 'package:leap/core/widgets/join_us_container_web.dart';
 import 'package:leap/core/widgets/tailing_widget_web.dart';
 import 'package:leap/features/home_screen_web/presentation/widgets//job_carousel_web.dart';
@@ -19,6 +20,7 @@ class HomeScreenWeb extends StatelessWidget {
     AppSize().init(context);
 
     return Scaffold(
+      drawer: const DrawerWeb(),
       backgroundColor: secondaryBackGroundColor,
       body: SingleChildScrollView(
         child: Column(
