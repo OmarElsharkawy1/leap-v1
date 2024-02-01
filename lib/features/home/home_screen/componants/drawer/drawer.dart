@@ -1,11 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:leap/core/resource_manager/colors.dart';
+import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/main_button.dart';
 import 'package:leap/features/home/home_screen/componants/drawer/widgets/drawer-buttons.dart';
 import 'package:leap/features/home/home_screen/componants/drawer/widgets/user_row.dart';
+import 'package:leap/features/main_screen.dart';
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer({super.key});
@@ -37,11 +39,19 @@ class _HomeDrawerState extends State<HomeDrawer> {
               children: [
                 CustomDrawerButton(
                   text: StringManager.home.tr(),
-                  onPressed: () {},
+                  onPressed: () {
+                    MainScreen.mainIndex = 0;
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, Routes.main, (Route<dynamic> route) => false);
+                  },
                 ),
                 CustomDrawerButton(
                   text: StringManager.jobs.tr(),
-                  onPressed: () {},
+                  onPressed: () {
+                    MainScreen.mainIndex = 2;
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, Routes.main, (Route<dynamic> route) => false);
+                  },
                 ),
                 CustomDrawerButton(
                   text: StringManager.companies.tr(),
@@ -50,6 +60,13 @@ class _HomeDrawerState extends State<HomeDrawer> {
                 CustomDrawerButton(
                   text: StringManager.blog.tr(),
                   onPressed: () {},
+                ),
+                CustomDrawerButton(
+                  text: StringManager.myApplications.tr(),
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.pushNamed(context, Routes.myApplications);
+                  },
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,10 +1,14 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/core/resource_manager/colors.dart';
+import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
 
 class JobsAndInternCard extends StatefulWidget {
-  const JobsAndInternCard({super.key});
+  const JobsAndInternCard({super.key, this.text});
+
+  final String? text;
 
   @override
   State<JobsAndInternCard> createState() => _JobsAndInternCardState();
@@ -94,7 +98,7 @@ class _JobsAndInternCardState extends State<JobsAndInternCard> {
                           border: Border.all(color: AppColors.primaryColor)),
                       child: Center(
                         child: Text(
-                          'Apply Now',
+                          widget.text ?? StringManager.applyNow.tr(),
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: AppSize.defaultSize! * 1.4,

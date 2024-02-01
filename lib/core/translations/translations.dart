@@ -72,5 +72,8 @@ class CodegenLoader extends AssetLoader {
     StringManager.saveChanges: "حفظ التغيرات",
     StringManager.tabToUploadCV: "تحميل السيرة الذاتية",
     StringManager.pleaseCompleteYourData: "الرجاء اكمال البيانات",
+    StringManager.myApplications: "طلباتي",
+    StringManager.applyNow: "تقديم طلب",
+    StringManager.viewDetails: "التفاصيل",
   };
 }

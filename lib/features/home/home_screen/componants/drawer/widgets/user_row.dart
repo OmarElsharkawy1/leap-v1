@@ -3,41 +3,52 @@ import 'package:flutter/material.dart';
 import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
+
 class UserRowDrawer extends StatelessWidget {
   const UserRowDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
+        Navigator.pop(context);
         Navigator.pushNamed(context, Routes.profile);
       },
       child: SizedBox(
-        height: AppSize.defaultSize!*7,
+        height: AppSize.defaultSize! * 7,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(width: AppSize.defaultSize!*3.5,),
-              CircleAvatar(
-              radius: AppSize.defaultSize!*2,
+            SizedBox(
+              width: AppSize.defaultSize! * 3.5,
+            ),
+            CircleAvatar(
+              radius: AppSize.defaultSize! * 2,
               backgroundColor: Colors.black,
             ),
-            SizedBox(width: AppSize.defaultSize!*2,),
+            SizedBox(
+              width: AppSize.defaultSize! * 2,
+            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                  Text('Mohamed Ahmed',style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: AppSize.defaultSize! * 1.4,
-                ),),
-                Text(StringManager.viewProfile.tr(),style: TextStyle(
-                  fontSize: AppSize.defaultSize!*1.2,
-                  color: Colors.grey,
-                ),),
+                Text(
+                  'Mohamed Ahmed',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: AppSize.defaultSize! * 1.4,
+                  ),
+                ),
+                Text(
+                  StringManager.viewProfile.tr(),
+                  style: TextStyle(
+                    fontSize: AppSize.defaultSize! * 1.2,
+                    color: Colors.grey,
+                  ),
+                ),
               ],
             ),
-
           ],
         ),
       ),

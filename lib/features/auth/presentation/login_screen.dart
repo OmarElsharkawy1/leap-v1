@@ -139,7 +139,8 @@ class _LoginScreenState extends State<LoginScreen> {
             MainButton(
               text: StringManager.login.tr(),
               onTap: () {
-                Navigator.pushNamed(context, Routes.home);
+
+                Navigator.pushNamed(context, Routes.main);
               },
             ),
             SizedBox(

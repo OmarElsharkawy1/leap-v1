@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/features/home/home_screen/controller/cubit.dart';
-import 'package:leap/view/constants/colors.dart';
 
 class HomeBottomNavigationBar extends StatelessWidget {
   const HomeBottomNavigationBar({Key? key, required this.cubit})
@@ -19,15 +19,15 @@ class HomeBottomNavigationBar extends StatelessWidget {
       },
       type: BottomNavigationBarType.fixed,
       selectedIconTheme:
-          IconThemeData(color: primaryColor, size: AppSize.defaultSize! * 2),
+          IconThemeData(color: AppColors.primaryColor, size: AppSize.defaultSize! * 2),
       selectedLabelStyle: TextStyle(
-        color: primaryColor,
+        color: AppColors.primaryColor,
         fontSize: AppSize.defaultSize!,
       ),
       unselectedLabelStyle: TextStyle(
         fontSize: AppSize.defaultSize! * .8,
       ),
-      backgroundColor: secondaryBackGroundColor,
+      backgroundColor:AppColors. secondaryBackGroundColor,
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(

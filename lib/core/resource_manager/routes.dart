@@ -6,56 +6,64 @@ import 'package:leap/features/auth/presentation/forget%20password/forget_passwor
 import 'package:leap/features/auth/presentation/forget%20password/send_otp_code.dart';
 import 'package:leap/features/auth/presentation/login_screen.dart';
 import 'package:leap/features/auth/presentation/signup/sign_up.dart';
-import 'package:leap/features/auth_web/presentation/login_screen_web.dart';
-import 'package:leap/features/auth_web/presentation/signup_web/sign_up_web.dart';
 import 'package:leap/features/main_screen.dart';
-import 'package:leap/features/home_screen_web/presentation/home_screen_web.dart';
+import 'package:leap/features/profile/presentation/componants/my_applications.dart';
 import 'package:leap/features/profile/presentation/profile_screen.dart';
 
 class Routes {
   static const String login = "/login";
-  static const String home = "/home";
+  static const String main = "/main";
   static const String signUp = "/signUp";
   static const String forgetPassword = "/forgetPassword";
   static const String sendOTPCode = "/sendOTPCode";
   static const String changePassword = "/changePassword";
   static const String profile = "/profile";
+  static const String myApplications = "/myApplications";
 }
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
-      case Routes.home:
-        if (Platform.isWindows) {
-          return MaterialPageRoute(builder: (_) => const HomeScreenWeb());
-        } else {
-          return MaterialPageRoute(builder: (_) => const MainScreen());
-        }
+      case Routes.main:
+        return PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                const MainScreen(),
+            transitionsBuilder: customAnimate);
       case Routes.login:
-        if (Platform.isWindows) {
-          return MaterialPageRoute(builder: (_) => const LoginScreenWeb());
-        } else {
-          return MaterialPageRoute(builder: (_) => const LoginScreen());
-        }
+        return PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                const LoginScreen(),
+            transitionsBuilder: customAnimate);
+
       case Routes.signUp:
-        if (Platform.isWindows) {
-          return MaterialPageRoute(builder: (_) => const SignUpScreenWeb());
-        } else {
-          return PageRouteBuilder(
-              pageBuilder: (context, animation, secondaryAnimation) =>
-                  const SignUpScreen(),
-              transitionsBuilder: customAnimate);
-        }
+        return PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                const SignUpScreen(),
+            transitionsBuilder: customAnimate);
       case Routes.forgetPassword:
-        return MaterialPageRoute(builder: (_) => const ForgetPassword());
+        return PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                const ForgetPassword(),
+            transitionsBuilder: customAnimate);
       case Routes.sendOTPCode:
-        return MaterialPageRoute(builder: (_) => const SendOTPCode());
+        return PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                const SendOTPCode(),
+            transitionsBuilder: customAnimate);
       case Routes.changePassword:
-        return MaterialPageRoute(builder: (_) => const ChangePassword());
+        return PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                const ChangePassword(),
+            transitionsBuilder: customAnimate);
       case Routes.profile:
         return PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
                 const ProfileScreen(),
+            transitionsBuilder: customAnimate);
+        case Routes.myApplications:
+        return PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                const MyApplications(),
             transitionsBuilder: customAnimate);
     }
     return unDefinedRoute();

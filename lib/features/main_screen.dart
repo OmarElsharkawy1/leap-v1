@@ -2,18 +2,19 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:leap/core/resource_manager/colors.dart';
+import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/features/home/home_screen/componants/drawer/drawer.dart';
 import 'package:leap/features/home/home_screen/home_screen.dart';
-import 'package:leap/features/internships/internship_screen.dart';
-import 'package:leap/features/jobs/job_screen.dart';
+import 'package:leap/features/internships/presentation/internship_screen.dart';
+import 'package:leap/features/jobs/presentation/job_screen.dart';
 
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
-
+static int mainIndex=0;
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
@@ -22,8 +23,17 @@ class _MainScreenState extends State<MainScreen> {
   late PersistentTabController _controller;
 
   List<Widget> _buildScreens() {
-    return const[
-       HomeScreen(),
+    return  [
+       HomeScreen(
+         onPressedJob: (){
+         MainScreen.mainIndex=2;
+     Navigator.pushNamed(context, Routes.main);
+       },
+       onPressedIntern: (){
+         MainScreen.mainIndex=1;
+         Navigator.pushNamed(context, Routes.main);
+       },
+       ),
       InternshipScreen(),
       JobsScreen(),
       HomeScreen(),
@@ -79,7 +89,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void initState() {
-    _controller = PersistentTabController(initialIndex: 0);
+    _controller = PersistentTabController(initialIndex:MainScreen. mainIndex);
     super.initState();
   }
 

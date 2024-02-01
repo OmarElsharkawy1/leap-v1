@@ -52,6 +52,9 @@ class StringManager{
   static const String profile = "Profile";
   static const String changeProfilePicture = "Change Profile Picture";
   static const String saveChanges = "Save Changes";
+  static const String myApplications = "My Application";
+  static const String applyNow = "Apply Now";
+  static const String viewDetails = "View details";
   static const String pleaseCompleteYourData = "Please complete your data";
   static const String tabToUploadCV = "Tap here to \nUpload your CV";
 

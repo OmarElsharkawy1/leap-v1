@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/app_bar.dart';
@@ -51,7 +52,9 @@ class _ChangePasswordState extends State<ChangePassword> {
             SizedBox(
               height: AppSize.defaultSize!*4,
             ),
-              MainButton(text: StringManager.confirm.tr())
+              MainButton(text: StringManager.confirm.tr(),onTap: (){
+                Navigator.pushNamedAndRemoveUntil(context, Routes.login, (Route<dynamic> route) => false) ;
+              },)
           ],
         ),
       ),
