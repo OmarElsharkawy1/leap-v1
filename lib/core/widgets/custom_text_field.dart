@@ -13,14 +13,19 @@ class CustomTextField extends StatefulWidget {
   final Widget? suffixIcon;
   final void Function()? onTap;
   final TextStyle? hintStyle;
-   const CustomTextField({
+
+  const CustomTextField({
     Key? key,
-      this.labelText,
-      this.controller,
+    this.labelText,
+    this.controller,
     this.keyboardType = TextInputType.text,
     this.obscureText = false,
-     this.readOnly=false,
-    this.prefixIcon, this.suffixIcon, this.onTap, this.hintText, this.hintStyle,
+    this.readOnly = false,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.onTap,
+    this.hintText,
+    this.hintStyle,
   }) : super(key: key);
 
   @override
@@ -34,39 +39,29 @@ class _CustomTextFieldState extends State<CustomTextField> {
       height: AppSize.defaultSize! * 6,
       width: AppSize.screenWidth! - (AppSize.defaultSize! * 4),
       child: TextFormField(
-        onTap:widget. onTap,
-        readOnly:widget. readOnly,
-
+        onTap: widget.onTap,
+        readOnly: widget.readOnly,
         decoration: InputDecoration(
-
-            labelText: widget.labelText,
-            hintText: widget.hintText,
-
-            hintStyle:widget.hintStyle ,
-            suffixIcon: widget.suffixIcon,
-            labelStyle:   TextStyle(
-                color: AppColors.primaryColor,
-              fontSize: AppSize.screenHeight! * .02,
-            ),
-            prefixIcon: widget.prefixIcon,
-            border: OutlineInputBorder(
-              borderSide: BorderSide(
-                  color: AppColors.borderColor.withOpacity(.4)
-              ),
-
-            ),
-          focusedBorder:    OutlineInputBorder(
-              borderSide: BorderSide(
-                  color: AppColors.borderColor.withOpacity(.4)
-              )
+          labelText: widget.labelText,
+          hintText: widget.hintText,
+          hintStyle: widget.hintStyle,
+          suffixIcon: widget.suffixIcon,
+          labelStyle: TextStyle(
+            color: AppColors.primaryColor,
+            fontSize: AppSize.screenHeight! * .02,
           ),
+          prefixIcon: widget.prefixIcon,
+          border: OutlineInputBorder(
+            borderSide:
+                BorderSide(color: AppColors.borderColor.withOpacity(.4)),
+          ),
+          focusedBorder: OutlineInputBorder(
+              borderSide:
+                  BorderSide(color: AppColors.borderColor.withOpacity(.4))),
           disabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                  color: AppColors.borderColor.withOpacity(.4)
-              )
-          ),
+              borderSide:
+                  BorderSide(color: AppColors.borderColor.withOpacity(.4))),
         ),
-
         controller: widget.controller,
         keyboardType: widget.keyboardType,
         obscureText: widget.obscureText,

@@ -1,4 +1,3 @@
-
 import 'package:get_it/get_it.dart';
 import 'package:leap/features/auth/data/auth_remote_data_source.dart';
 import 'package:leap/features/auth/data/repo_imp.dart';
@@ -7,7 +6,6 @@ import 'package:leap/features/auth/domain/use_case/login_with_email_and_password
 import 'package:leap/features/auth/domain/use_case/sign_up_use_case.dart';
 import 'package:leap/features/auth/presentation/controller/login_bloc/login_with_email_and_password_bloc.dart';
 import 'package:leap/features/auth/presentation/controller/sign_up_bloc/sign_up_with_email_and_password_bloc.dart';
-import 'package:leap/features/home/home_screen/controller/cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -16,8 +14,7 @@ class ServerLocator {
     //bloc
     getIt.registerLazySingleton<BaseRemotelyDataSource>(
         () => AuthRemotelyDateSource());
-    getIt.registerLazySingleton(
-        () => HomeScreenCubit());
+
     getIt.registerLazySingleton<BaseRepository>(
         () => RepositoryImp(baseRemotelyDataSource: getIt()));
     getIt.registerLazySingleton(() => LoginWithEmailAndPasswordBloc(
@@ -25,11 +22,10 @@ class ServerLocator {
     getIt.registerLazySingleton(() => SignUpWithEmailAndPasswordBloc(
         loginWithEmailAndPasswordUseCase: getIt()));
 
-
 //use_case
     getIt.registerFactory(
-            () => LoginWithEmailAndPasswordUseCase(baseRepository: getIt()));
+        () => LoginWithEmailAndPasswordUseCase(baseRepository: getIt()));
     getIt.registerFactory(
-            () => SignUpWithEmailAndPasswordUseCase(baseRepository: getIt()));
+        () => SignUpWithEmailAndPasswordUseCase(baseRepository: getIt()));
   }
 }

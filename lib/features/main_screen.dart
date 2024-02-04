@@ -5,8 +5,8 @@ import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
-import 'package:leap/features/home/home_screen/componants/drawer/drawer.dart';
-import 'package:leap/features/home/home_screen/home_screen.dart';
+import 'package:leap/features/home/presentation/componants/drawer/drawer.dart';
+import 'package:leap/features/home/presentation/home_screen.dart';
 import 'package:leap/features/internships/presentation/internship_screen.dart';
 import 'package:leap/features/jobs/presentation/job_screen.dart';
 

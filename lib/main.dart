@@ -6,7 +6,6 @@ import 'package:leap/core/service/service_locator.dart';
 import 'package:leap/core/translations/translations.dart';
 import 'package:leap/features/auth/presentation/controller/login_bloc/login_with_email_and_password_bloc.dart';
 import 'package:leap/features/auth/presentation/controller/sign_up_bloc/sign_up_with_email_and_password_bloc.dart';
-import 'package:leap/features/home/home_screen/controller/cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,15 +19,12 @@ void main() async {
         Locale('en'),
         Locale('ar'),
       ],
-      assetLoader:   CodegenLoader(),
+      assetLoader: CodegenLoader(),
       path: 'lib/core/translations/',
       saveLocale: true,
-
-      child: Builder(
-        builder: (context) {
-          return const MyApp();
-        }
-      )));
+      child: Builder(builder: (context) {
+        return const MyApp();
+      })));
 }
 
 class MyApp extends StatelessWidget {
@@ -43,8 +39,6 @@ class MyApp extends StatelessWidget {
           create: (context) => getIt<LoginWithEmailAndPasswordBloc>(),
         ),
         BlocProvider(
-          create: (context) => getIt<HomeScreenCubit>(),
-        ),BlocProvider(
           create: (context) => getIt<SignUpWithEmailAndPasswordBloc>(),
         ),
       ],

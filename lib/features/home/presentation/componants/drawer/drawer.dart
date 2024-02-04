@@ -4,9 +4,8 @@ import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
-import 'package:leap/core/widgets/main_button.dart';
-import 'package:leap/features/home/home_screen/componants/drawer/widgets/drawer-buttons.dart';
-import 'package:leap/features/home/home_screen/componants/drawer/widgets/user_row.dart';
+import 'package:leap/features/home/presentation/componants/drawer/widgets/drawer-buttons.dart';
+import 'package:leap/features/home/presentation/componants/drawer/widgets/user_row.dart';
 import 'package:leap/features/main_screen.dart';
 
 class HomeDrawer extends StatefulWidget {
