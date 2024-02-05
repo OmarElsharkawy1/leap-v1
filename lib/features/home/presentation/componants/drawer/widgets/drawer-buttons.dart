@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/utils/app_size.dart';
 class CustomDrawerButton extends StatelessWidget {
@@ -14,6 +15,6 @@ final String text;
 fontWeight: FontWeight.w600,
           color: AppColors.black.withOpacity(.8)
     ),
-    ));
+    ).animate().fade().scale());
   }
 }

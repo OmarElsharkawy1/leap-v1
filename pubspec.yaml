@@ -52,6 +52,7 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   dropdown_button2: ^2.3.9
   easy_refresh: ^3.3.4
+  flutter_animate: ^4.5.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

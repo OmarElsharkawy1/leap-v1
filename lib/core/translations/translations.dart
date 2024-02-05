@@ -67,7 +67,9 @@ class CodegenLoader extends AssetLoader {
     StringManager.selectArea: "اختر المجال",
     StringManager.selectSkill: "اختر المهارة",
     StringManager.search: "بحث",
+    StringManager.contactUs: "تواصل معنا",
     StringManager.profile: "الملف الشخصي",
+    StringManager.subject: "العنوان",
     StringManager.changeProfilePicture: "تغيير صورة الملف الشخصي",
     StringManager.saveChanges: "حفظ التغيرات",
     StringManager.tabToUploadCV: "تحميل السيرة الذاتية",
@@ -75,5 +77,7 @@ class CodegenLoader extends AssetLoader {
     StringManager.myApplications: "طلباتي",
     StringManager.applyNow: "تقديم طلب",
     StringManager.viewDetails: "التفاصيل",
+    StringManager.message: "الرسالة",
+    StringManager.send: "ارسال",
   };
 }

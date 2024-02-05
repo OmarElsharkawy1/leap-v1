@@ -7,6 +7,7 @@ import 'package:leap/features/auth/presentation/forget%20password/send_otp_code.
 import 'package:leap/features/auth/presentation/login_screen.dart';
 import 'package:leap/features/auth/presentation/signup/sign_up.dart';
 import 'package:leap/features/main_screen.dart';
+import 'package:leap/features/profile/presentation/componants/contact_us/contact_us.dart';
 import 'package:leap/features/profile/presentation/componants/my_applications.dart';
 import 'package:leap/features/profile/presentation/profile_screen.dart';
 
@@ -19,6 +20,7 @@ class Routes {
   static const String changePassword = "/changePassword";
   static const String profile = "/profile";
   static const String myApplications = "/myApplications";
+  static const String contactUs = "/contactUs";
 }
 
 class RouteGenerator {
@@ -60,10 +62,15 @@ class RouteGenerator {
             pageBuilder: (context, animation, secondaryAnimation) =>
                 const ProfileScreen(),
             transitionsBuilder: customAnimate);
-        case Routes.myApplications:
+      case Routes.myApplications:
         return PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
                 const MyApplications(),
+            transitionsBuilder: customAnimate);
+        case Routes.contactUs:
+        return PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                const ContactUS(),
             transitionsBuilder: customAnimate);
     }
     return unDefinedRoute();

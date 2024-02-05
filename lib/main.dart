@@ -57,32 +57,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-/*
-  await EasyLocalization.ensureInitialized();
-
-  runApp(EasyLocalization(
-    fallbackLocale: const Locale('en'),
-    supportedLocales: const [
-      Locale('en'),
-      Locale('ar'),
-    ],
-    assetLoader: const CodegenLoader(),
-    path: 'lib/core/translations/',
-    saveLocale: true,
-    child: MyApp(theme: theme),
-  ));
-
-class CodegenLoader extends AssetLoader {
-  const CodegenLoader();
-
-  @override
-  // ignore: avoid_renaming_method_parameters
-  Future<Map<String, dynamic>> load(String fullPath, Locale locale) {
-    return Future.value(mapLocales[locale.toString()]);
-  }
-
-  static const Map<String, dynamic> ar = {
-    StringManage }
-
-
- */

@@ -49,7 +49,11 @@ class StringManager{
   static const String selectArea = "Select Area";
   static const String selectSkill = "Select Skill";
   static const String search = "search";
+  static const String send = "Send";
+  static const String contactUs = "Contact us";
   static const String profile = "Profile";
+  static const String subject = "Subject";
+  static const String message = "Message";
   static const String changeProfilePicture = "Change Profile Picture";
   static const String saveChanges = "Save Changes";
   static const String myApplications = "My Application";

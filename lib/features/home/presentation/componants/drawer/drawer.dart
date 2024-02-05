@@ -4,6 +4,7 @@ import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
+import 'package:leap/core/widgets/drop_down_custom.dart';
 import 'package:leap/features/home/presentation/componants/drawer/widgets/drawer-buttons.dart';
 import 'package:leap/features/home/presentation/componants/drawer/widgets/user_row.dart';
 import 'package:leap/features/main_screen.dart';
@@ -67,62 +68,84 @@ class _HomeDrawerState extends State<HomeDrawer> {
                     Navigator.pushNamed(context, Routes.myApplications);
                   },
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                CustomDropdownButton2(
+                  hint: StringManager.options.tr(),
+                  value: null,
+                  buttonDecoration: BoxDecoration(
+                    border: Border.all(color: Colors.transparent),
+                  ),
+                  dropdownWidth: AppSize.screenWidth! * .71,
+                  dropdownElevation: 0,
+                  buttonWidth: AppSize.screenWidth! * .71,
+                  dropdownItems: [
+                    StringManager.search.tr(),
+                    StringManager.contactUs.tr(),
+                  ],
+                  dropdownDecoration: const BoxDecoration(
+                    color: AppColors.secondaryBackGroundColor,
+                  ),
+                  icon: const Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                  ),
+                  iconEnabledColor: AppColors.black,
+                  onChanged: (String? value) {
+                    switch (value) {
+                      case StringManager.search:
+                        // Navigator.pushNamed(context, Routes.search);
+                        break;
+                      case StringManager.contactUs:
+                        Navigator.pop(context);
+                        Navigator.pushNamed(context, Routes.contactUs);
+                        break;
+                      default:
+                        //do nothing
+                        break;
+                    }
+                  },
+                ),
+              ],
+            ),
+          ),
+          const Spacer(),
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, Routes.login);
+            },
+            child: Center(
+              child: Container(
+                height: AppSize.defaultSize! * 4,
+                width: AppSize.screenWidth! * .6,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius:
+                        BorderRadius.circular(AppSize.defaultSize! * .5),
+                    border: Border.all(color: AppColors.primaryColor)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CustomDrawerButton(
-                      text: StringManager.options.tr(),
-                      onPressed: () {},
+                    Icon(
+                      Icons.logout,
+                      color: AppColors.primaryColor,
+                      size: AppSize.defaultSize! * 1.5,
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(right: AppSize.defaultSize! * 3),
-                      child: Icon(
-                        Icons.keyboard_arrow_down_rounded,
-                        size: AppSize.defaultSize! * 3,
+                    SizedBox(
+                      width: AppSize.defaultSize!,
+                    ),
+                    Text(
+                      StringManager.logOut.tr(),
+                      style: TextStyle(
+                        color: AppColors.primaryColor,
+                        fontWeight: FontWeight.w600,
+                        fontSize: AppSize.defaultSize! * 1.2,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: AppSize.screenHeight! * .45,
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: Center(
-                    child: Container(
-                      height: AppSize.defaultSize! * 4,
-                      width: AppSize.screenWidth! * .6,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius:
-                              BorderRadius.circular(AppSize.defaultSize! * .5),
-                          border: Border.all(color: AppColors.primaryColor)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.logout,
-                            color: AppColors.primaryColor,
-                            size: AppSize.defaultSize! * 1.5,
-                          ),
-                          SizedBox(
-                            width: AppSize.defaultSize!,
-                          ),
-                          Text(
-                            StringManager.logOut.tr(),
-                            style: TextStyle(
-                              color: AppColors.primaryColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: AppSize.defaultSize! * 1.2,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                )
-              ],
+              ),
             ),
+          ),
+          SizedBox(
+            height: AppSize.screenHeight! * .05,
           ),
         ],
       ),

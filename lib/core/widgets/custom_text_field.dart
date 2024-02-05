@@ -5,6 +5,9 @@ import 'package:leap/core/utils/app_size.dart';
 class CustomTextField extends StatefulWidget {
   final String? labelText;
   final String? hintText;
+  final double? width;
+  final double? height;
+  final int? maxLines;
   final TextEditingController? controller;
   final TextInputType keyboardType;
   final bool obscureText;
@@ -25,7 +28,7 @@ class CustomTextField extends StatefulWidget {
     this.suffixIcon,
     this.onTap,
     this.hintText,
-    this.hintStyle,
+    this.hintStyle, this.width, this.height, this.maxLines,
   }) : super(key: key);
 
   @override
@@ -36,10 +39,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppSize.defaultSize! * 6,
-      width: AppSize.screenWidth! - (AppSize.defaultSize! * 4),
+      height: widget.height??AppSize.defaultSize! * 6,
+      width: widget.width?? AppSize.screenWidth! - (AppSize.defaultSize! * 4),
       child: TextFormField(
         onTap: widget.onTap,
+maxLines: widget.maxLines,
         readOnly: widget.readOnly,
         decoration: InputDecoration(
           labelText: widget.labelText,
@@ -51,17 +55,22 @@ class _CustomTextFieldState extends State<CustomTextField> {
             fontSize: AppSize.screenHeight! * .02,
           ),
           prefixIcon: widget.prefixIcon,
+            enabledBorder:OutlineInputBorder(
+              borderSide:
+              BorderSide(color: AppColors.borderColor.withOpacity(.4)),
+            ),
           border: OutlineInputBorder(
             borderSide:
                 BorderSide(color: AppColors.borderColor.withOpacity(.4)),
           ),
           focusedBorder: OutlineInputBorder(
               borderSide:
-                  BorderSide(color: AppColors.borderColor.withOpacity(.4))),
+                  BorderSide(color: AppColors.primaryColor.withOpacity(.4))),
           disabledBorder: OutlineInputBorder(
               borderSide:
                   BorderSide(color: AppColors.borderColor.withOpacity(.4))),
         ),
+
         controller: widget.controller,
         keyboardType: widget.keyboardType,
         obscureText: widget.obscureText,

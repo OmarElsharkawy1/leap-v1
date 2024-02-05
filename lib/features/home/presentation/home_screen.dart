@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/widgets/app_bar.dart';
@@ -29,16 +30,16 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         children: [
-          const CarouselWithIndicatorDemo(),
-          const CarouselWithIndicatorDemo(),
+          const CarouselWithIndicatorDemo().animate().fade().scale(),
+          const CarouselWithIndicatorDemo().animate().fade().scale(),
           // const TakeQuiz(),
           HomePageButtons(
             text: StringManager.jobs.tr(),
             onPressed: widget.onPressedJob,
-          ),
+          ).animate().fade().scale(),
           HomePageButtons(
               text: StringManager.internships.tr(),
-              onPressed: widget.onPressedIntern),
+              onPressed: widget.onPressedIntern).animate().fade().scale(),
         ],
       ),
     );
