@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:leap/features/internships/data/model/intern_model.dart';
-import 'package:leap/features/jobs/data/model/job_model.dart';
+import 'package:leap/core/models/vacancey_model.dart';
 
 
 abstract class GetInternshipsState extends Equatable {
@@ -23,7 +23,7 @@ class GetInternshipsErrorMessageState extends GetInternshipsState{
 }
 
 class GetInternshipsSuccessMessageState extends GetInternshipsState{
-  final InternModel internModel ;
+  final List<VacancyModel> internModel ;
 
   const GetInternshipsSuccessMessageState({ required this.internModel});
 

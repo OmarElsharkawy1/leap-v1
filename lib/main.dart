@@ -6,6 +6,9 @@ import 'package:leap/core/service/service_locator.dart';
 import 'package:leap/core/translations/translations.dart';
 import 'package:leap/features/auth/presentation/controller/login_bloc/login_with_email_and_password_bloc.dart';
 import 'package:leap/features/auth/presentation/controller/sign_up_bloc/sign_up_with_email_and_password_bloc.dart';
+import 'package:leap/features/internships/presentation/controller/get_internships/get_internships_bloc.dart';
+import 'package:leap/features/jobs/presentation/controller/get_jobs/get_jobs_bloc.dart';
+import 'package:leap/features/jobs/presentation/controller/get_jobs/get_jobs_event.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,6 +43,11 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<SignUpWithEmailAndPasswordBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<GetJobsBloc>(),
+        ),   BlocProvider(
+          create: (context) => getIt<GetInternshipsBloc>(),
         ),
       ],
       child: MaterialApp(

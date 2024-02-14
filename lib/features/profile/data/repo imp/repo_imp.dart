@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:leap/core/error/failure.dart';
 import 'package:leap/core/models/my_data_model.dart';
 import 'package:leap/core/utils/api_helper.dart';
-import 'package:leap/features/jobs/data/model/job_model.dart';
+import 'package:leap/core/models/vacancey_model.dart';
 import 'package:leap/features/profile/data/data%20source/profile_remote_data_source.dart';
 import 'package:leap/features/profile/domain/repo/profile_base_repo.dart';
 
@@ -21,7 +21,7 @@ class ProfileRepositoryImp extends BaseRepositoryProfile {
     }
   }
   @override
-  Future<Either<JobModel, Failure>> getMyApplications() async {
+  Future<Either<VacancyModel, Failure>> getMyApplications() async {
     try {
       final result = await baseRemotelyDataSourceProfile.getMyApplications();
       return Left(result);

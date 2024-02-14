@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:leap/features/jobs/data/model/job_model.dart';
+import 'package:leap/core/models/vacancey_model.dart';
 
 
 abstract class GetJobsState extends Equatable {
@@ -22,7 +22,7 @@ class GetJobsErrorMessageState extends GetJobsState{
 }
 
 class GetJobsSuccessMessageState extends GetJobsState{
-  final JobModel jobModel ;
+  final List<VacancyModel> jobModel ;
 
   const GetJobsSuccessMessageState({ required this.jobModel});
 

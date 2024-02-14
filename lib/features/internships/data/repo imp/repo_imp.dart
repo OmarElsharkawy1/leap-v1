@@ -5,7 +5,7 @@ import 'package:leap/features/internships/data/data%20source/internships_remote_
 import 'package:leap/features/internships/data/model/intern_model.dart';
 import 'package:leap/features/internships/domain/repo/jobs_base_repo.dart';
 import 'package:leap/features/jobs/data/data%20source/jobs_remote_data_source.dart';
-import 'package:leap/features/jobs/data/model/job_model.dart';
+import 'package:leap/core/models/vacancey_model.dart';
 import 'package:leap/features/jobs/domain/repo/jobs_base_repo.dart';
 
 class InternshipsRepositoryImp extends BaseRepositoryInternships {
@@ -14,7 +14,7 @@ class InternshipsRepositoryImp extends BaseRepositoryInternships {
   InternshipsRepositoryImp({required this.baseRemotelyDataSourceInternships});
 
   @override
-  Future<Either<InternModel, Failure>> getInternships() async {
+  Future<Either<List<VacancyModel>, Failure>> getInternships() async {
     try {
       final result = await baseRemotelyDataSourceInternships.getInternships();
       return Left(result);
