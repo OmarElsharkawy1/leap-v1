@@ -1,13 +1,18 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
+import 'package:leap/core/service/navigator_services.dart';
+import 'package:leap/core/service/service_locator.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/features/home/presentation/componants/drawer/drawer.dart';
 import 'package:leap/features/home/presentation/home_screen.dart';
 import 'package:leap/features/internships/presentation/internship_screen.dart';
+import 'package:leap/features/jobs/presentation/controller/get_jobs/get_jobs_bloc.dart';
+import 'package:leap/features/jobs/presentation/controller/get_jobs/get_jobs_event.dart';
 import 'package:leap/features/jobs/presentation/job_screen.dart';
 
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -65,6 +70,12 @@ class _MainScreenState extends State<MainScreen> {
           Icons.shopping_bag,
         ),
         title:StringManager.jobs.tr(),
+        onPressed: (context){
+          BlocProvider.of<GetJobsBloc>(context??getIt<NavigationService>().navigatorKey.currentContext!).add(GetJobsEvent());
+          MainScreen.mainIndex=2;
+          // PersistentNavBarNavigator
+          // Navigator.pushNamed(context??getIt<NavigationService>().navigatorKey.currentContext!, Routes.main);
+        },
         activeColorPrimary: AppColors.primaryColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),

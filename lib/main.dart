@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:leap/core/resource_manager/routes.dart';
+import 'package:leap/core/service/navigator_services.dart';
 import 'package:leap/core/service/service_locator.dart';
 import 'package:leap/core/translations/translations.dart';
 import 'package:leap/features/auth/presentation/controller/login_bloc/login_with_email_and_password_bloc.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
         localizationsDelegates: context.localizationDelegates,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteGenerator.getRoute,
+        navigatorKey: getIt<NavigationService>().navigatorKey,
         initialRoute: Routes.login,
         theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

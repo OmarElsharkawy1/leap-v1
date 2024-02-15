@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:leap/core/service/navigator_services.dart';
 import 'package:leap/features/auth/data/auth_remote_data_source.dart';
 import 'package:leap/features/auth/data/repo_imp.dart';
 import 'package:leap/features/auth/domain/repo/base_repo.dart';
@@ -55,5 +56,6 @@ class ServerLocator {
             () => JobsRepositoryImp(baseRemotelyDataSourceJobs: getIt()));
     getIt.registerLazySingleton<BaseRepositoryInternships>(
             () =>InternshipsRepositoryImp(baseRemotelyDataSourceInternships: getIt()));
+    getIt.registerLazySingleton(() => NavigationService());
   }
 }

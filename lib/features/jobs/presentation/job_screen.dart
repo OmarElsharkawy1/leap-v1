@@ -83,6 +83,8 @@ class _JobsScreenState extends State<JobsScreen> {
                 BlocBuilder<GetJobsBloc, GetJobsState>(
                     builder: (context, state) {
                   if (state is GetJobsSuccessMessageState) {
+                    isFirst++;
+                    tempData=state.jobModel;
                     return state.jobModel.isEmpty
                         ? const EmptyWidget()
                         : ListView.builder(
