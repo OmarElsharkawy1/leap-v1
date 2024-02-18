@@ -19,7 +19,8 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
-static int mainIndex=0;
+  static int mainIndex = 0;
+
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
@@ -28,17 +29,17 @@ class _MainScreenState extends State<MainScreen> {
   late PersistentTabController _controller;
 
   List<Widget> _buildScreens() {
-    return  [
-       HomeScreen(
-         onPressedJob: (){
-         MainScreen.mainIndex=2;
-     Navigator.pushNamed(context, Routes.main);
-       },
-       onPressedIntern: (){
-         MainScreen.mainIndex=1;
-         Navigator.pushNamed(context, Routes.main);
-       },
-       ),
+    return [
+      HomeScreen(
+        onPressedJob: () {
+          MainScreen.mainIndex = 2;
+          Navigator.pushNamed(context, Routes.main);
+        },
+        onPressedIntern: () {
+          MainScreen.mainIndex = 1;
+          Navigator.pushNamed(context, Routes.main);
+        },
+      ),
       InternshipScreen(),
       JobsScreen(),
       HomeScreen(),
@@ -69,13 +70,7 @@ class _MainScreenState extends State<MainScreen> {
         icon: const Icon(
           Icons.shopping_bag,
         ),
-        title:StringManager.jobs.tr(),
-        onPressed: (context){
-          BlocProvider.of<GetJobsBloc>(context??getIt<NavigationService>().navigatorKey.currentContext!).add(GetJobsEvent());
-          MainScreen.mainIndex=2;
-          // PersistentNavBarNavigator
-          // Navigator.pushNamed(context??getIt<NavigationService>().navigatorKey.currentContext!, Routes.main);
-        },
+        title: StringManager.jobs.tr(),
         activeColorPrimary: AppColors.primaryColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
@@ -100,7 +95,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void initState() {
-    _controller = PersistentTabController(initialIndex:MainScreen. mainIndex);
+    _controller = PersistentTabController(initialIndex: MainScreen.mainIndex);
     super.initState();
   }
 
@@ -108,8 +103,8 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const HomeDrawer(),
-      drawerScrimColor:AppColors.greyColor,
-      body:  PersistentTabView(
+      drawerScrimColor: AppColors.greyColor,
+      body: PersistentTabView(
         context,
         controller: _controller,
         screens: _buildScreens(),
@@ -143,8 +138,8 @@ class _MainScreenState extends State<MainScreen> {
           curve: Curves.ease,
           duration: Duration(milliseconds: 200),
         ),
-        navBarStyle: NavBarStyle
-            .style6, // Choose the nav bar style with this property.
+        navBarStyle:
+            NavBarStyle.style6, // Choose the nav bar style with this property.
       ),
     );
   }

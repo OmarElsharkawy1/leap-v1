@@ -8,6 +8,8 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:leap/core/models/vacancey_model.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
+import 'package:leap/core/service/navigator_services.dart';
+import 'package:leap/core/service/service_locator.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/app_bar.dart';
 import 'package:leap/core/widgets/custom_drop_down.dart';
@@ -35,16 +37,18 @@ class _InternshipScreenState extends State<InternshipScreen> {
   final _refreshIndicatorKey = GlobalKey<LiquidPullToRefreshState>();
   static int refreshNum = 10; // number that changes when refreshed
 
-  Future<void> _handleRefresh() {
+  Future<void> _handleRefresh() async {
     final Completer<void> completer = Completer<void>();
     Timer(const Duration(seconds: 3), () {
       completer.complete();
     });
+    // BlocProvider.of<GetInternshipsBloc>(getIt<NavigationService>().navigatorKey.currentContext!).add(GetInternshipsEvent());
+
     setState(() {
       refreshNum = Random().nextInt(13);
     });
     return completer.future.then<void>((_) {
-      ScaffoldMessenger.of(_scaffoldKey.currentState!.context).showSnackBar(
+      ScaffoldMessenger.of(getIt<NavigationService>().navigatorKey.currentContext!).showSnackBar(
         SnackBar(
           content: const Text('Refresh complete'),
           action: SnackBarAction(

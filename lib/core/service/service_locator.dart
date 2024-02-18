@@ -27,35 +27,34 @@ class ServerLocator {
     getIt.registerLazySingleton(() => LoginWithEmailAndPasswordBloc(
         loginWithEmailAndPasswordUseCase: getIt()));
     getIt.registerLazySingleton(() => SignUpWithEmailAndPasswordBloc(
-        loginWithEmailAndPasswordUseCase: getIt()));
-    getIt.registerLazySingleton(() => GetJobsBloc(
-        getJobsUseCase: getIt()));
-    getIt.registerLazySingleton(() => GetInternshipsBloc(
-        getInternshipsUseCase: getIt()));
+          signUpWithEmailAndPasswordUseCase: getIt(),
+        ));
+    getIt.registerLazySingleton(() => GetJobsBloc(getJobsUseCase: getIt()));
+    getIt.registerLazySingleton(
+        () => GetInternshipsBloc(getInternshipsUseCase: getIt()));
 
 //use_case
     getIt.registerFactory(
         () => LoginWithEmailAndPasswordUseCase(baseRepository: getIt()));
     getIt.registerFactory(
         () => SignUpWithEmailAndPasswordUseCase(baseRepository: getIt()));
-    getIt.registerFactory(
-        () => GetJobsUseCase(baseRepositoryJobs: getIt()));
+    getIt.registerFactory(() => GetJobsUseCase(baseRepositoryJobs: getIt()));
     getIt.registerFactory(
         () => GetInternshipsUseCase(baseRepositoryInternships: getIt()));
-     //remote data
+    //remote data
     getIt.registerLazySingleton<BaseRemotelyDataSource>(
-            () => AuthRemotelyDateSource());
+        () => AuthRemotelyDateSource());
     getIt.registerLazySingleton<BaseRemotelyDataSourceJobs>(
-            () => JobsRemotelyDateSource());
+        () => JobsRemotelyDateSource());
     getIt.registerLazySingleton<BaseRemotelyDataSourceInternships>(
-            () =>InternshipsRemotelyDateSource());
+        () => InternshipsRemotelyDateSource());
 //repo
     getIt.registerLazySingleton<BaseRepository>(
-            () => RepositoryImp(baseRemotelyDataSource: getIt()));
+        () => RepositoryImp(baseRemotelyDataSource: getIt()));
     getIt.registerLazySingleton<BaseRepositoryJobs>(
-            () => JobsRepositoryImp(baseRemotelyDataSourceJobs: getIt()));
-    getIt.registerLazySingleton<BaseRepositoryInternships>(
-            () =>InternshipsRepositoryImp(baseRemotelyDataSourceInternships: getIt()));
+        () => JobsRepositoryImp(baseRemotelyDataSourceJobs: getIt()));
+    getIt.registerLazySingleton<BaseRepositoryInternships>(() =>
+        InternshipsRepositoryImp(baseRemotelyDataSourceInternships: getIt()));
     getIt.registerLazySingleton(() => NavigationService());
   }
 }

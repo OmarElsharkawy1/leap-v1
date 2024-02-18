@@ -1,10 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
+import 'package:leap/core/widgets/cutom_text.dart';
 import 'package:leap/core/widgets/main_button.dart';
 import 'package:leap/core/widgets/custom_text_field.dart';
 
@@ -54,10 +56,19 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset(
-                            AssetPath.logo,
-                            scale: 2,
-                          ),
+                          CustomText(
+                            text: 'INTRN',
+                            fontSize: AppSize.defaultSize! * 3.5,
+                            color: AppColors.primaryColor,
+                            fontWeight: FontWeight.w700,
+                          ).animate()
+                              .fadeIn() // uses `Animate.defaultDuration`
+                              .scale() // inherits duration from fadeIn
+                              .move(delay: 300.ms, duration: 600.ms),
+                          // Image.asset(
+                          //   AssetPath.logo,
+                          //   scale: 2,
+                          // ),
                           Text(
                             StringManager.welcomeBack.tr(),
                             style: TextStyle(
@@ -76,25 +87,25 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ],
                       )),
-                  Align(
-                      alignment: Alignment.centerLeft,
-                      child: TextButton(
-                          onPressed: () {
-                            if (context.locale == const Locale('en')) {
-                              context.setLocale(const Locale('ar'));
-                            } else {
-                              context.setLocale(const Locale('en'));
-                            }
-                            setState(() {});
-                          },
-                          child: Text(
-                            context.locale == const Locale('en')
-                                ? 'عربي'
-                                : 'English',
-                            style: TextStyle(
-                                fontSize: AppSize.defaultSize! * 1.2,
-                                fontWeight: FontWeight.w600),
-                          )))
+                  // Align(
+                  //     alignment: Alignment.centerLeft,
+                  //     child: TextButton(
+                  //         onPressed: () {
+                  //           if (context.locale == const Locale('en')) {
+                  //             context.setLocale(const Locale('ar'));
+                  //           } else {
+                  //             context.setLocale(const Locale('en'));
+                  //           }
+                  //           setState(() {});
+                  //         },
+                  //         child: Text(
+                  //           context.locale == const Locale('en')
+                  //               ? 'عربي'
+                  //               : 'English',
+                  //           style: TextStyle(
+                  //               fontSize: AppSize.defaultSize! * 1.2,
+                  //               fontWeight: FontWeight.w600),
+                  //         )))
                 ],
               ),
             ),
@@ -109,6 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
               labelText: StringManager.password.tr(),
               obscureText: isVisible,
               controller: passwordController,
+              maxLines: 1,
               suffixIcon: InkWell(
                 onTap: () {
                   setState(() {
@@ -131,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   StringManager.forgetYourPassword.tr(),
                   style: TextStyle(
                     color: AppColors.forgetPasswordColor,
-                    fontSize: AppSize.defaultSize! * 1,
+                    fontSize: AppSize.defaultSize! * 1.2,
                   ),
                 ),
               ),
@@ -139,7 +151,6 @@ class _LoginScreenState extends State<LoginScreen> {
             MainButton(
               text: StringManager.login.tr(),
               onTap: () {
-
                 Navigator.pushNamed(context, Routes.main);
               },
             ),

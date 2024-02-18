@@ -24,8 +24,9 @@ class JobCard extends StatelessWidget {
             child: SizedBox(
               height: AppSize.defaultSize! * 6,
               width: AppSize.defaultSize! * 6,
-              child: Image.asset(
-                AssetPath.logo,
+              child:  Image.asset(AssetPath.slogan,
+                height: AppSize.defaultSize! * 8,
+                width: AppSize.defaultSize! * 8,
               ),
             ),
           ),
@@ -37,7 +38,7 @@ class JobCard extends StatelessWidget {
                   vertical: AppSize.defaultSize!,
                 ),
                 child: Text(
-                  'job.title',
+                  'Software Engineer',
                   style: TextStyle(
                       color: AppColors.primaryColor,
                       fontWeight: FontWeight.bold,
@@ -45,17 +46,25 @@ class JobCard extends StatelessWidget {
                 ),
               ),
               Text(
-                'job.location',
+                'Posted 2 Days Ago • Full Time',
                 style: TextStyle(
                     color:AppColors.  mainFontColor, fontSize: AppSize.defaultSize! * 1.4),
               ),
+              // SizedBox(height: AppSize.defaultSize!*.3,),
               Text(
-                'job.skill',
+                'Cairo, Egypt',
                 style: TextStyle(
                     color:AppColors.  mainFontColor, fontSize: AppSize.defaultSize! * 1.4),
               ),
+              SizedBox(height: AppSize.defaultSize!*.3,),
               Text(
-                'job.salary',
+                '.NET Developer',
+                style: TextStyle(
+                    color:AppColors.  mainFontColor, fontSize: AppSize.defaultSize! * 1.4),
+              ),
+              SizedBox(height: AppSize.defaultSize!*.3,),
+              Text(
+                '12000 EGP - 15000 EGP',
                 style: TextStyle(
                     color:AppColors.  mainFontColor, fontSize: AppSize.defaultSize! * 1.4),
               ),

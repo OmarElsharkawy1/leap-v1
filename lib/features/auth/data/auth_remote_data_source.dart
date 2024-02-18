@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:leap/core/models/my_data_model.dart';
 import 'package:leap/core/utils/api_helper.dart';
@@ -8,15 +10,23 @@ import 'package:leap/features/auth/domain/use_case/sign_up_use_case.dart';
 
 abstract class BaseRemotelyDataSource {
   Future<Map<String, dynamic>> loginWithEmailAndPassword(AuthModel authModel);
-  Future<MyDataModel> signUpWithEmailAndPassword(SignUpModel signUpModel);
 
+  Future<Map<String, dynamic>> signUpWithEmailAndPassword(
+      SignUpModel signUpModel);
 
+  Future<Map<String, dynamic>> sendCode(SignUpModel signUpModel);
+
+  Future<Map<String, dynamic>> verifyCode(SignUpModel signUpModel);
+
+  Future<Map<String, dynamic>> changePassword(SignUpModel signUpModel);
 }
-class AuthRemotelyDateSource extends BaseRemotelyDataSource{
+
+class AuthRemotelyDateSource extends BaseRemotelyDataSource {
   @override
   Future<Map<String, dynamic>> loginWithEmailAndPassword(
       AuthModel authModel) async {
-
+    log('${authModel.email}vvvvv');
+    log('${authModel.password}vvvvv');
     final body = {
       ConstantApi.email: authModel.email,
       ConstantApi.password: authModel.password,
@@ -27,27 +37,27 @@ class AuthRemotelyDateSource extends BaseRemotelyDataSource{
         ConstantApi.login,
         data: body,
       );
+      log('${response.data}sssssssss');
+
       Map<String, dynamic> jsonData = response.data;
       Methods.instance.saveUserToken(authToken: jsonData['access_token']);
+      log('${jsonData}sssssssss');
+
       return jsonData;
-    } on DioException catch (e) {
+    } on DioError catch (e) {
       throw DioHelper.handleDioError(
           dioError: e, endpointName: "loginWithEmailAndPassword");
     }
   }
 
   @override
-  Future<MyDataModel> signUpWithEmailAndPassword(SignUpModel signUpModel)async {
+  Future<Map<String, dynamic>> signUpWithEmailAndPassword(
+      SignUpModel signUpModel) async {
     final body = {
       ConstantApi.email: signUpModel.email,
       ConstantApi.password: signUpModel.password,
-      'major':signUpModel.major,
-      'university':signUpModel.university,
-      'eduLevel':signUpModel.eduLevel,
-      'gradLevel':signUpModel.gradLevel,
-      'dateOfBirth':signUpModel.dateOfBirth,
-      'name':signUpModel.name,
-      'phone':signUpModel.phone,
+      'name': signUpModel.name,
+      'phone': signUpModel.phone,
     };
 
     try {
@@ -55,11 +65,75 @@ class AuthRemotelyDateSource extends BaseRemotelyDataSource{
         ConstantApi.signUp,
         data: body,
       );
-      MyDataModel jsonData = response.data;
+      Map<String, dynamic> jsonData = response.data;
+      Methods.instance.saveUserToken(authToken: jsonData['access_token']);
       return jsonData;
-    } on DioException catch (e) {
+    } on DioError catch (e) {
       throw DioHelper.handleDioError(
           dioError: e, endpointName: "signUpWithEmailAndPassword");
+    }
+  }
+
+  @override
+  Future<Map<String, dynamic>> changePassword(SignUpModel signUpModel) async {
+    final body = {
+      ConstantApi.password: signUpModel.password,
+    };
+
+    try {
+      final response = await Dio().post(
+        ConstantApi.login,
+        data: body,
+      );
+
+      Map<String, dynamic> jsonData = response.data;
+
+      return jsonData;
+    } on DioError catch (e) {
+      throw DioHelper.handleDioError(
+          dioError: e, endpointName: "changePassword");
+    }
+  }
+
+  @override
+  Future<Map<String, dynamic>> sendCode(SignUpModel signUpModel) async {
+    final body = {
+      ConstantApi.email: signUpModel.email,
+    };
+
+    try {
+      final response = await Dio().post(
+        ConstantApi.sendCode,
+        data: body,
+      );
+
+      Map<String, dynamic> jsonData = response.data;
+
+      return jsonData;
+    } on DioError catch (e) {
+      throw DioHelper.handleDioError(
+          dioError: e, endpointName: "changePassword");
+    }
+  }
+
+  @override
+  Future<Map<String, dynamic>> verifyCode(SignUpModel signUpModel) async {
+    final body = {
+      ConstantApi.email: signUpModel.email,
+      'verification_code': signUpModel.code,
+    };
+
+    try {
+      final response = await Dio().post(
+        ConstantApi.verifyCode,
+        data: body,
+      );
+
+      Map<String, dynamic> jsonData = response.data;
+
+      return jsonData;
+    } on DioError catch (e) {
+      throw DioHelper.handleDioError(dioError: e, endpointName: "verifyCode");
     }
   }
 }

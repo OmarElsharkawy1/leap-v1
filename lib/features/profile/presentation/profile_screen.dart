@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
@@ -52,9 +53,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+
                   CircleAvatar(
-                  radius: AppSize.defaultSize! *2,
-                  backgroundColor: AppColors.black,
+                  radius: AppSize.defaultSize! *3.5,
+
+                  backgroundColor: Colors.white,
+                    child:   Image.asset(AssetPath.human,
+                      height: AppSize.defaultSize! * 6,
+                      width: AppSize.defaultSize! * 6,
+                    ),
                 ),
                 SizedBox(
                   height: AppSize.defaultSize! * .5,

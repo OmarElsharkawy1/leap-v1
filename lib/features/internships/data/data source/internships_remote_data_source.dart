@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:leap/core/models/my_data_model.dart';
 import 'package:leap/core/utils/api_helper.dart';
@@ -12,13 +14,18 @@ abstract class BaseRemotelyDataSourceInternships {
 class InternshipsRemotelyDateSource extends BaseRemotelyDataSourceInternships {
   @override
   Future<List<VacancyModel>> getInternships() async {
+    Options options = await DioHelper().options();
+
+
     try {
       final response = await Dio().get(
         ConstantApi.getGetInternships,
+          // options: options
       );
       List<VacancyModel> jsonData = List<VacancyModel>.from(
           (response.data as List)
               .map((e) => VacancyModel.fromJson(e)));
+      log('$jsonData dddddddddd');
       return jsonData;
     } on DioException catch (e) {
       throw DioHelper.handleDioError(dioError: e, endpointName: "get Internships");

@@ -6,7 +6,7 @@ AppBar appBar(BuildContext context, {required String text}) {
   return AppBar(
     backgroundColor: Colors.white,
     elevation: 1,
-    title: Text(text,  style: TextStyle(fontSize: AppSize.defaultSize! * 1.5),),
+    title: Text(text,  style: TextStyle(fontSize: AppSize.defaultSize!*2,fontWeight: FontWeight.w500),),
     centerTitle: true,
     leading: IconButton(
       onPressed: () {
@@ -25,7 +25,7 @@ AppBar homeAppBar(BuildContext context,
     title: widget ??
         Text(
           '$text',
-          style: TextStyle(fontSize: AppSize.defaultSize! * 1.5),
+          style: TextStyle(fontSize: AppSize.defaultSize!*2,fontWeight: FontWeight.w500),
         ),
     centerTitle: true,
     leading: IconButton(

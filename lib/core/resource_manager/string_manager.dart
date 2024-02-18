@@ -48,7 +48,7 @@ class StringManager{
   static const String youCanTakeQuiz = "you can take a quiz to specify \nwhich career is suitable for you.";
   static const String selectArea = "Select Area";
   static const String selectSkill = "Select Skill";
-  static const String search = "search";
+  static const String search = "Search";
   static const String send = "Send";
   static const String contactUs = "Contact us";
   static const String profile = "Profile";

@@ -9,6 +9,16 @@ import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/methods.dart';
 
 class DioHelper {
+  Future<Options> options() async {
+    Map<String, String> headers = await DioHelper().header();
+    return Options(
+      receiveDataWhenStatusError: true,
+      sendTimeout: const Duration(milliseconds: 5000),
+      receiveTimeout: const Duration(milliseconds: 5000),
+      headers: headers,
+    );
+  }
+
   Future<Map<String, String>> header() async {
     String token = await Methods.instance.returnUserToken();
     if (kDebugMode) {
@@ -17,6 +27,10 @@ class DioHelper {
 
     Map<String, String> headers = {
       "Authorization": "Bearer $token",
+      'content-type': 'application/json; charset=utf-8',
+      'date': 'Sun,18 Feb 2024 17:04:08 GMT',
+      'server': 'Microsoft-IIS/10.0',
+      'x-powered-by': 'ASP.NET',
     };
     return headers;
   }

@@ -38,7 +38,6 @@ class _JobsAndInternCardState extends State<JobsAndInternCard> {
               height: AppSize.defaultSize! * 8,
               width: AppSize.defaultSize! * 8,
             ),
-
             SizedBox(
               width: AppSize.defaultSize!,
             ),

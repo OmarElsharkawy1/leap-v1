@@ -7,6 +7,12 @@ import 'package:leap/features/auth/domain/use_case/sign_up_use_case.dart';
 abstract class BaseRepository {
   Future<Either<Map<String, dynamic>, Failure>> loginWithEmailAndPassword(
       AuthModel authModel);
-  Future<Either<MyDataModel, Failure>> signUpWithEmailAndPassword(
+  Future<Either<Map<String, dynamic>, Failure>> signUpWithEmailAndPassword(
+      SignUpModel signUpModel);
+  Future<Either<Map<String, dynamic>, Failure>> changePassword(
+      SignUpModel signUpModel);
+  Future<Either<Map<String, dynamic>, Failure>> sendCode(
+      SignUpModel signUpModel);
+  Future<Either<Map<String, dynamic>, Failure>> verifyCode(
       SignUpModel signUpModel);
 }
