@@ -22,4 +22,13 @@ class InternshipsRepositoryImp extends BaseRepositoryInternships {
       return right(DioHelper.buildFailure(e));
     }
   }
+  @override
+  Future<Either<List<VacancyModel>, Failure>> getInternshipsBySearch(VacancySearch vacancySearch) async {
+    try {
+      final result = await baseRemotelyDataSourceInternships.getInternshipsBySearch(vacancySearch);
+      return Left(result);
+    } on Exception catch (e) {
+      return right(DioHelper.buildFailure(e));
+    }
+  }
 }

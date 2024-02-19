@@ -75,7 +75,10 @@ class _JobsScreenState extends State<JobsScreen> {
                 ),
                 MainButton(
                   text: StringManager.search.tr(),
-                  onTap: () {},
+                  onTap: () {
+                    BlocProvider.of<GetJobsBloc>(context)
+                        .add(GetJobsEvent(type: 2));
+                  },
                 ),
                 SizedBox(
                   height: AppSize.defaultSize! * 4,
@@ -84,7 +87,7 @@ class _JobsScreenState extends State<JobsScreen> {
                     builder: (context, state) {
                   if (state is GetJobsSuccessMessageState) {
                     isFirst++;
-                    tempData=state.jobModel;
+                    tempData = state.jobModel;
                     return state.jobModel.isEmpty
                         ? const EmptyWidget()
                         : ListView.builder(
@@ -112,29 +115,29 @@ class _JobsScreenState extends State<JobsScreen> {
                   } else if (state is GetJobsLoadingState) {
                     if (isFirst == 0) {
                       return const LoadingWidget();
-                    }else{
+                    } else {
                       return tempData!.isEmpty
                           ? const EmptyWidget()
                           : ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          padding: EdgeInsets.zero,
-                          itemCount: tempData!.length,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding:
-                              EdgeInsets.all(AppSize.defaultSize! * .5),
-                              child: JobsAndInternCard(
-                                vacancyModel: tempData![index],
-                              )
-                                  .animate()
-                                  .fadeIn() // uses `Animate.defaultDuration`
-                                  .scale() // inherits duration from fadeIn
-                                  .move(delay: 300.ms, duration: 600.ms)
-                              // runs after the above w/new duration
-                              ,
-                            );
-                          });
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              padding: EdgeInsets.zero,
+                              itemCount: tempData!.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding:
+                                      EdgeInsets.all(AppSize.defaultSize! * .5),
+                                  child: JobsAndInternCard(
+                                    vacancyModel: tempData![index],
+                                  )
+                                      .animate()
+                                      .fadeIn() // uses `Animate.defaultDuration`
+                                      .scale() // inherits duration from fadeIn
+                                      .move(delay: 300.ms, duration: 600.ms)
+                                  // runs after the above w/new duration
+                                  ,
+                                );
+                              });
                     }
                   } else {
                     return const SizedBox();

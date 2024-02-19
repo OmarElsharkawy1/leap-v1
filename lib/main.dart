@@ -8,6 +8,7 @@ import 'package:leap/core/translations/translations.dart';
 import 'package:leap/features/auth/presentation/controller/login_bloc/login_with_email_and_password_bloc.dart';
 import 'package:leap/features/auth/presentation/controller/sign_up_bloc/sign_up_with_email_and_password_bloc.dart';
 import 'package:leap/features/internships/presentation/controller/get_internships/get_internships_bloc.dart';
+import 'package:leap/features/internships/presentation/controller/intern_search_bloc/get_internships_search_bloc.dart';
 import 'package:leap/features/jobs/presentation/controller/get_jobs/get_jobs_bloc.dart';
 import 'package:leap/features/jobs/presentation/controller/get_jobs/get_jobs_event.dart';
 
@@ -49,6 +50,8 @@ class MyApp extends StatelessWidget {
           create: (context) => getIt<GetJobsBloc>(),
         ),   BlocProvider(
           create: (context) => getIt<GetInternshipsBloc>(),
+        ), BlocProvider(
+          create: (context) => getIt<GetInternshipsBySearchBloc>(),
         ),
       ],
       child: MaterialApp(

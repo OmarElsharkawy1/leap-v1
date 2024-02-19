@@ -11,9 +11,9 @@ class JobsRepositoryImp extends BaseRepositoryJobs {
   JobsRepositoryImp({required this.baseRemotelyDataSourceJobs});
 
   @override
-  Future<Either<List<VacancyModel>, Failure>> getJobs() async {
+  Future<Either<List<VacancyModel>, Failure>> getJobs(VacancySearch vacancySearch) async {
     try {
-      final result = await baseRemotelyDataSourceJobs.getJobs();
+      final result = await baseRemotelyDataSourceJobs.getJobs(vacancySearch);
       return Left(result);
     } on Exception catch (e) {
       return right(DioHelper.buildFailure(e));

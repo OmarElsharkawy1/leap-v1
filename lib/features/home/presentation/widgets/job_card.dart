@@ -5,11 +5,16 @@ import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
 
-class JobCard extends StatelessWidget {
+class JobCard extends StatefulWidget {
   const JobCard({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<JobCard> createState() => _JobCardState();
+}
+
+class _JobCardState extends State<JobCard> {
   @override
   Widget build(BuildContext context) {
     return Container(

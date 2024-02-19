@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:leap/core/models/vacancey_model.dart';
 import 'package:leap/features/home/data/model/intern_model.dart';
 
 abstract class GetTopFiveState extends Equatable {
@@ -21,7 +22,7 @@ class GetTopFiveErrorMessageState extends GetTopFiveState{
 }
 
 class GetTopFiveSuccessMessageState extends GetTopFiveState{
-  final TopFiveModel topFiveModel ;
+  final List<VacancyModel> topFiveModel ;
 
   const GetTopFiveSuccessMessageState({ required this.topFiveModel});
 

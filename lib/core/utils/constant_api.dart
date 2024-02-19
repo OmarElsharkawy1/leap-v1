@@ -7,6 +7,7 @@ class ConstantApi {
   static const String getJobs = "${baseUrl}Jobs/GetJobs";
 
   static const String getGetInternships = "${baseUrl}Jobs/GetInternships";
+  static const String getGetInternshipsBySearch = "${baseUrl}Jobs/GetInternships";
   static const String login = "${baseUrl}auth/login";
   static const String signUp = "${baseUrl}auth/signUp";
   static const String sendCode = "${baseUrl}auth/sendPasswordResetEmail";

@@ -81,3 +81,12 @@ class VacancyModel{
   }
 
  }
+
+class VacancySearch {
+  final String? text;
+  final String? skill;
+  final String? area;
+final int type;
+  VacancySearch( {this.text, this.skill, this.area,required this.type,});
+
+}

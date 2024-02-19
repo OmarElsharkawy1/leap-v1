@@ -10,8 +10,10 @@ import 'package:leap/features/auth/presentation/controller/sign_up_bloc/sign_up_
 import 'package:leap/features/internships/data/data%20source/internships_remote_data_source.dart';
 import 'package:leap/features/internships/data/repo%20imp/repo_imp.dart';
 import 'package:leap/features/internships/domain/repo/jobs_base_repo.dart';
-import 'package:leap/features/internships/domain/use_case/get_jobs.dart';
+import 'package:leap/features/internships/domain/use_case/get_intern.dart';
+import 'package:leap/features/internships/domain/use_case/intern_search_uc.dart';
 import 'package:leap/features/internships/presentation/controller/get_internships/get_internships_bloc.dart';
+import 'package:leap/features/internships/presentation/controller/intern_search_bloc/get_internships_search_bloc.dart';
 import 'package:leap/features/jobs/data/data%20source/jobs_remote_data_source.dart';
 import 'package:leap/features/jobs/data/repo%20imp/repo_imp.dart';
 import 'package:leap/features/jobs/domain/repo/jobs_base_repo.dart';
@@ -32,6 +34,8 @@ class ServerLocator {
     getIt.registerLazySingleton(() => GetJobsBloc(getJobsUseCase: getIt()));
     getIt.registerLazySingleton(
         () => GetInternshipsBloc(getInternshipsUseCase: getIt()));
+    getIt.registerLazySingleton(
+        () => GetInternshipsBySearchBloc(getInternshipsBySearchUseCase: getIt()));
 
 //use_case
     getIt.registerFactory(
@@ -41,6 +45,8 @@ class ServerLocator {
     getIt.registerFactory(() => GetJobsUseCase(baseRepositoryJobs: getIt()));
     getIt.registerFactory(
         () => GetInternshipsUseCase(baseRepositoryInternships: getIt()));
+    getIt.registerFactory(
+        () => GetInternshipsBySearchUseCase(baseRepositoryInternships: getIt()));
     //remote data
     getIt.registerLazySingleton<BaseRemotelyDataSource>(
         () => AuthRemotelyDateSource());

@@ -21,6 +21,9 @@ import 'package:leap/core/widgets/main_button.dart';
 import 'package:leap/features/internships/presentation/controller/get_internships/get_internships_bloc.dart';
 import 'package:leap/features/internships/presentation/controller/get_internships/get_internships_event.dart';
 import 'package:leap/features/internships/presentation/controller/get_internships/get_internships_state.dart';
+import 'package:leap/features/internships/presentation/controller/intern_search_bloc/get_internships_search_bloc.dart';
+import 'package:leap/features/internships/presentation/controller/intern_search_bloc/get_internships_search_event.dart';
+import 'package:leap/features/internships/presentation/controller/intern_search_bloc/get_internships_search_state.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 class InternshipScreen extends StatefulWidget {
@@ -67,7 +70,7 @@ class _InternshipScreenState extends State<InternshipScreen> {
   @override
   void initState() {
     searchController = TextEditingController();
-    BlocProvider.of<GetInternshipsBloc>(context).add(GetInternshipsEvent());
+    BlocProvider.of<GetInternshipsBySearchBloc>(context).add(GetInternshipsBySearchEvent(type: 1));
 
     super.initState();
   }
@@ -115,14 +118,17 @@ class _InternshipScreenState extends State<InternshipScreen> {
                   ),
                   MainButton(
                     text: StringManager.search.tr(),
-                    onTap: () {},
+                    onTap: () {
+                      BlocProvider.of<GetInternshipsBySearchBloc>(context).add(GetInternshipsBySearchEvent(type: 2,));
+
+                    },
                   ),
                   SizedBox(
                     height: AppSize.defaultSize! * 4,
                   ),
-                  BlocBuilder<GetInternshipsBloc, GetInternshipsState>(
+                  BlocBuilder<GetInternshipsBySearchBloc, GetInternshipsBySearchState>(
                       builder: (context, state) {
-                    if (state is GetInternshipsSuccessMessageState) {
+                    if (state is GetInternshipsBySearchSuccessMessageState) {
                       isFirst++;
                       tempData = state.internModel;
                       return state.internModel.isEmpty
@@ -147,9 +153,9 @@ class _InternshipScreenState extends State<InternshipScreen> {
                                   ,
                                 );
                               });
-                    } else if (state is GetInternshipsErrorMessageState) {
+                    } else if (state is GetInternshipsBySearchErrorMessageState) {
                       return ErrorWidget(state.errorMessage);
-                    } else if (state is GetInternshipsLoadingState) {
+                    } else if (state is GetInternshipsBySearchLoadingState) {
                       if (isFirst == 0) {
                         return const LoadingWidget();
                       } else {
