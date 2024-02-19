@@ -8,6 +8,7 @@ import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/service/navigator_services.dart';
 import 'package:leap/core/service/service_locator.dart';
 import 'package:leap/core/utils/app_size.dart';
+import 'package:leap/core/widgets/coming_soon.dart';
 import 'package:leap/features/home/presentation/componants/drawer/drawer.dart';
 import 'package:leap/features/home/presentation/home_screen.dart';
 import 'package:leap/features/internships/presentation/internship_screen.dart';
@@ -42,8 +43,8 @@ class _MainScreenState extends State<MainScreen> {
       ),
       InternshipScreen(),
       JobsScreen(),
-      HomeScreen(),
-      HomeScreen(),
+      ComingSoon(),
+      ComingSoon(),
     ];
   }
 

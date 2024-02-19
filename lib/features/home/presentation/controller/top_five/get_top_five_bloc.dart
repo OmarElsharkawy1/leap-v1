@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:leap/core/utils/api_helper.dart';
-import 'package:leap/features/home/domain/use_case/get_jobs.dart';
+import 'package:leap/features/home/domain/use_case/get_top_jobs.dart';
 import 'package:leap/features/home/presentation/controller/top_five/get_top_five_event.dart';
 import 'package:leap/features/home/presentation/controller/top_five/get_top_five_state.dart';
 

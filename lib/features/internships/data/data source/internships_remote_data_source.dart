@@ -22,9 +22,9 @@ class InternshipsRemotelyDateSource extends BaseRemotelyDataSourceInternships {
     try {
       final response = await Dio().get(
         ConstantApi.getGetInternships,
-        // options: options
+        options: options,
       );
-      List<VacancyModel> jsonData = List<VacancyModel>.from(
+      List<VacancyModel>    jsonData = List<VacancyModel>.from(
           (response.data as List).map((e) => VacancyModel.fromJson(e)));
       log('$jsonData dddddddddd');
       return jsonData;
