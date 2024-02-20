@@ -7,6 +7,13 @@ import 'package:leap/features/auth/domain/use_case/login_with_email_and_password
 import 'package:leap/features/auth/domain/use_case/sign_up_use_case.dart';
 import 'package:leap/features/auth/presentation/controller/login_bloc/login_with_email_and_password_bloc.dart';
 import 'package:leap/features/auth/presentation/controller/sign_up_bloc/sign_up_with_email_and_password_bloc.dart';
+import 'package:leap/features/home/data/data%20source/home_remote_data_source.dart';
+import 'package:leap/features/home/data/repo%20imp/repo_imp.dart';
+import 'package:leap/features/home/domain/repo/jobs_base_repo.dart';
+import 'package:leap/features/home/domain/use_case/get_cities.dart';
+import 'package:leap/features/home/domain/use_case/get_major_uc.dart';
+import 'package:leap/features/home/domain/use_case/get_university_uc.dart';
+import 'package:leap/features/home/presentation/controller/get_cities_major_universtity/get_options_bloc.dart';
 import 'package:leap/features/internships/data/data%20source/internships_remote_data_source.dart';
 import 'package:leap/features/internships/data/repo%20imp/repo_imp.dart';
 import 'package:leap/features/internships/domain/repo/jobs_base_repo.dart';
@@ -36,6 +43,12 @@ class ServerLocator {
         () => GetInternshipsBloc(getInternshipsUseCase: getIt()));
     getIt.registerLazySingleton(
         () => GetInternshipsBySearchBloc(getInternshipsBySearchUseCase: getIt()));
+    getIt.registerLazySingleton(
+        () => OptionsBloc(
+          getCitiesUseCase: getIt(),
+          getMajorUseCase: getIt(),
+          getUniversityUseCase: getIt(),
+        ));
 
 //use_case
     getIt.registerFactory(
@@ -47,6 +60,13 @@ class ServerLocator {
         () => GetInternshipsUseCase(baseRepositoryInternships: getIt()));
     getIt.registerFactory(
         () => GetInternshipsBySearchUseCase(baseRepositoryInternships: getIt()));
+
+    getIt.registerFactory(
+        () => GetCitiesUseCase(baseRepositoryHome: getIt()));
+    getIt.registerFactory(
+        () => GetMajorUseCase(baseRepositoryHome: getIt()));
+    getIt.registerFactory(
+        () => GetUniversityUseCase(baseRepositoryHome: getIt()));
     //remote data
     getIt.registerLazySingleton<BaseRemotelyDataSource>(
         () => AuthRemotelyDateSource());
@@ -54,6 +74,8 @@ class ServerLocator {
         () => JobsRemotelyDateSource());
     getIt.registerLazySingleton<BaseRemotelyDataSourceInternships>(
         () => InternshipsRemotelyDateSource());
+    getIt.registerLazySingleton<BaseRemotelyDataSourceHome>(
+        () =>HomeRemotelyDateSource());
 //repo
     getIt.registerLazySingleton<BaseRepository>(
         () => RepositoryImp(baseRemotelyDataSource: getIt()));
@@ -61,6 +83,8 @@ class ServerLocator {
         () => JobsRepositoryImp(baseRemotelyDataSourceJobs: getIt()));
     getIt.registerLazySingleton<BaseRepositoryInternships>(() =>
         InternshipsRepositoryImp(baseRemotelyDataSourceInternships: getIt()));
+    getIt.registerLazySingleton<BaseRepositoryHome>(() =>
+        HomeRepositoryImp(baseRemotelyDataSourceHome: getIt()));
     getIt.registerLazySingleton(() => NavigationService());
   }
 }

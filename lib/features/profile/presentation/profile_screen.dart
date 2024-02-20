@@ -7,6 +7,8 @@ import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/app_bar.dart';
 import 'package:leap/core/widgets/column_with_text_field.dart';
 import 'package:leap/core/widgets/main_button.dart';
+import 'package:leap/core/widgets/major_drop_down.dart';
+import 'package:leap/core/widgets/university.dart';
 import 'package:leap/features/profile/presentation/widgets/upload_cv.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -107,14 +109,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         hintText: StringManager.selectGrad.tr()),
                   ],
                 ),
-                ColumnWithTextField(
-                  text: StringManager.university.tr(),
-                  controller: universityController,
+                SizedBox(
+                  height: AppSize.defaultSize! * 3,
                 ),
-                ColumnWithTextField(
-                  text: StringManager.major.tr(),
-                  controller: majorController,
+                const UniversityDropDown(),
+                SizedBox(
+                  height: AppSize.defaultSize! * 3,
                 ),
+                const  MajorDropDown(),
                 SizedBox(
                   height: AppSize.defaultSize! * 3,
                 ),

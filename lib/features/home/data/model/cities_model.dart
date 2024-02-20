@@ -1,6 +1,7 @@
+import 'package:leap/core/models/options_model.dart';
 import 'package:leap/core/models/vacancey_model.dart';
 
-class CitiesModel {
+class CitiesModel extends OptionsModel {
   int? id;
   String? name;
   String? nameAr;
@@ -13,17 +14,20 @@ class CitiesModel {
 
   CitiesModel(
       {this.id,
-        this.name,
-        this.nameAr,
-        this.slug,
-        this.category,
-        this.categoryId,
-        this.disable,
-        this.jobs,
-        this.popular});
+      this.name,
+      this.nameAr,
+      this.slug,
+      this.category,
+      this.categoryId,
+      this.disable,
+      this.jobs,
+      this.popular});
 
-  CitiesModel.fromJson(Map<String, dynamic> json) {
+  CitiesModel.fromJson(
+    Map<String, dynamic> json,
+  ) {
     id = json['id'];
+    text = json['name'];
     name = json['name'];
     nameAr = json['nameAr'];
     slug = json['slug'];

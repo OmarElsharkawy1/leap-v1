@@ -50,7 +50,7 @@ class InternshipsRemotelyDateSource extends BaseRemotelyDataSourceInternships {
               //1 =  normal
               // 2 with search
               options: options)
-          : await Dio().post(ConstantApi.getGetInternshipsBySearch,
+          : await Dio().get(ConstantApi.getGetInternshipsBySearch,
               data: body,
               //1 =  normal
               // 2 with search

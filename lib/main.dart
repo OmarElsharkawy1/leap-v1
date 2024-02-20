@@ -7,6 +7,8 @@ import 'package:leap/core/service/service_locator.dart';
 import 'package:leap/core/translations/translations.dart';
 import 'package:leap/features/auth/presentation/controller/login_bloc/login_with_email_and_password_bloc.dart';
 import 'package:leap/features/auth/presentation/controller/sign_up_bloc/sign_up_with_email_and_password_bloc.dart';
+import 'package:leap/features/home/presentation/controller/get_cities_major_universtity/get_options_bloc.dart';
+import 'package:leap/features/home/presentation/controller/get_cities_major_universtity/get_options_events.dart';
 import 'package:leap/features/internships/presentation/controller/get_internships/get_internships_bloc.dart';
 import 'package:leap/features/internships/presentation/controller/intern_search_bloc/get_internships_search_bloc.dart';
 import 'package:leap/features/jobs/presentation/controller/get_jobs/get_jobs_bloc.dart';
@@ -48,10 +50,18 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<GetJobsBloc>(),
-        ),   BlocProvider(
+        ),
+        BlocProvider(
           create: (context) => getIt<GetInternshipsBloc>(),
-        ), BlocProvider(
+        ),
+        BlocProvider(
           create: (context) => getIt<GetInternshipsBySearchBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<OptionsBloc>()
+            ..add(const GetMajorEvent())
+            ..add(const GetUniversityEvent())
+            ..add(const GetCitiesEvent()),
         ),
       ],
       child: MaterialApp(

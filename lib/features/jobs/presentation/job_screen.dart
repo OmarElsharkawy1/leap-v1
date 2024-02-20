@@ -6,12 +6,14 @@ import 'package:leap/core/models/vacancey_model.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/app_bar.dart';
+import 'package:leap/core/widgets/area_drop_down.dart';
 import 'package:leap/core/widgets/custom_drop_down.dart';
 import 'package:leap/core/widgets/custom_text_field.dart';
 import 'package:leap/core/widgets/empty_widget.dart';
 import 'package:leap/core/widgets/jobs_and_intern_card.dart';
 import 'package:leap/core/widgets/loading_widget.dart';
 import 'package:leap/core/widgets/main_button.dart';
+import 'package:leap/core/widgets/major_drop_down.dart';
 import 'package:leap/features/jobs/presentation/controller/get_jobs/get_jobs_bloc.dart';
 import 'package:leap/features/jobs/presentation/controller/get_jobs/get_jobs_event.dart';
 import 'package:leap/features/jobs/presentation/controller/get_jobs/get_jobs_state.dart';
@@ -62,14 +64,14 @@ class _JobsScreenState extends State<JobsScreen> {
                         fontSize: AppSize.defaultSize! * 1.3,
                       ),
                     )),
-                CustomDropDown(
-                  text: '',
-                  hintText: StringManager.selectArea.tr(),
+                SizedBox(
+                  height: AppSize.defaultSize!,
                 ),
-                CustomDropDown(
-                  text: '',
-                  hintText: StringManager.selectSkill.tr(),
+                const CitiesDropDown(),
+                SizedBox(
+                  height: AppSize.defaultSize!,
                 ),
+                const MajorDropDown(),
                 SizedBox(
                   height: AppSize.defaultSize! * 2,
                 ),

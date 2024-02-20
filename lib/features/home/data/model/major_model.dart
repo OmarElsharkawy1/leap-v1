@@ -1,6 +1,7 @@
+import 'package:leap/core/models/options_model.dart';
 import 'package:leap/core/models/vacancey_model.dart';
 
-class MajorModel  {
+class MajorModel extends OptionsModel {
   int? id;
   String? name;
   String? slug;
@@ -25,6 +26,7 @@ class MajorModel  {
   MajorModel .fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
+    text = json['name'];
     slug = json['slug'];
     logo = json['logo'];
     category = json['category'];

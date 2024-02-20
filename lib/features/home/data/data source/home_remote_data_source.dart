@@ -3,7 +3,6 @@ import 'package:leap/core/models/vacancey_model.dart';
 import 'package:leap/core/utils/api_helper.dart';
 import 'package:leap/core/utils/constant_api.dart';
 import 'package:leap/features/home/data/model/cities_model.dart';
-import 'package:leap/features/home/data/model/intern_model.dart';
 import 'package:leap/features/home/data/model/major_model.dart';
 import 'package:leap/features/home/data/model/university_model.dart';
 
@@ -14,7 +13,7 @@ abstract class BaseRemotelyDataSourceHome{
   Future<List<UniversityModel>> getUniversity();
 }
 
-class InternshipsRemotelyDateSource extends BaseRemotelyDataSourceHome {
+class HomeRemotelyDateSource extends BaseRemotelyDataSourceHome {
   @override
   Future<List<VacancyModel>> getTopFive(int type) async {
     try {
@@ -33,7 +32,7 @@ class InternshipsRemotelyDateSource extends BaseRemotelyDataSourceHome {
   Future<List<CitiesModel>> getCities() async {
     try {
       final response = await Dio().get(
-        ConstantApi.myData,
+        ConstantApi.provinces,
       );
       List<CitiesModel> jsonData = List<CitiesModel>.from(
           (response.data as List).map((e) => CitiesModel.fromJson(e)));
@@ -47,7 +46,7 @@ class InternshipsRemotelyDateSource extends BaseRemotelyDataSourceHome {
   Future<List<MajorModel>> getMajor() async {
     try {
       final response = await Dio().get(
-        ConstantApi.myData,
+        ConstantApi.majors,
       );
       List<MajorModel> jsonData = List<MajorModel>.from(
           (response.data as List).map((e) => MajorModel.fromJson(e)));
@@ -57,12 +56,11 @@ class InternshipsRemotelyDateSource extends BaseRemotelyDataSourceHome {
       throw DioHelper.handleDioError(dioError: e, endpointName: "getMajor");
     }
   }
-
   @override
   Future<List<UniversityModel>> getUniversity() async {
     try {
       final response = await Dio().get(
-        ConstantApi.myData,
+        ConstantApi.universities,
       );
       List<UniversityModel> jsonData = List<UniversityModel>.from(
           (response.data as List).map((e) => UniversityModel.fromJson(e)));

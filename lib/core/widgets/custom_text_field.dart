@@ -28,7 +28,10 @@ class CustomTextField extends StatefulWidget {
     this.suffixIcon,
     this.onTap,
     this.hintText,
-    this.hintStyle, this.width, this.height, this.maxLines,
+    this.hintStyle,
+    this.width,
+    this.height,
+    this.maxLines,
   }) : super(key: key);
 
   @override
@@ -39,26 +42,27 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: widget.height??AppSize.defaultSize! * 6,
-      width: widget.width?? AppSize.screenWidth! - (AppSize.defaultSize! * 4),
+      height: widget.height ?? AppSize.defaultSize! * 6,
+      width: widget.width ?? AppSize.screenWidth! - (AppSize.defaultSize! * 4),
       child: TextFormField(
         onTap: widget.onTap,
-maxLines: widget.maxLines,
+        maxLines: widget.maxLines,
         readOnly: widget.readOnly,
         decoration: InputDecoration(
           labelText: widget.labelText,
           hintText: widget.hintText,
           hintStyle: widget.hintStyle,
           suffixIcon: widget.suffixIcon,
+          contentPadding: EdgeInsets.all(AppSize.defaultSize! * .8),
           labelStyle: TextStyle(
             color: AppColors.primaryColor,
             fontSize: AppSize.screenHeight! * .02,
           ),
           prefixIcon: widget.prefixIcon,
-            enabledBorder:OutlineInputBorder(
-              borderSide:
-              BorderSide(color: AppColors.borderColor.withOpacity(.4)),
-            ),
+          enabledBorder: OutlineInputBorder(
+            borderSide:
+                BorderSide(color: AppColors.borderColor.withOpacity(.4)),
+          ),
           border: OutlineInputBorder(
             borderSide:
                 BorderSide(color: AppColors.borderColor.withOpacity(.4)),
@@ -70,7 +74,6 @@ maxLines: widget.maxLines,
               borderSide:
                   BorderSide(color: AppColors.borderColor.withOpacity(.4))),
         ),
-
         controller: widget.controller,
         keyboardType: widget.keyboardType,
         obscureText: widget.obscureText,

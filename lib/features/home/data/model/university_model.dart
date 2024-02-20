@@ -1,9 +1,13 @@
-class UniversityModel {
+import 'package:leap/core/models/options_model.dart';
+
+class UniversityModel extends OptionsModel{
   final int? universityId;
   final String? universityName;
   final String? universityNameAr;
 
-  UniversityModel({
+  UniversityModel(
+
+      {
     required this.universityId,
     required this.universityName,
     required this.universityNameAr,
@@ -13,6 +17,7 @@ class UniversityModel {
     return UniversityModel(
       universityId: json['universityId'],
       universityName: json['universityName'],
+
       universityNameAr: json['universityNameAr'],
     );
   }

@@ -22,7 +22,7 @@ class JobsRemotelyDateSource extends BaseRemotelyDataSourceJobs {
 
       final response = vacancySearch.type==1? await Dio().get(
         ConstantApi.getJobs,
-      ): await Dio().post(
+      ): await Dio().get(
         ConstantApi.getJobs,
         data: body,
       );
