@@ -55,22 +55,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-
-                  CircleAvatar(
-                  radius: AppSize.defaultSize! *3.5,
-
+                CircleAvatar(
+                  radius: AppSize.defaultSize! * 3.5,
                   backgroundColor: Colors.white,
-                    child:   Image.asset(AssetPath.human,
-                      height: AppSize.defaultSize! * 6,
-                      width: AppSize.defaultSize! * 6,
-                    ),
+                  child: Image.asset(
+                    AssetPath.human,
+                    height: AppSize.defaultSize! * 6,
+                    width: AppSize.defaultSize! * 6,
+                  ),
                 ),
                 SizedBox(
                   height: AppSize.defaultSize! * .5,
                 ),
-                Text(StringManager.changeProfilePicture.tr(),style: TextStyle(
-                  fontSize: AppSize.defaultSize! * 1.4,
-                ),),
+                Text(
+                  StringManager.changeProfilePicture.tr(),
+                  style: TextStyle(
+                    fontSize: AppSize.defaultSize! * 1.4,
+                  ),
+                ),
                 Row(
                   children: [
                     ColumnWithTextField(
@@ -116,7 +118,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 SizedBox(
                   height: AppSize.defaultSize! * 3,
                 ),
-                const  MajorDropDown(),
+                const MajorDropDown(),
                 SizedBox(
                   height: AppSize.defaultSize! * 3,
                 ),
