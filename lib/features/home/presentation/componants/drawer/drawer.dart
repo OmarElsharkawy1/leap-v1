@@ -59,7 +59,11 @@ class _HomeDrawerState extends State<HomeDrawer> {
                 ),
                 CustomDrawerButton(
                   text: StringManager.blog.tr(),
-                  onPressed: () {},
+                  onPressed: () {
+                    MainScreen.mainIndex = 3;
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, Routes.main, (Route<dynamic> route) => false);
+                  },
                 ),
                 CustomDrawerButton(
                   text: StringManager.myApplications.tr(),

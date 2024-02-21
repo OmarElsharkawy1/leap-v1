@@ -41,10 +41,9 @@ class ServerLocator {
     getIt.registerLazySingleton(() => GetJobsBloc(getJobsUseCase: getIt()));
     getIt.registerLazySingleton(
         () => GetInternshipsBloc(getInternshipsUseCase: getIt()));
-    getIt.registerLazySingleton(
-        () => GetInternshipsBySearchBloc(getInternshipsBySearchUseCase: getIt()));
-    getIt.registerLazySingleton(
-        () => OptionsBloc(
+    getIt.registerLazySingleton(() =>
+        GetInternshipsBySearchBloc(getInternshipsBySearchUseCase: getIt()));
+    getIt.registerLazySingleton(() => OptionsBloc(
           getCitiesUseCase: getIt(),
           getMajorUseCase: getIt(),
           getUniversityUseCase: getIt(),
@@ -58,13 +57,11 @@ class ServerLocator {
     getIt.registerFactory(() => GetJobsUseCase(baseRepositoryJobs: getIt()));
     getIt.registerFactory(
         () => GetInternshipsUseCase(baseRepositoryInternships: getIt()));
-    getIt.registerFactory(
-        () => GetInternshipsBySearchUseCase(baseRepositoryInternships: getIt()));
+    getIt.registerFactory(() =>
+        GetInternshipsBySearchUseCase(baseRepositoryInternships: getIt()));
 
-    getIt.registerFactory(
-        () => GetCitiesUseCase(baseRepositoryHome: getIt()));
-    getIt.registerFactory(
-        () => GetMajorUseCase(baseRepositoryHome: getIt()));
+    getIt.registerFactory(() => GetCitiesUseCase(baseRepositoryHome: getIt()));
+    getIt.registerFactory(() => GetMajorUseCase(baseRepositoryHome: getIt()));
     getIt.registerFactory(
         () => GetUniversityUseCase(baseRepositoryHome: getIt()));
     //remote data
@@ -75,7 +72,7 @@ class ServerLocator {
     getIt.registerLazySingleton<BaseRemotelyDataSourceInternships>(
         () => InternshipsRemotelyDateSource());
     getIt.registerLazySingleton<BaseRemotelyDataSourceHome>(
-        () =>HomeRemotelyDateSource());
+        () => HomeRemotelyDateSource());
 //repo
     getIt.registerLazySingleton<BaseRepository>(
         () => RepositoryImp(baseRemotelyDataSource: getIt()));
@@ -83,8 +80,8 @@ class ServerLocator {
         () => JobsRepositoryImp(baseRemotelyDataSourceJobs: getIt()));
     getIt.registerLazySingleton<BaseRepositoryInternships>(() =>
         InternshipsRepositoryImp(baseRemotelyDataSourceInternships: getIt()));
-    getIt.registerLazySingleton<BaseRepositoryHome>(() =>
-        HomeRepositoryImp(baseRemotelyDataSourceHome: getIt()));
+    getIt.registerLazySingleton<BaseRepositoryHome>(
+        () => HomeRepositoryImp(baseRemotelyDataSourceHome: getIt()));
     getIt.registerLazySingleton(() => NavigationService());
   }
 }

@@ -1,11 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:leap/core/models/vacancey_model.dart';
+import 'package:leap/core/widgets/vacancy_details.dart';
 import 'package:leap/features/auth/presentation/forget%20password/change_password.dart';
 import 'package:leap/features/auth/presentation/forget%20password/forget_password.dart';
 import 'package:leap/features/auth/presentation/forget%20password/send_otp_code.dart';
 import 'package:leap/features/auth/presentation/login_screen.dart';
 import 'package:leap/features/auth/presentation/signup/sign_up.dart';
+import 'package:leap/features/blog_details/blog_complete.dart';
 import 'package:leap/features/main_screen.dart';
 import 'package:leap/features/profile/presentation/componants/contact_us/contact_us.dart';
 import 'package:leap/features/profile/presentation/componants/my_applications.dart';
@@ -21,6 +24,8 @@ class Routes {
   static const String profile = "/profile";
   static const String myApplications = "/myApplications";
   static const String contactUs = "/contactUs";
+  static const String blogComplete = "/BlogComplete";
+  static const String vacancyDetails = "/VacancyDetails";
 }
 
 class RouteGenerator {
@@ -67,10 +72,25 @@ class RouteGenerator {
             pageBuilder: (context, animation, secondaryAnimation) =>
                 const MyApplications(),
             transitionsBuilder: customAnimate);
-        case Routes.contactUs:
+      case Routes.contactUs:
         return PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
                 const ContactUS(),
+            transitionsBuilder: customAnimate);
+      case Routes.blogComplete:
+        return PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                const BlogComplete(),
+            transitionsBuilder: customAnimate);
+      case Routes.vacancyDetails:
+        VacancyModel vacancyModel = settings.arguments as VacancyModel;
+
+        return PageRouteBuilder(
+            settings: settings,
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                VacancyDetails(
+                  vacancyModel: vacancyModel,
+                ),
             transitionsBuilder: customAnimate);
     }
     return unDefinedRoute();

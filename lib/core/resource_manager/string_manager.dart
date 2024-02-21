@@ -34,12 +34,16 @@ class StringManager{
   static const String university = "University";
   static const String major = "Major";
   static const String jobs = "Jobs";
+  static const String jobsDetails = "Job details";
+  static const String jobDescription = "Job Description";
   static const String viewJob = "View job";
   static const String internships = "Internships";
   static const String viewProfile = "View Profile";
   static const String home = "Home";
   static const String companies = "Companies";
   static const String blog = "Blog";
+  static const String blogs = "Blogs";
+  static const String veryUsefulArticles = "Very Useful Articles";
   static const String options = "Options";
   static const String logOut = "LogOut";
   static const String resources = "Resources";
@@ -62,7 +66,10 @@ class StringManager{
   static const String pleaseCompleteYourData = "Please complete your data";
   static const String tabToUploadCV = "Tap here to \nUpload your CV";
   static const String thereIsNo = "There is no items";
-
+  static const String theMost = "The most ingenious recycled homes";
+  static const String anotherRecommendedArticles = "Another Recommended Articles";
+  static const String seeMore = "See More";
+  static const String viewMore = "View More";
 
 
 

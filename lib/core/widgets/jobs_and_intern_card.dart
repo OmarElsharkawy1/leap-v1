@@ -9,10 +9,12 @@ import 'package:leap/core/widgets/cached_network_image.dart';
 import 'package:leap/core/widgets/cutom_text.dart';
 
 class JobsAndInternCard extends StatefulWidget {
-  const JobsAndInternCard({super.key, required this.vacancyModel, this.text});
+  const JobsAndInternCard({super.key, required this.vacancyModel, this.text, this.width,  this.apply=true});
 
   final VacancyModel vacancyModel;
   final String? text;
+  final double? width;
+  final bool apply;
 
   @override
   State<JobsAndInternCard> createState() => _JobsAndInternCardState();
@@ -23,7 +25,7 @@ class _JobsAndInternCardState extends State<JobsAndInternCard> {
   Widget build(BuildContext context) {
     return Container(
       // height: AppSize.screenHeight!*.27,
-      width: AppSize.screenWidth! * .95,
+      width:widget.width?? AppSize.screenWidth! * .95,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AppSize.defaultSize!),
         color: AppColors.containerColor,
@@ -95,6 +97,7 @@ class _JobsAndInternCardState extends State<JobsAndInternCard> {
                 SizedBox(
                   height: AppSize.defaultSize! * 2,
                 ),
+                if(widget.apply)
                 InkWell(
                   onTap: () {},
                   child: Container(

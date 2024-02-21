@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:leap/core/models/vacancey_model.dart';
 import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
@@ -7,8 +8,9 @@ import 'package:leap/core/utils/app_size.dart';
 
 class JobCard extends StatefulWidget {
   const JobCard({
-    Key? key,
+    Key? key, required this.jobSlider,
   }) : super(key: key);
+  final  VacancyModel jobSlider;
 
   @override
   State<JobCard> createState() => _JobCardState();
@@ -43,7 +45,7 @@ class _JobCardState extends State<JobCard> {
                   vertical: AppSize.defaultSize!,
                 ),
                 child: Text(
-                  'Software Engineer',
+                  widget.jobSlider.name??"",
                   style: TextStyle(
                       color: AppColors.primaryColor,
                       fontWeight: FontWeight.bold,
@@ -51,25 +53,25 @@ class _JobCardState extends State<JobCard> {
                 ),
               ),
               Text(
-                'Posted 2 Days Ago • Full Time',
+                widget.jobSlider.time,
                 style: TextStyle(
                     color:AppColors.  mainFontColor, fontSize: AppSize.defaultSize! * 1.4),
               ),
               // SizedBox(height: AppSize.defaultSize!*.3,),
               Text(
-                'Cairo, Egypt',
+                widget.jobSlider.province??"",
                 style: TextStyle(
                     color:AppColors.  mainFontColor, fontSize: AppSize.defaultSize! * 1.4),
               ),
               SizedBox(height: AppSize.defaultSize!*.3,),
               Text(
-                '.NET Developer',
+                widget.jobSlider.skills??"",
                 style: TextStyle(
                     color:AppColors.  mainFontColor, fontSize: AppSize.defaultSize! * 1.4),
               ),
               SizedBox(height: AppSize.defaultSize!*.3,),
               Text(
-                '12000 EGP - 15000 EGP',
+                '${widget.jobSlider.minSalary} EGP - ${widget.jobSlider.maxSalary} EGP',
                 style: TextStyle(
                     color:AppColors.  mainFontColor, fontSize: AppSize.defaultSize! * 1.4),
               ),

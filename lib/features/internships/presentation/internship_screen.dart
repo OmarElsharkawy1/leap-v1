@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:leap/core/models/vacancey_model.dart';
+import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/service/navigator_services.dart';
 import 'package:leap/core/service/service_locator.dart';
@@ -20,6 +21,7 @@ import 'package:leap/core/widgets/jobs_and_intern_card.dart';
 import 'package:leap/core/widgets/loading_widget.dart';
 import 'package:leap/core/widgets/main_button.dart';
 import 'package:leap/core/widgets/major_drop_down.dart';
+import 'package:leap/core/widgets/vacancy_details.dart';
 import 'package:leap/features/home/presentation/controller/get_cities_major_universtity/get_options_bloc.dart';
 import 'package:leap/features/home/presentation/controller/get_cities_major_universtity/get_options_states.dart';
 import 'package:leap/features/internships/presentation/controller/get_internships/get_internships_bloc.dart';
@@ -29,6 +31,7 @@ import 'package:leap/features/internships/presentation/controller/intern_search_
 import 'package:leap/features/internships/presentation/controller/intern_search_bloc/get_internships_search_event.dart';
 import 'package:leap/features/internships/presentation/controller/intern_search_bloc/get_internships_search_state.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class InternshipScreen extends StatefulWidget {
   const InternshipScreen({super.key});
@@ -153,13 +156,27 @@ class _InternshipScreenState extends State<InternshipScreen> {
                                 return Padding(
                                   padding:
                                       EdgeInsets.all(AppSize.defaultSize! * .5),
-                                  child: JobsAndInternCard(
-                                    vacancyModel: state.internModel[index],
+                                  child: InkWell(
+                                    onTap: () {
+                                      PersistentNavBarNavigator.pushNewScreen(
+                                        context,
+                                        screen: VacancyDetails(
+                                            vacancyModel:
+                                                state.internModel[index]),
+                                        withNavBar: false,
+                                        // OPTIONAL VALUE. True by default.
+                                        pageTransitionAnimation:
+                                            PageTransitionAnimation.fade,
+                                      );
+                                    },
+                                    child: JobsAndInternCard(
+                                      vacancyModel: state.internModel[index],
+                                    )
+                                        .animate()
+                                        .fadeIn() // uses `Animate.defaultDuration`
+                                        .scale() // inherits duration from fadeIn
+                                        .move(delay: 300.ms, duration: 600.ms),
                                   )
-                                      .animate()
-                                      .fadeIn() // uses `Animate.defaultDuration`
-                                      .scale() // inherits duration from fadeIn
-                                      .move(delay: 300.ms, duration: 600.ms)
                                   // runs after the above w/new duration
                                   ,
                                 );
@@ -182,13 +199,21 @@ class _InternshipScreenState extends State<InternshipScreen> {
                                   return Padding(
                                     padding: EdgeInsets.all(
                                         AppSize.defaultSize! * .5),
-                                    child: JobsAndInternCard(
-                                      vacancyModel: tempData![index],
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.pushNamed(
+                                            context, Routes.vacancyDetails,
+                                            arguments: tempData![index]);
+                                      },
+                                      child: JobsAndInternCard(
+                                        vacancyModel: tempData![index],
+                                      )
+                                          .animate()
+                                          .fadeIn() // uses `Animate.defaultDuration`
+                                          .scale() // inherits duration from fadeIn
+                                          .move(
+                                              delay: 300.ms, duration: 600.ms),
                                     )
-                                        .animate()
-                                        .fadeIn() // uses `Animate.defaultDuration`
-                                        .scale() // inherits duration from fadeIn
-                                        .move(delay: 300.ms, duration: 600.ms)
                                     // runs after the above w/new duration
                                     ,
                                   );

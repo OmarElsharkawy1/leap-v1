@@ -14,9 +14,11 @@ import 'package:leap/core/widgets/jobs_and_intern_card.dart';
 import 'package:leap/core/widgets/loading_widget.dart';
 import 'package:leap/core/widgets/main_button.dart';
 import 'package:leap/core/widgets/major_drop_down.dart';
+import 'package:leap/core/widgets/vacancy_details.dart';
 import 'package:leap/features/jobs/presentation/controller/get_jobs/get_jobs_bloc.dart';
 import 'package:leap/features/jobs/presentation/controller/get_jobs/get_jobs_event.dart';
 import 'package:leap/features/jobs/presentation/controller/get_jobs/get_jobs_state.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class JobsScreen extends StatefulWidget {
   const JobsScreen({super.key});
@@ -101,23 +103,39 @@ class _JobsScreenState extends State<JobsScreen> {
                               return Padding(
                                 padding:
                                     EdgeInsets.all(AppSize.defaultSize! * .5),
-                                child: JobsAndInternCard(
-                                  vacancyModel: state.jobModel[index],
+                                child: InkWell(
+                                  onTap: (){
+                                    PersistentNavBarNavigator.pushNewScreen(
+                                      context,
+                                      screen: VacancyDetails(
+                                          vacancyModel:
+                                          state.jobModel[index]),
+                                      withNavBar: false,
+                                      // OPTIONAL VALUE. True by default.
+                                      pageTransitionAnimation:
+                                      PageTransitionAnimation.fade,
+                                    );
+                                  },
+                                  child: JobsAndInternCard(
+                                    vacancyModel: state.jobModel[index],
+                                  )
+                                      .animate()
+                                      .fadeIn() // uses `Animate.defaultDuration`
+                                      .scale() // inherits duration from fadeIn
+                                      .move(delay: 300.ms, duration: 600.ms),
                                 )
-                                    .animate()
-                                    .fadeIn() // uses `Animate.defaultDuration`
-                                    .scale() // inherits duration from fadeIn
-                                    .move(delay: 300.ms, duration: 600.ms)
                                 // runs after the above w/new duration
                                 ,
                               );
                             });
-                  } else if (state is GetJobsErrorMessageState) {
+                  }
+                  else if (state is GetJobsErrorMessageState) {
                     return ErrorWidget(state.errorMessage);
                   } else if (state is GetJobsLoadingState) {
                     if (isFirst == 0) {
                       return const LoadingWidget();
-                    } else {
+                    }
+                    else {
                       return tempData!.isEmpty
                           ? const EmptyWidget()
                           : ListView.builder(

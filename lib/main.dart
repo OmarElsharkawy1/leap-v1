@@ -10,7 +10,9 @@ import 'package:leap/features/auth/presentation/controller/sign_up_bloc/sign_up_
 import 'package:leap/features/home/presentation/controller/get_cities_major_universtity/get_options_bloc.dart';
 import 'package:leap/features/home/presentation/controller/get_cities_major_universtity/get_options_events.dart';
 import 'package:leap/features/internships/presentation/controller/get_internships/get_internships_bloc.dart';
+import 'package:leap/features/internships/presentation/controller/get_internships/get_internships_event.dart';
 import 'package:leap/features/internships/presentation/controller/intern_search_bloc/get_internships_search_bloc.dart';
+import 'package:leap/features/internships/presentation/controller/intern_search_bloc/get_internships_search_event.dart';
 import 'package:leap/features/jobs/presentation/controller/get_jobs/get_jobs_bloc.dart';
 import 'package:leap/features/jobs/presentation/controller/get_jobs/get_jobs_event.dart';
 
@@ -49,13 +51,13 @@ class MyApp extends StatelessWidget {
           create: (context) => getIt<SignUpWithEmailAndPasswordBloc>(),
         ),
         BlocProvider(
-          create: (context) => getIt<GetJobsBloc>(),
+          create: (context) => getIt<GetJobsBloc>()..add(GetJobsEvent()),
         ),
         BlocProvider(
           create: (context) => getIt<GetInternshipsBloc>(),
         ),
         BlocProvider(
-          create: (context) => getIt<GetInternshipsBySearchBloc>(),
+          create: (context) => getIt<GetInternshipsBySearchBloc>()..add(GetInternshipsBySearchEvent()),
         ),
         BlocProvider(
           create: (context) => getIt<OptionsBloc>()

@@ -1,10 +1,16 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:leap/core/models/vacancey_model.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'job_card.dart';
 
 class CarouselWithIndicatorDemo extends StatefulWidget {
-  const CarouselWithIndicatorDemo({super.key});
+  const CarouselWithIndicatorDemo({
+    super.key,
+    required this.jobSlider,
+  });
+
+  final List<VacancyModel> jobSlider;
 
   @override
   State<StatefulWidget> createState() {
@@ -13,18 +19,43 @@ class CarouselWithIndicatorDemo extends StatefulWidget {
 }
 
 class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
+  late List<Widget> jobSlider;
+
+  @override
+  void initState() {
+    if (widget.jobSlider.length >= 5) {
+      jobSlider = [
+        JobCard(jobSlider: widget.jobSlider[0]),
+        JobCard(jobSlider: widget.jobSlider[1]),
+        JobCard(jobSlider: widget.jobSlider[2]),
+        JobCard(jobSlider: widget.jobSlider[3]),
+        JobCard(jobSlider: widget.jobSlider[4]),
+      ];
+    } else {
+      jobSlider = [
+        if (widget.jobSlider.isNotEmpty)
+          JobCard(jobSlider: widget.jobSlider[0]),
+        if (widget.jobSlider.length >= 2)
+          JobCard(jobSlider: widget.jobSlider[1]),
+        if (widget.jobSlider.length >= 3)
+          JobCard(jobSlider: widget.jobSlider[2]),
+        if (widget.jobSlider.length >= 4)
+          JobCard(jobSlider: widget.jobSlider[3]),
+        if (widget.jobSlider.length >= 5)
+          JobCard(jobSlider: widget.jobSlider[4]),
+      ];
+    }
+    super.initState();
+  }
+
   int _current = 0;
-  final List<Widget> jobSlider = const[
-    JobCard(),
-    JobCard(),
-    JobCard(),
-  ];
+
   final CarouselController _controller = CarouselController();
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppSize.screenHeight !* .3,
+      height: AppSize.screenHeight! * .3,
       child: Column(children: [
         Expanded(
           child: CarouselSlider(

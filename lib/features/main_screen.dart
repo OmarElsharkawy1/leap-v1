@@ -9,6 +9,7 @@ import 'package:leap/core/service/navigator_services.dart';
 import 'package:leap/core/service/service_locator.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/coming_soon.dart';
+import 'package:leap/features/blog_details/blog_details.dart';
 import 'package:leap/features/home/presentation/componants/drawer/drawer.dart';
 import 'package:leap/features/home/presentation/home_screen.dart';
 import 'package:leap/features/internships/presentation/internship_screen.dart';
@@ -43,8 +44,9 @@ class _MainScreenState extends State<MainScreen> {
       ),
       InternshipScreen(),
       JobsScreen(),
+      BlogDetails(),
       ComingSoon(),
-      ComingSoon(),
+
     ];
   }
 
@@ -77,20 +79,21 @@ class _MainScreenState extends State<MainScreen> {
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(
-          Icons.collections_bookmark_outlined,
-        ),
-        title: StringManager.resources.tr(),
-        activeColorPrimary: AppColors.primaryColor,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
-      ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(
           Icons.sticky_note_2_outlined,
         ),
         title: StringManager.blog.tr(),
         activeColorPrimary: AppColors.primaryColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(
+          Icons.collections_bookmark_outlined,
+        ),
+        title: StringManager.resources.tr(),
+        activeColorPrimary: AppColors.primaryColor,
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+
     ];
   }
 
