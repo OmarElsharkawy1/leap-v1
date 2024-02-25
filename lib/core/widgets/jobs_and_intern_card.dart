@@ -36,7 +36,7 @@ class _JobsAndInternCardState extends State<JobsAndInternCard> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CachedNetworkCustom(
-              url: widget.vacancyModel.image!,
+              url: widget.vacancyModel.image??"",
               height: AppSize.defaultSize! * 8,
               width: AppSize.defaultSize! * 8,
             ),
@@ -49,7 +49,7 @@ class _JobsAndInternCardState extends State<JobsAndInternCard> {
                 SizedBox(
                   width: AppSize.screenWidth! * .5,
                   child: CustomText(
-                      text: widget.vacancyModel.name!,
+                      text: widget.vacancyModel.name??"",
                       color: AppColors.primaryColor,
                       maxLines: 2,
                       textAlign: TextAlign.start,
@@ -59,14 +59,14 @@ class _JobsAndInternCardState extends State<JobsAndInternCard> {
                 Row(
                   children: [
                     Text(
-                      widget.vacancyModel.time,
+                      widget.vacancyModel.time??"",
                       style: TextStyle(
                           color: AppColors.greyColor,
                           fontWeight: FontWeight.w600,
                           fontSize: AppSize.defaultSize! * 1.2),
                     ),
                     Text(
-                      widget.vacancyModel.category,
+                      widget.vacancyModel.category??"",
                       style: TextStyle(
                           color: AppColors.black,
                           fontWeight: FontWeight.w600,
@@ -78,12 +78,12 @@ class _JobsAndInternCardState extends State<JobsAndInternCard> {
                   height: AppSize.defaultSize!,
                 ),
                 rowWithIcon(
-                    text: widget.vacancyModel.slug!, icon: AssetPath.location),
+                    text: widget.vacancyModel.slug??"", icon: AssetPath.location),
                 SizedBox(
                   height: AppSize.defaultSize!,
                 ),
                 rowWithIcon(
-                    text: widget.vacancyModel.slug!, icon: AssetPath.location),
+                    text: widget.vacancyModel.slug??"", icon: AssetPath.location),
                 SizedBox(
                   height: AppSize.defaultSize!,
                 ),

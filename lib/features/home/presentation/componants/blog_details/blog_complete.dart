@@ -6,7 +6,7 @@ import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/cutom_text.dart';
-import 'package:leap/features/blog_details/merchants_stores.dart';
+import 'package:leap/features/home/presentation/componants/blog_details/merchants_stores.dart';
 
 class BlogComplete extends StatefulWidget {
   const BlogComplete({super.key});

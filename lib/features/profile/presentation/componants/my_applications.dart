@@ -1,10 +1,16 @@
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/app_bar.dart';
+import 'package:leap/core/widgets/loading_widget.dart';
 import 'package:leap/features/profile/presentation/componants/my_application_item.dart';
+import 'package:leap/features/profile/presentation/controller/get_my_applications/get_my_applications_bloc.dart';
+import 'package:leap/features/profile/presentation/controller/get_my_applications/get_my_applications_state.dart';
 
 class MyApplications extends StatefulWidget {
   const MyApplications({super.key});
@@ -20,7 +26,7 @@ class _MyApplicationsState extends State<MyApplications>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 2, vsync: this,);
   }
 
   @override
@@ -54,7 +60,7 @@ class _MyApplicationsState extends State<MyApplications>
                   indicator: BoxDecoration(
                     color: AppColors.greyColor.withOpacity(.2),
                     borderRadius:
-                        BorderRadius.circular(AppSize.defaultSize! * 10),
+                    BorderRadius.circular(AppSize.defaultSize! * 10),
                   ),
                   dividerColor: Colors.transparent,
                   controller: _tabController,
@@ -78,13 +84,13 @@ class _MyApplicationsState extends State<MyApplications>
             Expanded(
               child: Padding(
                 padding: EdgeInsets.all(AppSize.defaultSize!),
-                child: TabBarView(
+                child:  TabBarView(
                   controller: _tabController,
-                  children: [
-                    MyApplicationsItem(),
-                    MyApplicationsItem(),
+                  children: const [
+                    MyApplicationsItem(type: 1,),
+                    MyApplicationsItem(type: 2,),
                   ],
-                ),
+                )
               ),
             )
           ],

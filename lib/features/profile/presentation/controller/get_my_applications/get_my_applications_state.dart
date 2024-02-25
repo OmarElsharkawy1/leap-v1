@@ -21,7 +21,7 @@ class GetMyApplicationsErrorMessageState extends GetMyApplicationsState {
 }
 
 class GetMyApplicationsSuccessMessageState extends GetMyApplicationsState {
-  final VacancyModel jobModel;
+  final List<VacancyModel> jobModel;
 
   const GetMyApplicationsSuccessMessageState({required this.jobModel});
 }

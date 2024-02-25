@@ -35,7 +35,6 @@ class _JobsScreenState extends State<JobsScreen> {
 
   @override
   void initState() {
-    BlocProvider.of<GetJobsBloc>(context).add(GetJobsEvent());
     searchController = TextEditingController();
     super.initState();
   }
