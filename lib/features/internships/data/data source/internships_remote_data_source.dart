@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:leap/core/models/my_data_model.dart';
 import 'package:leap/core/utils/api_helper.dart';
 import 'package:leap/core/utils/constant_api.dart';
-import 'package:leap/features/internships/data/model/intern_model.dart';
+
 import 'package:leap/core/models/vacancey_model.dart';
 
 abstract class BaseRemotelyDataSourceInternships {

@@ -40,7 +40,7 @@ class _VacancyDetailsState extends State<VacancyDetails> {
                 CustomText(
                   text: StringManager.jobDescription.tr(),
                   fontWeight: FontWeight.w700,
-                  fontSize: AppSize.defaultSize! * 1.5,
+                  fontSize: AppSize.defaultSize! * 2,
                 ),
                 SizedBox(
                   height: AppSize.defaultSize! * 3,
@@ -48,6 +48,8 @@ class _VacancyDetailsState extends State<VacancyDetails> {
                 CustomText(
                   text: widget.vacancyModel.description ?? "",
                   textAlign: TextAlign.start,
+                  fontSize: AppSize.defaultSize!*1.8,
+                  maxLines: 40,
                 ),
               ],
             ),

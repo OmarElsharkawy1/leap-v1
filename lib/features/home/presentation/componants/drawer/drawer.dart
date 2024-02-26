@@ -66,6 +66,15 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   },
                 ),
                 CustomDrawerButton(
+                  text: StringManager.cvBuilder.tr(),
+                  onPressed: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        Routes.cvBuilderScreen,
+                        (Route<dynamic> route) => false);
+                  },
+                ),
+                CustomDrawerButton(
                   text: StringManager.myApplications.tr(),
                   onPressed: () {
                     Navigator.pop(context);

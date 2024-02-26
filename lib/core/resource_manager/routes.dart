@@ -7,6 +7,7 @@ import 'package:leap/features/auth/presentation/forget%20password/send_otp_code.
 import 'package:leap/features/auth/presentation/login_screen.dart';
 import 'package:leap/features/auth/presentation/signup/sign_up.dart';
 import 'package:leap/features/home/presentation/componants/blog_details/blog_complete.dart';
+import 'package:leap/features/home/presentation/componants/cv%20builder/cv_builder.dart';
 import 'package:leap/features/main_screen.dart';
 import 'package:leap/features/profile/presentation/componants/contact_us/contact_us.dart';
 import 'package:leap/features/profile/presentation/componants/my_applications.dart';
@@ -24,6 +25,7 @@ class Routes {
   static const String contactUs = "/contactUs";
   static const String blogComplete = "/BlogComplete";
   static const String vacancyDetails = "/VacancyDetails";
+  static const String cvBuilderScreen = "/CVBuilderScreen";
 }
 
 class RouteGenerator {
@@ -79,6 +81,11 @@ class RouteGenerator {
         return PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
                 const BlogComplete(),
+            transitionsBuilder: customAnimate);
+        case Routes.cvBuilderScreen:
+        return PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                const CVBuilderScreen(),
             transitionsBuilder: customAnimate);
       case Routes.vacancyDetails:
         VacancyModel vacancyModel = settings.arguments as VacancyModel;
