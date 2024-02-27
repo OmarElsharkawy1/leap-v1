@@ -20,13 +20,16 @@ class _MyApplicationsItemState extends State<MyApplicationsItem> {
         physics: const BouncingScrollPhysics(),
         shrinkWrap: true,
         padding: EdgeInsets.zero,
-        itemCount: 15,
+        itemCount: 3,
         itemBuilder: (context, index) {
           return Padding(
             padding: EdgeInsets.all(AppSize.defaultSize! * .5),
             child: JobsAndInternCard(
               text: StringManager.viewDetails.tr(),
-              vacancyModel: VacancyModel(),
+              vacancyModel: VacancyModel(
+                  name: 'TeamLead Engineer',
+                  provinceName: 'Cairo, Egypt',
+                  major: '.NET Developer'),
             )
                 .animate()
                 .fadeIn() // uses `Animate.defaultDuration`

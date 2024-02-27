@@ -9,7 +9,12 @@ import 'package:leap/core/widgets/cached_network_image.dart';
 import 'package:leap/core/widgets/cutom_text.dart';
 
 class JobsAndInternCard extends StatefulWidget {
-  const JobsAndInternCard({super.key, required this.vacancyModel, this.text, this.width,  this.apply=true});
+  const JobsAndInternCard(
+      {super.key,
+      required this.vacancyModel,
+      this.text,
+      this.width,
+      this.apply = true});
 
   final VacancyModel vacancyModel;
   final String? text;
@@ -25,7 +30,7 @@ class _JobsAndInternCardState extends State<JobsAndInternCard> {
   Widget build(BuildContext context) {
     return Container(
       // height: AppSize.screenHeight!*.27,
-      width:widget.width?? AppSize.screenWidth! * .95,
+      width: widget.width ?? AppSize.screenWidth! * .95,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AppSize.defaultSize!),
         color: AppColors.containerColor,
@@ -35,11 +40,17 @@ class _JobsAndInternCardState extends State<JobsAndInternCard> {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CachedNetworkCustom(
-              url: widget.vacancyModel.image!,
-              height: AppSize.defaultSize! * 8,
-              width: AppSize.defaultSize! * 8,
-            ),
+            widget.vacancyModel.image == null
+                ? Image.asset(
+                    AssetPath.slogan,
+                    width: AppSize.defaultSize! * 8,
+                    height: AppSize.defaultSize! * 8,
+                  )
+                : CachedNetworkCustom(
+                    url: widget.vacancyModel.image ?? '',
+                    height: AppSize.defaultSize! * 8,
+                    width: AppSize.defaultSize! * 8,
+                  ),
             SizedBox(
               width: AppSize.defaultSize!,
             ),
@@ -49,7 +60,7 @@ class _JobsAndInternCardState extends State<JobsAndInternCard> {
                 SizedBox(
                   width: AppSize.screenWidth! * .5,
                   child: CustomText(
-                      text: widget.vacancyModel.name!,
+                      text: widget.vacancyModel.name ?? "",
                       color: AppColors.primaryColor,
                       maxLines: 2,
                       textAlign: TextAlign.start,
@@ -59,14 +70,18 @@ class _JobsAndInternCardState extends State<JobsAndInternCard> {
                 Row(
                   children: [
                     Text(
-                      widget.vacancyModel.time,
+                      widget.vacancyModel.createDate?.substring(0, 10) ??
+                          'Posted 2 Days Ago',
                       style: TextStyle(
                           color: AppColors.greyColor,
                           fontWeight: FontWeight.w600,
                           fontSize: AppSize.defaultSize! * 1.2),
                     ),
+                    SizedBox(
+                      width: AppSize.defaultSize!,
+                    ),
                     Text(
-                      widget.vacancyModel.category,
+                      widget.vacancyModel.type ?? 'Full Time',
                       style: TextStyle(
                           color: AppColors.black,
                           fontWeight: FontWeight.w600,
@@ -78,17 +93,19 @@ class _JobsAndInternCardState extends State<JobsAndInternCard> {
                   height: AppSize.defaultSize!,
                 ),
                 rowWithIcon(
-                    text: widget.vacancyModel.slug!, icon: AssetPath.location),
+                    text: widget.vacancyModel.provinceName ?? "",
+                    icon: AssetPath.location),
                 SizedBox(
                   height: AppSize.defaultSize!,
                 ),
                 rowWithIcon(
-                    text: widget.vacancyModel.slug!, icon: AssetPath.location),
+                    text: widget.vacancyModel.major ?? "",
+                    icon: AssetPath.location),
                 SizedBox(
                   height: AppSize.defaultSize!,
                 ),
                 Text(
-                  '${widget.vacancyModel.minSalary} - ${widget.vacancyModel.maxSalary}',
+                  '${widget.vacancyModel.minSalary ?? 5000} - ${widget.vacancyModel.maxSalary ?? 10000}',
                   style: TextStyle(
                       color: AppColors.black,
                       fontWeight: FontWeight.w600,
@@ -97,27 +114,27 @@ class _JobsAndInternCardState extends State<JobsAndInternCard> {
                 SizedBox(
                   height: AppSize.defaultSize! * 2,
                 ),
-                if(widget.apply)
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                      height: AppSize.defaultSize! * 3.5,
-                      width: AppSize.screenWidth! * .55,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius:
-                              BorderRadius.circular(AppSize.defaultSize! * .5),
-                          border: Border.all(color: AppColors.primaryColor)),
-                      child: Center(
-                        child: Text(
-                          widget.text ?? StringManager.applyNow.tr(),
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: AppSize.defaultSize! * 1.4,
+                if (widget.apply)
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                        height: AppSize.defaultSize! * 3.5,
+                        width: AppSize.screenWidth! * .55,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(
+                                AppSize.defaultSize! * .5),
+                            border: Border.all(color: AppColors.primaryColor)),
+                        child: Center(
+                          child: Text(
+                            widget.text ?? StringManager.applyNow.tr(),
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: AppSize.defaultSize! * 1.4,
+                            ),
                           ),
-                        ),
-                      )),
-                ),
+                        )),
+                  ),
               ],
             )
           ],

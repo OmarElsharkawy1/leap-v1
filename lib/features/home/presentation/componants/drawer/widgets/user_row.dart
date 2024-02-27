@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:leap/core/resource_manager/asset_path.dart';
 import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
@@ -24,7 +25,8 @@ class UserRowDrawer extends StatelessWidget {
             ),
             CircleAvatar(
               radius: AppSize.defaultSize! * 2,
-              backgroundColor: Colors.black,
+              backgroundColor: Colors.white,
+              child: Image.asset(AssetPath.human),
             ),
             SizedBox(
               width: AppSize.defaultSize! * 2,

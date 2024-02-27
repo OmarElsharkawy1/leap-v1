@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:leap/core/models/vacancey_model.dart';
+import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/app_bar.dart';
@@ -21,38 +22,65 @@ class _VacancyDetailsState extends State<VacancyDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(context, text: StringManager.jobs.tr()),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          JobsAndInternCard(
-            vacancyModel: widget.vacancyModel,
-            width: AppSize.screenWidth!,
-            apply: false,
-          ),
-          Padding(
-            padding: EdgeInsets.all(AppSize.defaultSize! * 1.5),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: AppSize.defaultSize! * 3,
-                ),
-                CustomText(
-                  text: StringManager.jobDescription.tr(),
-                  fontWeight: FontWeight.w700,
-                  fontSize: AppSize.defaultSize! * 1.5,
-                ),
-                SizedBox(
-                  height: AppSize.defaultSize! * 3,
-                ),
-                CustomText(
-                  text: widget.vacancyModel.description ?? "",
-                  textAlign: TextAlign.start,
-                ),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            JobsAndInternCard(
+              vacancyModel: widget.vacancyModel,
+              width: AppSize.screenWidth!,
+              apply: false,
             ),
-          )
-        ],
+            Padding(
+              padding: EdgeInsets.all(AppSize.defaultSize! * 1.5),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: AppSize.defaultSize! * 3,
+                  ),
+                  CustomText(
+                    text: StringManager.jobDescription.tr(),
+                    fontWeight: FontWeight.w700,
+                    fontSize: AppSize.defaultSize! * 1.5,
+                  ),
+                  SizedBox(
+                    height: AppSize.defaultSize! * 3,
+                  ),
+                  CustomText(
+                    text: widget.vacancyModel.description ?? "",
+                    textAlign: TextAlign.start,
+                    maxLines: 50,
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: InkWell(
+                      onTap: () {},
+                      child: Container(
+                          height: AppSize.defaultSize! * 5,
+                          width: AppSize.screenWidth! * .8,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(
+                                  AppSize.defaultSize! * .5),
+                              border:
+                                  Border.all(color: AppColors.primaryColor)),
+                          child: Center(
+                            child: Text(
+                              StringManager.applyNow.tr(),
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: AppSize.defaultSize! * 1.4,
+                              ),
+                            ),
+                          )),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

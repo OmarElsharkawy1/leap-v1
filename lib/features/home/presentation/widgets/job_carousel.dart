@@ -55,7 +55,7 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppSize.screenHeight! * .3,
+      height: AppSize.screenHeight! * .28,
       child: Column(children: [
         Expanded(
           child: CarouselSlider(

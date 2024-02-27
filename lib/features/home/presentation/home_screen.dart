@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
               } else if (state is GetJobsErrorMessageState) {
                 return ErrorWidget(state.errorMessage);
               } else if (state is GetJobsLoadingState) {
-                return const LoadingWidget();
+                return const SizedBox();
               } else {
                 return const SizedBox();
               }

@@ -52,26 +52,41 @@ class _JobCardState extends State<JobCard> {
                       fontSize: AppSize.defaultSize! * 1.5),
                 ),
               ),
-              Text(
-                widget.jobSlider.time,
-                style: TextStyle(
-                    color:AppColors.  mainFontColor, fontSize: AppSize.defaultSize! * 1.4),
+              Row(
+
+                children: [
+                  Text(
+                    widget.jobSlider.createDate!.substring(0,10),
+                    style: TextStyle(
+                        color: AppColors.greyColor,
+                        fontWeight: FontWeight.w600,
+                        fontSize: AppSize.defaultSize! * 1.2),
+                  ),
+                  SizedBox(width: AppSize.defaultSize!,),
+                  Text(
+                    widget.jobSlider.type !,
+                    style: TextStyle(
+                        color: AppColors.black,
+                        fontWeight: FontWeight.w600,
+                        fontSize: AppSize.defaultSize! * 1.2),
+                  ),
+                ],
               ),
               // SizedBox(height: AppSize.defaultSize!*.3,),
               Text(
-                widget.jobSlider.province??"",
+                widget.jobSlider.provinceName??"",
                 style: TextStyle(
                     color:AppColors.  mainFontColor, fontSize: AppSize.defaultSize! * 1.4),
               ),
               SizedBox(height: AppSize.defaultSize!*.3,),
               Text(
-                widget.jobSlider.skills??"",
+                widget.jobSlider.major??"",
                 style: TextStyle(
                     color:AppColors.  mainFontColor, fontSize: AppSize.defaultSize! * 1.4),
               ),
               SizedBox(height: AppSize.defaultSize!*.3,),
               Text(
-                '${widget.jobSlider.minSalary} EGP - ${widget.jobSlider.maxSalary} EGP',
+                '${widget.jobSlider.minSalary??1000} EGP - ${widget.jobSlider.maxSalary??5000} EGP',
                 style: TextStyle(
                     color:AppColors.  mainFontColor, fontSize: AppSize.defaultSize! * 1.4),
               ),
