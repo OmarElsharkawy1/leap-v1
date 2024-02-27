@@ -70,6 +70,7 @@ class StringManager{
   static const String anotherRecommendedArticles = "Another Recommended Articles";
   static const String seeMore = "See More";
   static const String viewMore = "View More";
+  static const String cvBuilder = "CV Builder";
 
 
 

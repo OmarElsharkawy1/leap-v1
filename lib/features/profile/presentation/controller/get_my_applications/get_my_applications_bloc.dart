@@ -10,7 +10,7 @@ class GetMyApplicationsBloc extends Bloc<BaseGetMyApplicationsEvent, GetMyApplic
   GetMyApplicationsBloc({required this.getMyApplicationsUseCase}) : super(GetMyApplicationsInitial()) {
     on<GetMyApplicationsEvent>((event, emit) async {
       emit(const GetMyApplicationsLoadingState());
-      final result = await getMyApplicationsUseCase.getMyApplications();
+      final result = await getMyApplicationsUseCase.call(event.type);
       result.fold(
           (l) => emit(GetMyApplicationsSuccessMessageState(jobModel: l)),
           (r) => emit(GetMyApplicationsErrorMessageState(

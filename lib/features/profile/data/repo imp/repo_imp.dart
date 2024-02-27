@@ -21,9 +21,9 @@ class ProfileRepositoryImp extends BaseRepositoryProfile {
     }
   }
   @override
-  Future<Either<VacancyModel, Failure>> getMyApplications() async {
+  Future<Either<List<VacancyModel>, Failure>> getMyApplications(String type) async {
     try {
-      final result = await baseRemotelyDataSourceProfile.getMyApplications();
+      final result = await baseRemotelyDataSourceProfile.getMyApplications(type);
       return Left(result);
     } on Exception catch (e) {
       return right(DioHelper.buildFailure(e));

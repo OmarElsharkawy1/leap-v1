@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:leap/features/internships/data/model/intern_model.dart';
+
 import 'package:leap/core/models/vacancey_model.dart';
 
 

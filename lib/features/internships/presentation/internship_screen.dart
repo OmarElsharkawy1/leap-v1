@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:leap/core/models/vacancey_model.dart';
-import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/service/navigator_services.dart';
 import 'package:leap/core/service/service_locator.dart';
@@ -37,19 +36,20 @@ class InternshipScreen extends StatefulWidget {
 
 class _InternshipScreenState extends State<InternshipScreen> {
   late TextEditingController searchController;
-  List<VacancyModel>? tempData;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  final _refreshIndicatorKey = GlobalKey<LiquidPullToRefreshState>();
   static int refreshNum = 10; // number that changes when refreshed
 
+  final _refreshIndicatorKey = GlobalKey<LiquidPullToRefreshState>();
+
   Future<void> _handleRefresh() async {
+    BlocProvider.of<GetInternshipsBySearchBloc>(
+        getIt<NavigationService>().navigatorKey.currentContext!)
+        .add(GetInternshipsBySearchEvent());
     final Completer<void> completer = Completer<void>();
     Timer(const Duration(milliseconds: 1500), () {
       completer.complete();
     });
-    BlocProvider.of<GetInternshipsBloc>(
-            getIt<NavigationService>().navigatorKey.currentContext!)
-        .add(GetInternshipsEvent());
+
 
     setState(() {
       refreshNum = Random().nextInt(13);
@@ -71,14 +71,9 @@ class _InternshipScreenState extends State<InternshipScreen> {
     });
   }
 
-  int isFirst = 0;
-
   @override
   void initState() {
     searchController = TextEditingController();
-    BlocProvider.of<GetInternshipsBySearchBloc>(context)
-        .add(GetInternshipsBySearchEvent(type: 1));
-
     super.initState();
   }
 
@@ -138,8 +133,6 @@ class _InternshipScreenState extends State<InternshipScreen> {
                   BlocBuilder<GetInternshipsBySearchBloc,
                       GetInternshipsBySearchState>(builder: (context, state) {
                     if (state is GetInternshipsBySearchSuccessMessageState) {
-                      isFirst++;
-                      tempData = state.internModel;
                       return state.internModel.isEmpty
                           ? const EmptyWidget()
                           : ListView.builder(
@@ -180,40 +173,7 @@ class _InternshipScreenState extends State<InternshipScreen> {
                         is GetInternshipsBySearchErrorMessageState) {
                       return ErrorWidget(state.errorMessage);
                     } else if (state is GetInternshipsBySearchLoadingState) {
-                      if (isFirst == 0) {
-                        return const LoadingWidget();
-                      } else {
-                        return tempData!.isEmpty
-                            ? const EmptyWidget()
-                            : ListView.builder(
-                                physics: const NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                padding: EdgeInsets.zero,
-                                itemCount: tempData!.length,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: EdgeInsets.all(
-                                        AppSize.defaultSize! * .5),
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.pushNamed(
-                                            context, Routes.vacancyDetails,
-                                            arguments: tempData![index]);
-                                      },
-                                      child: JobsAndInternCard(
-                                        vacancyModel: tempData![index],
-                                      )
-                                          .animate()
-                                          .fadeIn() // uses `Animate.defaultDuration`
-                                          .scale() // inherits duration from fadeIn
-                                          .move(
-                                              delay: 300.ms, duration: 600.ms),
-                                    )
-                                    // runs after the above w/new duration
-                                    ,
-                                  );
-                                });
-                      }
+                      return const LoadingWidget();
                     } else {
                       return const SizedBox();
                     }

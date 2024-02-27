@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:leap/core/models/vacancey_model.dart';
 import 'package:leap/core/utils/api_helper.dart';
 import 'package:leap/core/utils/constant_api.dart';
+import 'package:leap/features/home/data/model/blog_model.dart';
 import 'package:leap/features/home/data/model/cities_model.dart';
 import 'package:leap/features/home/data/model/major_model.dart';
 import 'package:leap/features/home/data/model/university_model.dart';
@@ -11,6 +12,7 @@ abstract class BaseRemotelyDataSourceHome{
   Future<List<CitiesModel>> getCities();
   Future<List<MajorModel>> getMajor();
   Future<List<UniversityModel>> getUniversity();
+  Future<List<BlogModel>> getBlogs();
 }
 
 class HomeRemotelyDateSource extends BaseRemotelyDataSourceHome {
@@ -64,6 +66,20 @@ class HomeRemotelyDateSource extends BaseRemotelyDataSourceHome {
       );
       List<UniversityModel> jsonData = List<UniversityModel>.from(
           (response.data as List).map((e) => UniversityModel.fromJson(e)));
+      return jsonData;
+
+    } on DioException catch (e) {
+      throw DioHelper.handleDioError(dioError: e, endpointName: "getUniversity");
+    }
+  }
+  @override
+  Future<List<BlogModel>> getBlogs() async {
+    try {
+      final response = await Dio().get(
+        ConstantApi.blogs,
+      );
+      List<BlogModel> jsonData = List<BlogModel>.from(
+          (response.data as List).map((e) => BlogModel.fromJson(e)));
       return jsonData;
 
     } on DioException catch (e) {

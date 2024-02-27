@@ -7,8 +7,8 @@ import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/app_bar.dart';
 import 'package:leap/core/widgets/cutom_text.dart';
-import 'package:leap/features/blog_details/blog_complete.dart';
-import 'package:leap/features/blog_details/merchants_stores.dart';
+import 'package:leap/features/home/presentation/componants/blog_details/blog_complete.dart';
+import 'package:leap/features/home/presentation/componants/blog_details/merchants_stores.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class BlogDetails extends StatelessWidget {

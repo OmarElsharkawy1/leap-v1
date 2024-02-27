@@ -26,6 +26,11 @@ import 'package:leap/features/jobs/data/repo%20imp/repo_imp.dart';
 import 'package:leap/features/jobs/domain/repo/jobs_base_repo.dart';
 import 'package:leap/features/jobs/domain/use_case/get_jobs.dart';
 import 'package:leap/features/jobs/presentation/controller/get_jobs/get_jobs_bloc.dart';
+import 'package:leap/features/profile/data/data%20source/profile_remote_data_source.dart';
+import 'package:leap/features/profile/data/repo%20imp/repo_imp.dart';
+import 'package:leap/features/profile/domain/repo/profile_base_repo.dart';
+import 'package:leap/features/profile/domain/use_case/my_applications_us.dart';
+import 'package:leap/features/profile/presentation/controller/get_my_applications/get_my_applications_bloc.dart';
 
 final getIt = GetIt.instance;
 
@@ -41,6 +46,8 @@ class ServerLocator {
     getIt.registerLazySingleton(() => GetJobsBloc(getJobsUseCase: getIt()));
     getIt.registerLazySingleton(
         () => GetInternshipsBloc(getInternshipsUseCase: getIt()));
+    getIt.registerLazySingleton(
+        () => GetMyApplicationsBloc(getMyApplicationsUseCase: getIt()));
     getIt.registerLazySingleton(() =>
         GetInternshipsBySearchBloc(getInternshipsBySearchUseCase: getIt()));
     getIt.registerLazySingleton(() => OptionsBloc(
@@ -52,6 +59,8 @@ class ServerLocator {
 //use_case
     getIt.registerFactory(
         () => LoginWithEmailAndPasswordUseCase(baseRepository: getIt()));
+    getIt.registerFactory(
+        () => GetMyApplicationsUseCase(baseRepositoryProfile: getIt()));
     getIt.registerFactory(
         () => SignUpWithEmailAndPasswordUseCase(baseRepository: getIt()));
     getIt.registerFactory(() => GetJobsUseCase(baseRepositoryJobs: getIt()));
@@ -73,6 +82,8 @@ class ServerLocator {
         () => InternshipsRemotelyDateSource());
     getIt.registerLazySingleton<BaseRemotelyDataSourceHome>(
         () => HomeRemotelyDateSource());
+    getIt.registerLazySingleton<BaseRemotelyDataSourceProfile>(
+        () => ProfileRemotelyDateSource());
 //repo
     getIt.registerLazySingleton<BaseRepository>(
         () => RepositoryImp(baseRemotelyDataSource: getIt()));
@@ -82,6 +93,8 @@ class ServerLocator {
         InternshipsRepositoryImp(baseRemotelyDataSourceInternships: getIt()));
     getIt.registerLazySingleton<BaseRepositoryHome>(
         () => HomeRepositoryImp(baseRemotelyDataSourceHome: getIt()));
+    getIt.registerLazySingleton<BaseRepositoryProfile>(
+        () => ProfileRepositoryImp(baseRemotelyDataSourceProfile: getIt()));
     getIt.registerLazySingleton(() => NavigationService());
   }
 }
