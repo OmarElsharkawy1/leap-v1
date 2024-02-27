@@ -37,10 +37,8 @@ class AuthRemotelyDateSource extends BaseRemotelyDataSource {
         ConstantApi.login,
         data: body,
       );
-      log('${response.data}sssssssss');
-
       Map<String, dynamic> jsonData = response.data;
-      Methods.instance.saveUserToken(authToken: jsonData['access_token']);
+      Methods.instance.saveUserToken(authToken: jsonData['token']);
       log('${jsonData}sssssssss');
 
       return jsonData;

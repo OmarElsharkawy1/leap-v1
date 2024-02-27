@@ -53,6 +53,7 @@ class DioHelper {
       case ServerException:
         return ServerFailure();
       case UnauthorizedException:
+
         return UnauthorizedFailure();
       case InternetException:
         return InternetFailure();
@@ -101,6 +102,7 @@ class DioHelper {
       case 401:
         throw UnauthorizedException();
       default:
+        throw ServerException();
         if (response?.data.runtimeType == String) {
           throw ErrorModelException(errorMessage: response!.data);
         } else {

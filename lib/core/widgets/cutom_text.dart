@@ -25,7 +25,7 @@ class CustomText extends StatelessWidget {
         this.textDecoration,
         this.maxLines,
         this.overflow,
-        this.shadows, this.decorationColor});
+        this.shadows, this.decorationColor,});
 
   @override
   Widget build(BuildContext context) {

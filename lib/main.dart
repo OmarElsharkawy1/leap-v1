@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/service/navigator_services.dart';
 import 'package:leap/core/service/service_locator.dart';
@@ -76,6 +77,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteGenerator.getRoute,
         navigatorKey: getIt<NavigationService>().navigatorKey,
+        builder: EasyLoading.init(),
         initialRoute: Routes.login,
         theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

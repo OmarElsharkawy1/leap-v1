@@ -14,8 +14,9 @@ class ColumnWithTextField extends StatefulWidget {
     this.labelText,
     this.hintText,
     this.suffixIcon,
-    this.keyboardType = TextInputType.text,
+    this.keyboardType = TextInputType.text, this.formKey,
   });
+  final  GlobalKey<FormState>? formKey ;
 
   final String text;
   final String? labelText;
@@ -55,6 +56,7 @@ class _ColumnWithTextFieldState extends State<ColumnWithTextField> {
             width: widget.width ?? AppSize.screenWidth! * .9,
             height: widget.height ?? AppSize.defaultSize! * 4.5,
             child: CustomTextField(
+              formKey: widget.formKey,
               controller: widget.controller,
               readOnly: widget.readOnly,
               onTap: widget.onTap,

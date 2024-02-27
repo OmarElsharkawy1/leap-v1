@@ -16,6 +16,7 @@ class CustomTextField extends StatefulWidget {
   final Widget? suffixIcon;
   final void Function()? onTap;
   final TextStyle? hintStyle;
+  final  GlobalKey<FormState>? formKey ;
 
   const CustomTextField({
     Key? key,
@@ -31,7 +32,7 @@ class CustomTextField extends StatefulWidget {
     this.hintStyle,
     this.width,
     this.height,
-    this.maxLines,
+    this.maxLines, this.formKey,
   }) : super(key: key);
 
   @override
@@ -44,39 +45,51 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return SizedBox(
       height: widget.height ?? AppSize.defaultSize! * 6,
       width: widget.width ?? AppSize.screenWidth! - (AppSize.defaultSize! * 4),
-      child: TextFormField(
-        onTap: widget.onTap,
-        maxLines: widget.maxLines,
-        readOnly: widget.readOnly,
-        decoration: InputDecoration(
-          labelText: widget.labelText,
-          hintText: widget.hintText,
-          hintStyle: widget.hintStyle,
-          suffixIcon: widget.suffixIcon,
-          contentPadding: EdgeInsets.all(AppSize.defaultSize! * .8),
-          labelStyle: TextStyle(
-            color: AppColors.primaryColor,
-            fontSize: AppSize.screenHeight! * .02,
-          ),
-          prefixIcon: widget.prefixIcon,
-          enabledBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: AppColors.borderColor.withOpacity(.4)),
-          ),
-          border: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: AppColors.borderColor.withOpacity(.4)),
-          ),
-          focusedBorder: OutlineInputBorder(
+      child: Form(
+        key: widget.formKey,
+        child: TextFormField(
+
+          onTap: widget.onTap,
+          maxLines: widget.maxLines,
+          readOnly: widget.readOnly,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+
+              return 'Please complete this field';
+            }
+            return null;
+          },
+          decoration: InputDecoration(
+            labelText: widget.labelText,
+
+            hintText: widget.hintText,
+            hintStyle: widget.hintStyle,
+            suffixIcon: widget.suffixIcon,
+            contentPadding: EdgeInsets.all(AppSize.defaultSize! * .8),
+            labelStyle: TextStyle(
+              color: AppColors.primaryColor,
+              fontSize: AppSize.screenHeight! * .02,
+            ),
+            prefixIcon: widget.prefixIcon,
+            enabledBorder: OutlineInputBorder(
               borderSide:
-                  BorderSide(color: AppColors.primaryColor.withOpacity(.4))),
-          disabledBorder: OutlineInputBorder(
+                  BorderSide(color: AppColors.borderColor.withOpacity(.4)),
+            ),
+            border: OutlineInputBorder(
               borderSide:
-                  BorderSide(color: AppColors.borderColor.withOpacity(.4))),
+                  BorderSide(color: AppColors.borderColor.withOpacity(.4)),
+            ),
+            focusedBorder: OutlineInputBorder(
+                borderSide:
+                    BorderSide(color: AppColors.primaryColor.withOpacity(.4))),
+            disabledBorder: OutlineInputBorder(
+                borderSide:
+                    BorderSide(color: AppColors.borderColor.withOpacity(.4))),
+          ),
+          controller: widget.controller,
+          keyboardType: widget.keyboardType,
+          obscureText: widget.obscureText,
         ),
-        controller: widget.controller,
-        keyboardType: widget.keyboardType,
-        obscureText: widget.obscureText,
       ),
     );
   }
