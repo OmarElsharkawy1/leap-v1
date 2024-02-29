@@ -45,9 +45,9 @@ class _JobsAndInternCardState extends State<JobsAndInternCard> {
                     AssetPath.slogan,
                     width: AppSize.defaultSize! * 8,
                     height: AppSize.defaultSize! * 8,
-                  )
+                  )//widget.vacancyModel.image ??
                 : CachedNetworkCustom(
-                    url: widget.vacancyModel.image ?? '',
+                    url:  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7WeRMW-h8jx6TgGEwBYdB_YBN0wMvQ7zoYToN86d-XQ&s',
                     height: AppSize.defaultSize! * 8,
                     width: AppSize.defaultSize! * 8,
                   ),

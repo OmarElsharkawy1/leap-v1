@@ -12,7 +12,6 @@ class UserRowDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pop(context);
         Navigator.pushNamed(context, Routes.profile);
       },
       child: SizedBox(
