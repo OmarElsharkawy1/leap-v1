@@ -50,39 +50,43 @@ class _MainScreenState extends State<MainScreen> {
       PersistentBottomNavBarItem(
         icon: Icon(
           Icons.home_outlined,
-          size: AppSize.screenHeight! * .03,
+          size: AppSize.defaultSize!*3,
         ),
         title: StringManager.home.tr(),
         activeColorPrimary: AppColors.primaryColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(
+        icon:   Icon(
           Icons.school_outlined,
+          size: AppSize.defaultSize!*3,
         ),
         title: StringManager.internships.tr(),
         activeColorPrimary: AppColors.primaryColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(
+        icon:   Icon(
           Icons.shopping_bag,
+          size: AppSize.defaultSize!*3,
         ),
         title: StringManager.jobs.tr(),
         activeColorPrimary: AppColors.primaryColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(
+        icon:   Icon(
           Icons.sticky_note_2_outlined,
+          size: AppSize.defaultSize!*3,
         ),
         title: StringManager.blog.tr(),
         activeColorPrimary: AppColors.primaryColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(
+        icon:   Icon(
           Icons.collections_bookmark_outlined,
+          size: AppSize.defaultSize!*3,
         ),
         title: StringManager.resources.tr(),
         activeColorPrimary: AppColors.primaryColor,

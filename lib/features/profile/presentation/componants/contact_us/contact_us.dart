@@ -34,9 +34,9 @@ class _ContactUSState extends State<ContactUS> {
                       color: AppColors.borderColor,
                       fontSize: AppSize.defaultSize!*1.4 ),
                 ),
-                SizedBox(
-                  height: AppSize.defaultSize!,
-                ),
+                // SizedBox(
+                //   height: AppSize.defaultSize!,
+                // ),
                 CustomTextField(
                   hintText: StringManager.message.tr(),
                   height: AppSize.defaultSize! * 10,

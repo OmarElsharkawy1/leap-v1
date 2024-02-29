@@ -31,7 +31,7 @@ class _UniversityDropDownState extends State<UniversityDropDown> {
         if (state.getUniversityRequest == RequestState.loaded) {
           return Container(
             // width: AppSize.screenWidth! * .9,
-            height: AppSize.defaultSize! * 4,
+            height: AppSize.defaultSize! * 5,
             decoration: BoxDecoration(
                 border:
                 Border.all(color: AppColors.borderColor.withOpacity(.4)),

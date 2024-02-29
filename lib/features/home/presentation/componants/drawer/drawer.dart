@@ -88,9 +88,9 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   buttonDecoration: BoxDecoration(
                     border: Border.all(color: Colors.transparent),
                   ),
-                  dropdownWidth: AppSize.screenWidth! * .71,
+                  // dropdownWidth: AppSize.screenWidth! * .71,
                   dropdownElevation: 0,
-                  buttonWidth: AppSize.screenWidth! * .71,
+                  buttonWidth: AppSize.screenWidth! * .75,
                   dropdownItems: [
                     StringManager.search.tr(),
                     StringManager.contactUs.tr(),
@@ -100,6 +100,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   ),
                   icon: const Icon(
                     Icons.keyboard_arrow_down_rounded,
+                    color: AppColors.greyColor,
                   ),
                   iconEnabledColor: AppColors.black,
                   onChanged: (String? value) {

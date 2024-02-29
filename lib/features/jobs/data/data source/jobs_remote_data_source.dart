@@ -8,6 +8,7 @@ import 'package:leap/core/models/vacancey_model.dart';
 
 abstract class BaseRemotelyDataSourceJobs {
   Future<List<VacancyModel>> getJobs(VacancySearch vacancySearch);
+  Future<dynamic> apply(VacancyApply vacancyApply);
 }
 
 class JobsRemotelyDateSource extends BaseRemotelyDataSourceJobs {
@@ -33,6 +34,25 @@ class JobsRemotelyDateSource extends BaseRemotelyDataSourceJobs {
       return jsonData;
     } on DioException catch (e) {
       throw DioHelper.handleDioError(dioError: e, endpointName: "getJobs");
+    }
+  }
+
+  @override
+  Future apply(VacancyApply vacancyApply) async{
+    final body = {
+      'jobid ': vacancyApply.vacancyID,
+      'id ': vacancyApply.userID,
+    };
+    try {
+
+      final response =  await Dio().post(
+        ConstantApi.apply,
+        data: body
+      );
+   dynamic jsonData = response.data;
+    return jsonData;
+    } on DioException catch (e) {
+    throw DioHelper.handleDioError(dioError: e, endpointName: "getJobs");
     }
   }
 }

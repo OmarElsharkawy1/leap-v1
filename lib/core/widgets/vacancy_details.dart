@@ -21,7 +21,7 @@ class _VacancyDetailsState extends State<VacancyDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context, text: StringManager.jobs.tr()),
+      appBar: appBar(context, text: StringManager.jobsDetails.tr()),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

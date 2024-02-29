@@ -16,6 +16,8 @@ class ChangePassword extends StatefulWidget {
 class _ChangePasswordState extends State<ChangePassword> {
   late TextEditingController passwordController;
   late TextEditingController passwordConfirmController;
+  bool isVisible = false;
+
   @override
   void initState() {
 
@@ -43,11 +45,32 @@ class _ChangePasswordState extends State<ChangePassword> {
           children: [
             ColumnWithTextField(
               text: StringManager.password.tr(),
+              suffixIcon: InkWell(
+                onTap: () {
+                  setState(() {
+                    isVisible = !isVisible;
+                  });
+                },
+                child: Icon(
+                  isVisible ? Icons.visibility_off : Icons.visibility,
+                  color: Colors.grey,
+                ),
+              ),
               controller: passwordController,
             ),
             ColumnWithTextField(
               text: StringManager.confirmPassword.tr(),
-              controller: passwordConfirmController,
+              controller: passwordConfirmController,   suffixIcon: InkWell(
+              onTap: () {
+                setState(() {
+                  isVisible = !isVisible;
+                });
+              },
+              child: Icon(
+                isVisible ? Icons.visibility_off : Icons.visibility,
+                color: Colors.grey,
+              ),
+            ),
             ),
             SizedBox(
               height: AppSize.defaultSize!*4,

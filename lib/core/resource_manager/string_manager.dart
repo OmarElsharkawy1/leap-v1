@@ -24,7 +24,7 @@ class StringManager{
   static const String resendCode = "Resend the code";
   static const String verify = "Verify";
   static const String firstName = "First Name";
-  static const String secondName = "second Name";
+  static const String secondName = "last Name";
   static const String phoneNum = "Phone";
   static const String dateOfBirth = "Date of birth";
   static const String educationLevel = "Education Level";
@@ -55,12 +55,12 @@ class StringManager{
   static const String search = "Search";
   static const String send = "Send";
   static const String contactUs = "Contact us";
-  static const String profile = "Profile";
+  static const String profile = "My Profile";
   static const String subject = "Subject";
   static const String message = "Message";
   static const String changeProfilePicture = "Change Profile Picture";
   static const String saveChanges = "Save Changes";
-  static const String myApplications = "My Application";
+  static const String myApplications = "My Applications";
   static const String applyNow = "Apply Now";
   static const String viewDetails = "View details";
   static const String pleaseCompleteYourData = "Please complete your data";

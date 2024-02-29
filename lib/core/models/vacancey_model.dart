@@ -71,4 +71,13 @@ class VacancySearch {
     this.area,
     required this.type,
   });
+}class VacancyApply{
+  final String vacancyID;
+  final String userID;
+
+
+  VacancyApply({
+    required this.vacancyID,
+    required this.userID,
+  });
 }

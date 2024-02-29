@@ -32,6 +32,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   late TextEditingController lastNameController;
   String eduLevel = 'hhhh';
   String graduationYear = '2023';
+  bool isVisible = false;
 
   @override
   void initState() {
@@ -167,14 +168,42 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     }),
                   ],
                 ),
-                // const UniversityDropDown(),
-                // const MajorDropDown(),
+                SizedBox(
+                  height: AppSize.defaultSize! * 3,
+                ),
+                const UniversityDropDown(),
+                SizedBox(
+                  height: AppSize.defaultSize! * 3,
+                ),
+                const MajorDropDown(),
                 ColumnWithTextField(
                   text: StringManager.password.tr(),
                   controller: passwordController,
+                  suffixIcon: InkWell(
+                    onTap: () {
+                      setState(() {
+                        isVisible = !isVisible;
+                      });
+                    },
+                    child: Icon(
+                      isVisible ? Icons.visibility_off : Icons.visibility,
+                      color: Colors.grey,
+                    ),
+                  ),
                 ),
                 ColumnWithTextField(
                   text: StringManager.confirmPassword.tr(),
+                  suffixIcon: InkWell(
+                    onTap: () {
+                      setState(() {
+                        isVisible = !isVisible;
+                      });
+                    },
+                    child: Icon(
+                      isVisible ? Icons.visibility_off : Icons.visibility,
+                      color: Colors.grey,
+                    ),
+                  ),
                   controller: passwordConfirmController,
                 ),
                 SizedBox(

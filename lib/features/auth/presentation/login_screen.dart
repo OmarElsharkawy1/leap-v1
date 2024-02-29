@@ -75,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
             listener: (context, state) async {
               if (state is SignWithGoogleSuccesMessageState) {
                 // Methods.instance.clearAuthData();
-                BlocProvider.of<GetMyDataBloc>(context).add(GetMyDataEvent());
+                // BlocProvider.of<GetMyDataBloc>(context).add(GetMyDataEvent());
                 if (state.userData.apiUserData.phone == null) {
                   // Navigator.pushNamedAndRemoveUntil(
                   //   context,
@@ -172,6 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   formKey: _formKey,
                   labelText: StringManager.email.tr(),
                   controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
                 ),
                 CustomTextField(
                   labelText: StringManager.password.tr(),

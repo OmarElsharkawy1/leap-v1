@@ -13,9 +13,10 @@ final double? width;
     return CachedNetworkImage(
       height: height??AppSize.defaultSize!*4.2,
       width: width??AppSize.defaultSize!*4.2,
-      imageUrl:ConstantApi.getImage(url),
+      imageUrl:'https://www.mintformations.co.uk/blog/wp-content/uploads/2020/05/shutterstock_583717939.jpg',
       imageBuilder: (context, imageProvider) => Container(
         decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(AppSize.defaultSize!),
           image: DecorationImage(
               image: imageProvider,
               fit: BoxFit.cover,

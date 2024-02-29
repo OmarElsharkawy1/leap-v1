@@ -19,4 +19,14 @@ class JobsRepositoryImp extends BaseRepositoryJobs {
       return right(DioHelper.buildFailure(e));
     }
   }
+  @override
+
+  Future<Either<dynamic, Failure>> apply(VacancyApply vacancyApply) async {
+    try {
+      final result = await baseRemotelyDataSourceJobs.apply(vacancyApply);
+      return Left(result);
+    } on Exception catch (e) {
+      return right(DioHelper.buildFailure(e));
+    }
+  }
 }

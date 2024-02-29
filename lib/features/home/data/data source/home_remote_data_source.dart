@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:leap/core/models/vacancey_model.dart';
 import 'package:leap/core/utils/api_helper.dart';
@@ -66,6 +68,8 @@ class HomeRemotelyDateSource extends BaseRemotelyDataSourceHome {
       );
       List<UniversityModel> jsonData = List<UniversityModel>.from(
           (response.data as List).map((e) => UniversityModel.fromJson(e)));
+      log('${jsonData}ssssssssssssssssss');
+
       return jsonData;
 
     } on DioException catch (e) {

@@ -185,7 +185,7 @@ class AuthRemotelyDateSource extends BaseRemotelyDataSource {
 
         Map<String, dynamic> resultData = response.data;
 
-        MyDataModel userData = MyDataModel.fromMap(resultData['data']);
+        MyDataModel userData = MyDataModel.fromMap(resultData);
 
         Methods.instance.saveUserToken(authToken: resultData['token']);
         log('${resultData}resultData');
