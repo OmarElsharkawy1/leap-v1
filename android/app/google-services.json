@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "873446906535",
+    "project_id": "inturn-7f7b2",
+    "storage_bucket": "inturn-7f7b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873446906535:android:07a5ec709a7e27ad571982",
+        "android_client_info": {
+          "package_name": "com.example.leap"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA82nFbuiSV1V9cuaUbkK3C-1v6FXP1i5o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

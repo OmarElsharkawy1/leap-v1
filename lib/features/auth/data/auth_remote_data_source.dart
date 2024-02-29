@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:leap/core/error/exception.dart';
 import 'package:leap/core/models/my_data_model.dart';
 import 'package:leap/core/utils/api_helper.dart';
 import 'package:leap/core/utils/constant_api.dart';
@@ -19,6 +21,8 @@ abstract class BaseRemotelyDataSource {
   Future<Map<String, dynamic>> verifyCode(SignUpModel signUpModel);
 
   Future<Map<String, dynamic>> changePassword(SignUpModel signUpModel);
+
+  Future<AuthWithGoogleModel> sigInWithGoogle();
 }
 
 class AuthRemotelyDateSource extends BaseRemotelyDataSource {
@@ -54,8 +58,14 @@ class AuthRemotelyDateSource extends BaseRemotelyDataSource {
     final body = {
       ConstantApi.email: signUpModel.email,
       ConstantApi.password: signUpModel.password,
-      'name': signUpModel.name,
-      'phone': signUpModel.phone,
+      'firstName': signUpModel.name,
+      'lastName': signUpModel.lastName,
+      'phonenumber': signUpModel.phone,
+      'confirmPassword': signUpModel.password,
+      'educationLevel': signUpModel.phone,
+      'graduationYear': signUpModel.phone,
+      'majorID': signUpModel.phone,
+      'universityID': signUpModel.phone,
     };
 
     try {
@@ -64,8 +74,15 @@ class AuthRemotelyDateSource extends BaseRemotelyDataSource {
         data: body,
       );
       Map<String, dynamic> jsonData = response.data;
-      Methods.instance.saveUserToken(authToken: jsonData['access_token']);
-      return jsonData;
+      Methods.instance.saveUserToken(authToken: jsonData['token']);
+      log('${jsonData['token']}hhhhhhhhhhhh${jsonData}');
+      if (jsonData['token'] == null) {
+        DioException? e;
+        throw DioHelper.handleDioError(
+            dioError: e, endpointName: "signUpWithEmailAndPassword");
+      } else {
+        return jsonData;
+      }
     } on DioError catch (e) {
       throw DioHelper.handleDioError(
           dioError: e, endpointName: "signUpWithEmailAndPassword");
@@ -134,4 +151,58 @@ class AuthRemotelyDateSource extends BaseRemotelyDataSource {
       throw DioHelper.handleDioError(dioError: e, endpointName: "verifyCode");
     }
   }
+
+  @override
+  Future<AuthWithGoogleModel> sigInWithGoogle() async {
+    // ignore: no_leading_underscores_for_local_identifiers
+    final _googleSignIn = GoogleSignIn(scopes: ['email']);
+    Future<GoogleSignInAccount?> login() => _googleSignIn.signIn();
+    // // ignore: unused_element
+    // Future logout() => _googleSignIn.disconnect();
+    final userModel = await login();
+    log('${ userModel?.id}_googleSignIn');
+    log('${ userModel?.email}_googleSignIn');
+    // final devicedata =
+    // await DioHelper().initPlatformState(); // to get information device
+    Map<String, String> headers = await DioHelper().header();
+
+
+    if (userModel == null) {
+      throw SiginGoogleException();
+    } else {
+      final body = {
+        ConstantApi.email: userModel.email,
+        "googleID": userModel.id,
+      };
+      try {
+        final response = await Dio().post(
+          ConstantApi.googleRegister,
+          data: body,
+          options: Options(
+            headers: headers,
+          ),
+        );
+
+        Map<String, dynamic> resultData = response.data;
+
+        MyDataModel userData = MyDataModel.fromMap(resultData['data']);
+
+        Methods.instance.saveUserToken(authToken: resultData['token']);
+        log('${resultData}resultData');
+        log('${AuthWithGoogleModel}resultData');
+        return AuthWithGoogleModel(apiUserData: userData, userData: userModel);
+      } on DioError catch (e) {
+        throw DioHelper.handleDioError(
+            dioError: e, endpointName: "sigInWithGoogle");
+      }
+    }
+  }
+}
+
+class AuthWithGoogleModel {
+  final GoogleSignInAccount userData;
+
+  final MyDataModel apiUserData;
+
+  AuthWithGoogleModel({required this.apiUserData, required this.userData});
 }

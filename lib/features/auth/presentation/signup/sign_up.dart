@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
@@ -8,9 +9,12 @@ import 'package:leap/core/utils/app_size.dart';
 import 'package:leap/core/widgets/app_bar.dart';
 import 'package:leap/core/widgets/main_button.dart';
 import 'package:leap/core/widgets/column_with_text_field.dart';
+import 'package:leap/core/widgets/major_drop_down.dart';
 import 'package:leap/core/widgets/snack_bar.dart';
+import 'package:leap/core/widgets/university.dart';
 import 'package:leap/features/auth/presentation/controller/sign_up_bloc/sign_up_with_email_and_password_bloc.dart';
 import 'package:leap/features/auth/presentation/controller/sign_up_bloc/sign_up_with_email_and_password_events.dart';
+import 'package:leap/features/auth/presentation/controller/sign_up_bloc/sign_up_with_email_and_password_states.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -26,10 +30,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   late TextEditingController passwordConfirmController;
   late TextEditingController firstNameController;
   late TextEditingController lastNameController;
-  late TextEditingController universityController;
-  late TextEditingController majorController;
-  DateTime selectedDate = DateTime.now();
-  String selectedValue = 'Option 1';
+  String eduLevel = 'hhhh';
+  String graduationYear = '2023';
 
   @override
   void initState() {
@@ -39,8 +41,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     passwordConfirmController = TextEditingController();
     firstNameController = TextEditingController();
     lastNameController = TextEditingController();
-    universityController = TextEditingController();
-    majorController = TextEditingController();
     super.initState();
   }
 
@@ -52,160 +52,178 @@ class _SignUpScreenState extends State<SignUpScreen> {
     passwordConfirmController.dispose();
     firstNameController.dispose();
     lastNameController.dispose();
-    universityController.dispose();
-    majorController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar(context, text: StringManager.signUp.tr()),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: AppSize.defaultSize! * 2),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                height: AppSize.defaultSize! * 4.8,
-                decoration: const BoxDecoration(
-                  color: AppColors.containerColor,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      StringManager.youAlready.tr(),
-                      style: TextStyle(
-                          color: AppColors.greyColor,
-                          fontSize: AppSize.defaultSize! * 1.4,
-                          fontWeight: FontWeight.w700),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, Routes.login);
-                      },
-                      child: Text(
-                        StringManager.signIn.tr(),
+    return BlocListener<SignUpWithEmailAndPasswordBloc,
+        SignUpWithEmailAndPasswordState>(
+      listener: (context, state) {
+        if (state is SignUpWithEmailAndPasswordSuccessMessageState) {
+          EasyLoading.dismiss();
+
+          Navigator.pushNamedAndRemoveUntil(
+              context, Routes.main, (route) => false);
+        } else if (state is SignUpWithEmailAndPasswordErrorMessageState) {
+          EasyLoading.dismiss();
+          errorSnackBar(context, StringManager.unexpectedError.tr());
+        } else if (state is SignUpWithEmailAndPasswordLoadingState) {
+          EasyLoading.show(status: 'loading...');
+        }
+      },
+      child: Scaffold(
+        appBar: appBar(context, text: StringManager.signUp.tr()),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: AppSize.defaultSize! * 2),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: AppSize.defaultSize! * 4.8,
+                  decoration: const BoxDecoration(
+                    color: AppColors.containerColor,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        StringManager.youAlready.tr(),
                         style: TextStyle(
-                            color: AppColors.primaryColor,
-                            fontSize: AppSize.defaultSize! * 1.5,
+                            color: AppColors.greyColor,
+                            fontSize: AppSize.defaultSize! * 1.4,
                             fontWeight: FontWeight.w700),
                       ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, Routes.login);
+                        },
+                        child: Text(
+                          StringManager.signIn.tr(),
+                          style: TextStyle(
+                              color: AppColors.primaryColor,
+                              fontSize: AppSize.defaultSize! * 1.5,
+                              fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Row(
+                  children: [
+                    ColumnWithTextField(
+                      text: StringManager.firstName.tr(),
+                      controller: firstNameController,
+                      width: AppSize.screenWidth! * .4,
+                    ),
+                    const Spacer(),
+                    ColumnWithTextField(
+                      text: StringManager.secondName.tr(),
+                      controller: lastNameController,
+                      width: AppSize.screenWidth! * .4,
                     ),
                   ],
                 ),
-              ),
-              Row(
-                children: [
-                  ColumnWithTextField(
-                    text: StringManager.firstName.tr(),
-                    controller: firstNameController,
-                    width: AppSize.screenWidth! * .4,
-                  ),
-                  const Spacer(),
-                  ColumnWithTextField(
-                    text: StringManager.secondName.tr(),
-                    controller: lastNameController,
-                    width: AppSize.screenWidth! * .4,
-                  ),
-                ],
-              ),
-              ColumnWithTextField(
-                text: StringManager.phoneNum.tr(),
-                controller: phoneController,
-              ),
-              ColumnWithTextField(
-                text: StringManager.email.tr(),
-                controller: emailController,
-              ),
-              ColumnWithTextField(
-                text: StringManager.dateOfBirth.tr(),
-                readOnly: true,
-                hintText: selectedDate.toString().substring(0, 10),
-                suffixIcon: const Icon(Icons.calendar_month_outlined),
-                onTap: () {
-                  _selectDate(context);
-                },
-              ),
-              SizedBox(
-                height: AppSize.defaultSize! * 3,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  dropDownSignUp(
-                      text: StringManager.educationLevel.tr(),
-                      hintText: StringManager.selectEdu.tr()),
-                  dropDownSignUp(
-                      text: StringManager.graduationYear.tr(),
-                      hintText: StringManager.selectGrad.tr()),
-                ],
-              ),
-              ColumnWithTextField(
-                text: StringManager.university.tr(),
-                controller: universityController,
-              ),
-              ColumnWithTextField(
-                text: StringManager.major.tr(),
-                controller: majorController,
-              ),
-              ColumnWithTextField(
-                text: StringManager.password.tr(),
-                controller: passwordController,
-              ),
-              ColumnWithTextField(
-                text: StringManager.confirmPassword.tr(),
-                controller: passwordConfirmController,
-              ),
-              SizedBox(
-                height: AppSize.defaultSize! * 3,
-              ),
-              MainButton(
-                text: StringManager.signUp.tr(),
-                onTap: () {
-                  if (validation()) {
-                    BlocProvider.of<SignUpWithEmailAndPasswordBloc>(context)
-                        .add(SignUpWithEmailAndPasswordEvent(
-                      phone: phoneController.text,
-                      password: passwordController.text,
-                      // major: majorController.text,
-                      // university: universityController.text,
-                      name:
-                          '${firstNameController.text} ${lastNameController.text}',
-                      email: emailController.text,
-                    ));
-                  } else {
-                    errorSnackBar(context, StringManager.pleaseCompleteYourData.tr());
-                  }
-                },
-              ),
-              SizedBox(
-                height: AppSize.defaultSize! * 3,
-              ),
-            ],
+                ColumnWithTextField(
+                  text: StringManager.phoneNum.tr(),
+                  controller: phoneController,
+                  keyboardType: TextInputType.phone,
+                ),
+                ColumnWithTextField(
+                  text: StringManager.email.tr(),
+                  controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
+                ),
+                SizedBox(
+                  height: AppSize.defaultSize! * 3,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    StatefulBuilder(builder: (context, setState) {
+                      return dropDownSignUp(
+                          text: StringManager.educationLevel.tr(),
+                          hintText: StringManager.selectEdu.tr(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              eduLevel = newValue!;
+                            });
+                          },
+                          selectedValue: eduLevel,
+                          data: ['hhhh', 'hhhhhh']);
+                    }),
+                    StatefulBuilder(builder: (context, setState) {
+                      return dropDownSignUp(
+                          text: StringManager.graduationYear.tr(),
+                          hintText: StringManager.selectGrad.tr(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              graduationYear = newValue!;
+                            });
+                          },
+                          selectedValue: graduationYear,
+                          data: ['2023', '2022']);
+                    }),
+                  ],
+                ),
+                // const UniversityDropDown(),
+                // const MajorDropDown(),
+                ColumnWithTextField(
+                  text: StringManager.password.tr(),
+                  controller: passwordController,
+                ),
+                ColumnWithTextField(
+                  text: StringManager.confirmPassword.tr(),
+                  controller: passwordConfirmController,
+                ),
+                SizedBox(
+                  height: AppSize.defaultSize! * 3,
+                ),
+                MainButton(
+                  text: StringManager.signUp.tr(),
+                  onTap: () {
+                    if (validation()) {
+                      BlocProvider.of<SignUpWithEmailAndPasswordBloc>(context)
+                          .add(SignUpWithEmailAndPasswordEvent(
+                        phone: phoneController.text,
+                        password: passwordController.text,
+                        major:
+                            MajorDropDown.selectedValue?.id.toString() ?? "0",
+                        universityID: UniversityDropDown
+                                .selectedValue?.universityId
+                                .toString() ??
+                            "0",
+                        name: firstNameController.text,
+                        email: emailController.text,
+                        lastName: lastNameController.text,
+                        eduLevel: eduLevel,
+                        graduationYear: graduationYear, confirmPassword: passwordConfirmController.text,
+                      ));
+                    } else {
+                      errorSnackBar(
+                          context, StringManager.pleaseCompleteYourData.tr());
+                    }
+                  },
+                ),
+                SizedBox(
+                  height: AppSize.defaultSize! * 3,
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: selectedDate, // Refer step 1
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2025),
-    );
-    if (picked != null && picked != selectedDate) {
-      setState(() {
-        selectedDate = picked;
-      });
-    }
-  }
-
-  Widget dropDownSignUp({required String text, required String hintText}) {
+  Widget dropDownSignUp({
+    required String text,
+    required String hintText,
+    required String selectedValue,
+    required List<String> data,
+    required void Function(String?)? onChanged,
+  }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -227,11 +245,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             child: DropdownButton<String>(
               value: selectedValue,
               underline: const SizedBox(),
-              onChanged: (String? newValue) {
-                setState(() {
-                  selectedValue = newValue!;
-                });
-              },
+              onChanged: onChanged,
               hint: Text(
                 hintText,
                 style: TextStyle(
@@ -245,8 +259,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   size: AppSize.defaultSize! * 3,
                 ),
               ),
-              items: <String>['Option 1', 'Option 2', 'Option 3', 'Option 4']
-                  .map<DropdownMenuItem<String>>((String value) {
+              items: data.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(
@@ -273,20 +286,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
       return false;
     } else if (phoneController.text == '') {
       return false;
-    } else if (universityController.text == '') {
-      return false;
-    } else if (majorController.text == '') {
-      return false;
-    } else if (passwordController.text == '') {
+    }else if (passwordController.text == '') {
       return false;
     } else if (passwordConfirmController.text == '') {
       return false;
-    }  else if (selectedValue == '') {
+    } else if (eduLevel == '') {
+      return false;
+    } else if (graduationYear == '') {
       return false;
     } else {
       return true;
     }
   }
-
-
 }

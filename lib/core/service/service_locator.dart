@@ -3,9 +3,11 @@ import 'package:leap/core/service/navigator_services.dart';
 import 'package:leap/features/auth/data/auth_remote_data_source.dart';
 import 'package:leap/features/auth/data/repo_imp.dart';
 import 'package:leap/features/auth/domain/repo/base_repo.dart';
+import 'package:leap/features/auth/domain/use_case/google_sign.dart';
 import 'package:leap/features/auth/domain/use_case/login_with_email_and_password_use_case.dart';
 import 'package:leap/features/auth/domain/use_case/sign_up_use_case.dart';
 import 'package:leap/features/auth/presentation/controller/login_bloc/login_with_email_and_password_bloc.dart';
+import 'package:leap/features/auth/presentation/controller/sign_in_with_platform_bloc/sign_in_with_platform_bloc.dart';
 import 'package:leap/features/auth/presentation/controller/sign_up_bloc/sign_up_with_email_and_password_bloc.dart';
 import 'package:leap/features/home/data/data%20source/home_remote_data_source.dart';
 import 'package:leap/features/home/data/repo%20imp/repo_imp.dart';
@@ -40,6 +42,8 @@ class ServerLocator {
 
     getIt.registerLazySingleton(() => LoginWithEmailAndPasswordBloc(
         loginWithEmailAndPasswordUseCase: getIt()));
+    getIt.registerLazySingleton(
+        () => SignInWithPlatformBloc(signInWithGoogleUC: getIt()));
     getIt.registerLazySingleton(() => SignUpWithEmailAndPasswordBloc(
           signUpWithEmailAndPasswordUseCase: getIt(),
         ));
@@ -59,6 +63,7 @@ class ServerLocator {
 //use_case
     getIt.registerFactory(
         () => LoginWithEmailAndPasswordUseCase(baseRepository: getIt()));
+    getIt.registerFactory(() => SignInWithGoogleUC(baseRepository: getIt()));
     getIt.registerFactory(
         () => GetMyApplicationsUseCase(baseRepositoryProfile: getIt()));
     getIt.registerFactory(

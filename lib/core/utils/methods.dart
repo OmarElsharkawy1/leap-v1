@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,6 +17,7 @@ class Methods {
     } else {
       preferences.setString(StringManager.userTokenKey, authToken ?? "noToken");
     }
+
   }
   Future<String> returnUserToken() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();

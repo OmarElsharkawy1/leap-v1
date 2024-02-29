@@ -7,6 +7,7 @@ class ErrorModelException implements Exception {
     return ErrorModelException(errorMessage: json['message']);
   }
 }
+class SiginGoogleException implements Exception {}
 
 class ServerException implements Exception {}
 

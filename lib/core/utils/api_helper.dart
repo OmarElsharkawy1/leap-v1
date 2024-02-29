@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:leap/core/error/exception.dart';
 import 'package:leap/core/error/failure.dart';
@@ -22,11 +23,11 @@ class DioHelper {
   Future<Map<String, String>> header() async {
     String token = await Methods.instance.returnUserToken();
     if (kDebugMode) {
-      log(token);
+      log('husssssssssss $token');
     }
 
     Map<String, String> headers = {
-      "Authorization": "Bearer $token",
+      "Authorization": token,
       'content-type': 'application/json; charset=utf-8',
       'date': 'Sun,18 Feb 2024 17:04:08 GMT',
       'server': 'Microsoft-IIS/10.0',
@@ -43,6 +44,8 @@ class DioHelper {
         return Strings.serverFailureMessage;
       case InternetFailure:
         return Strings.checkYourInternet;
+      case SiginGoogleFailure:
+        return Strings.signinGoogleFailureMessage.tr();
       default:
         return failure.errorMessage ?? StringManager.unexpectedError;
     }
@@ -55,6 +58,8 @@ class DioHelper {
       case UnauthorizedException:
 
         return UnauthorizedFailure();
+      case SiginGoogleException:
+        return SiginGoogleFailure();
       case InternetException:
         return InternetFailure();
       case ErrorModelException:

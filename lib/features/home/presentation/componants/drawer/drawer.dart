@@ -4,6 +4,7 @@ import 'package:leap/core/resource_manager/colors.dart';
 import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/resource_manager/string_manager.dart';
 import 'package:leap/core/utils/app_size.dart';
+import 'package:leap/core/utils/methods.dart';
 import 'package:leap/core/widgets/drop_down_custom.dart';
 import 'package:leap/features/home/presentation/componants/drawer/widgets/drawer-buttons.dart';
 import 'package:leap/features/home/presentation/componants/drawer/widgets/user_row.dart';
@@ -122,6 +123,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
           const Spacer(),
           InkWell(
             onTap: () {
+              Methods.instance.saveUserToken(authToken: null);
               Navigator.pushNamed(context, Routes.login);
             },
             child: Center(

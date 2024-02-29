@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,7 +8,9 @@ import 'package:leap/core/resource_manager/routes.dart';
 import 'package:leap/core/service/navigator_services.dart';
 import 'package:leap/core/service/service_locator.dart';
 import 'package:leap/core/translations/translations.dart';
+import 'package:leap/core/utils/methods.dart';
 import 'package:leap/features/auth/presentation/controller/login_bloc/login_with_email_and_password_bloc.dart';
+import 'package:leap/features/auth/presentation/controller/sign_in_with_platform_bloc/sign_in_with_platform_bloc.dart';
 import 'package:leap/features/auth/presentation/controller/sign_up_bloc/sign_up_with_email_and_password_bloc.dart';
 import 'package:leap/features/home/presentation/controller/get_cities_major_universtity/get_options_bloc.dart';
 import 'package:leap/features/home/presentation/controller/get_cities_major_universtity/get_options_events.dart';
@@ -16,13 +20,18 @@ import 'package:leap/features/internships/presentation/controller/intern_search_
 import 'package:leap/features/jobs/presentation/controller/get_jobs/get_jobs_bloc.dart';
 import 'package:leap/features/jobs/presentation/controller/get_jobs/get_jobs_event.dart';
 import 'package:leap/features/profile/presentation/controller/get_my_applications/get_my_applications_bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+String? token;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await ServerLocator().init();
   await EasyLocalization.ensureInitialized();
-
+  token = await Methods.instance.returnUserToken();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(EasyLocalization(
       fallbackLocale: const Locale('en'),
       supportedLocales: const [
@@ -37,9 +46,14 @@ void main() async {
       })));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -59,9 +73,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<GetMyApplicationsBloc>(),
+        ),  BlocProvider(
+          create: (context) => getIt<SignInWithPlatformBloc>(),
         ),
         BlocProvider(
-          create: (context) => getIt<GetInternshipsBySearchBloc>()..add(GetInternshipsBySearchEvent()),
+          create: (context) => getIt<GetInternshipsBySearchBloc>()
+            ..add(GetInternshipsBySearchEvent()),
         ),
         BlocProvider(
           create: (context) => getIt<OptionsBloc>()
@@ -78,7 +95,7 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: RouteGenerator.getRoute,
         navigatorKey: getIt<NavigationService>().navigatorKey,
         builder: EasyLoading.init(),
-        initialRoute: Routes.login,
+        initialRoute: token == null||token=='noToken' ? Routes.login : Routes.main,
         theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
